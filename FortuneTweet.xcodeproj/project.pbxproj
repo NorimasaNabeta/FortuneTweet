@@ -189,7 +189,6 @@
 		F2029ED715E5FDCD00A4E0FE = {
 			isa = PBXGroup;
 			children = (
-				F2029FAC15E6324B00A4E0FE /* Accounts.framework */,
 				F2029F2115E5FDEF00A4E0FE /* Icon.png */,
 				F2029F2215E5FDEF00A4E0FE /* Icon@2x.png */,
 				F2029EEC15E5FDCD00A4E0FE /* FortuneTweet */,
@@ -211,6 +210,7 @@
 		F2029EE515E5FDCD00A4E0FE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F2029FAC15E6324B00A4E0FE /* Accounts.framework */,
 				F2029F7615E60B5200A4E0FE /* QuartzCore.framework */,
 				F2029F5615E6011A00A4E0FE /* Twitter.framework */,
 				F2029F5415E600F200A4E0FE /* MapKit.framework */,

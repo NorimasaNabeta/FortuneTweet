@@ -52,7 +52,7 @@
                        forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
                            NSLog(@"[H]useDocument:New %@", [self.fortuneDatabase.fileURL path]);
                            [self setupFetchedResultsController];
-                           [self locationDataIntoDocument:self.fortuneDatabase];
+                           //[self locationDataIntoDocument:self.fortuneDatabase];
                            
                        }];
     } else if (self.fortuneDatabase.documentState == UIDocumentStateClosed) {
@@ -60,13 +60,13 @@
         [self.fortuneDatabase openWithCompletionHandler:^(BOOL success) {
             NSLog(@"[H]useDocument:Open %@", [self.fortuneDatabase.fileURL path]);
             [self setupFetchedResultsController];
-            [self locationDataIntoDocument:self.fortuneDatabase];
+            //[self locationDataIntoDocument:self.fortuneDatabase];
         }];
     } else if (self.fortuneDatabase.documentState == UIDocumentStateNormal) {
         // already open and ready to use
         NSLog(@"[H]useDocument:Ready %@", [self.fortuneDatabase.fileURL path]);
         [self setupFetchedResultsController];
-        [self locationDataIntoDocument:self.fortuneDatabase];
+        //[self locationDataIntoDocument:self.fortuneDatabase];
     }
 }
 - (void)setFortuneDatabase:(UIManagedDocument *)fortuneDatabase
@@ -142,14 +142,13 @@
     return cell;
 }
 
-/*
+
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
     return YES;
 }
-*/
 
 // Override to support editing the table view.
 - (void) tableView:(UITableView *)tableView
@@ -158,7 +157,9 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        History *hist = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        [self.fetchedResultsController.managedObjectContext deleteObject:hist];
+        // [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }   
 }
 
