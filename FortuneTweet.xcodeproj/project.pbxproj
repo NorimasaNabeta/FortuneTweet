@@ -13,13 +13,48 @@
 		F2029EF115E5FDCD00A4E0FE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F2029EEF15E5FDCD00A4E0FE /* InfoPlist.strings */; };
 		F2029EF315E5FDCD00A4E0FE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F2029EF215E5FDCD00A4E0FE /* main.m */; };
 		F2029EF715E5FDCD00A4E0FE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2029EF615E5FDCD00A4E0FE /* AppDelegate.m */; };
-		F2029EFA15E5FDCD00A4E0FE /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2029EF815E5FDCD00A4E0FE /* MainStoryboard.storyboard */; };
-		F2029EFD15E5FDCD00A4E0FE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2029EFC15E5FDCD00A4E0FE /* ViewController.m */; };
 		F2029F0515E5FDCD00A4E0FE /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2029F0415E5FDCD00A4E0FE /* SenTestingKit.framework */; };
 		F2029F0615E5FDCD00A4E0FE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2029EE615E5FDCD00A4E0FE /* UIKit.framework */; };
 		F2029F0715E5FDCD00A4E0FE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2029EE815E5FDCD00A4E0FE /* Foundation.framework */; };
 		F2029F0F15E5FDCD00A4E0FE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F2029F0D15E5FDCD00A4E0FE /* InfoPlist.strings */; };
 		F2029F1215E5FDCD00A4E0FE /* FortuneTweetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F2029F1115E5FDCD00A4E0FE /* FortuneTweetTests.m */; };
+		F2029F2415E5FDEF00A4E0FE /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = F2029F1B15E5FDEF00A4E0FE /* Default.png */; };
+		F2029F2515E5FDEF00A4E0FE /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2029F1C15E5FDEF00A4E0FE /* Default@2x.png */; };
+		F2029F2615E5FDEF00A4E0FE /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = F2029F1D15E5FDEF00A4E0FE /* Icon-72.png */; };
+		F2029F2715E5FDEF00A4E0FE /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = F2029F1E15E5FDEF00A4E0FE /* Icon-Small-50.png */; };
+		F2029F2815E5FDEF00A4E0FE /* Icon-Small.png in Resources */ = {isa = PBXBuildFile; fileRef = F2029F1F15E5FDEF00A4E0FE /* Icon-Small.png */; };
+		F2029F2915E5FDEF00A4E0FE /* Icon-Small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2029F2015E5FDEF00A4E0FE /* Icon-Small@2x.png */; };
+		F2029F2A15E5FDEF00A4E0FE /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = F2029F2115E5FDEF00A4E0FE /* Icon.png */; };
+		F2029F2B15E5FDEF00A4E0FE /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2029F2215E5FDEF00A4E0FE /* Icon@2x.png */; };
+		F2029F2C15E5FDEF00A4E0FE /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = F2029F2315E5FDEF00A4E0FE /* iTunesArtwork */; };
+		F2029F2F15E5FE4800A4E0FE /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2029F2E15E5FE4800A4E0FE /* CoreDataTableViewController.m */; };
+		F2029F3215E5FE7000A4E0FE /* AskerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2029F3115E5FE7000A4E0FE /* AskerViewController.m */; };
+		F2029F3B15E5FEBF00A4E0FE /* blackArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = F2029F3315E5FEBF00A4E0FE /* blackArrow.png */; };
+		F2029F3C15E5FEBF00A4E0FE /* blackArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2029F3415E5FEBF00A4E0FE /* blackArrow@2x.png */; };
+		F2029F3D15E5FEBF00A4E0FE /* blueArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = F2029F3515E5FEBF00A4E0FE /* blueArrow.png */; };
+		F2029F3E15E5FEBF00A4E0FE /* blueArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2029F3615E5FEBF00A4E0FE /* blueArrow@2x.png */; };
+		F2029F4115E5FEBF00A4E0FE /* grayArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = F2029F3915E5FEBF00A4E0FE /* grayArrow.png */; };
+		F2029F4215E5FEBF00A4E0FE /* grayArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2029F3A15E5FEBF00A4E0FE /* grayArrow@2x.png */; };
+		F2029F4515E5FEDB00A4E0FE /* whiteArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = F2029F4315E5FEDB00A4E0FE /* whiteArrow.png */; };
+		F2029F4615E5FEDB00A4E0FE /* whiteArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F2029F4415E5FEDB00A4E0FE /* whiteArrow@2x.png */; };
+		F2029F4B15E5FF0700A4E0FE /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = F2029F4815E5FF0700A4E0FE /* EGORefreshTableHeaderView.m */; };
+		F2029F4C15E5FF0700A4E0FE /* EGORefreshTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2029F4A15E5FF0700A4E0FE /* EGORefreshTableViewController.m */; };
+		F2029F4F15E600AF00A4E0FE /* Storyboard_iphone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2029F4E15E600AE00A4E0FE /* Storyboard_iphone.storyboard */; };
+		F2029F5115E600D200A4E0FE /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2029F5015E600D200A4E0FE /* CoreData.framework */; };
+		F2029F5315E600DD00A4E0FE /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2029F5215E600DD00A4E0FE /* CoreLocation.framework */; };
+		F2029F5515E600F200A4E0FE /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2029F5415E600F200A4E0FE /* MapKit.framework */; };
+		F2029F5715E6011A00A4E0FE /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2029F5615E6011A00A4E0FE /* Twitter.framework */; };
+		F2029F5B15E6015700A4E0FE /* FortuneTweetModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F2029F5915E6015700A4E0FE /* FortuneTweetModel.xcdatamodeld */; };
+		F2029F5E15E6049D00A4E0FE /* Fortune.m in Sources */ = {isa = PBXBuildFile; fileRef = F2029F5D15E6049D00A4E0FE /* Fortune.m */; };
+		F2029F6115E6049D00A4E0FE /* TwitterUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F2029F6015E6049D00A4E0FE /* TwitterUser.m */; };
+		F2029F6415E6049D00A4E0FE /* History.m in Sources */ = {isa = PBXBuildFile; fileRef = F2029F6315E6049D00A4E0FE /* History.m */; };
+		F2029F6715E607B600A4E0FE /* FrotuneBookTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2029F6615E607B600A4E0FE /* FrotuneBookTableViewController.m */; };
+		F2029F6A15E607E200A4E0FE /* FortuneListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2029F6915E607E200A4E0FE /* FortuneListTableViewController.m */; };
+		F2029F6D15E6080500A4E0FE /* HistoryListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2029F6C15E6080500A4E0FE /* HistoryListTableViewController.m */; };
+		F2029F7015E6082100A4E0FE /* UserListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2029F6F15E6082100A4E0FE /* UserListTableViewController.m */; };
+		F2029F7315E6084900A4E0FE /* HistoryMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2029F7215E6084900A4E0FE /* HistoryMapViewController.m */; };
+		F2029F7515E6099700A4E0FE /* Placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = F2029F7415E6099700A4E0FE /* Placeholder.png */; };
+		F2029F7715E60B5200A4E0FE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2029F7615E60B5200A4E0FE /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,15 +78,61 @@
 		F2029EF415E5FDCD00A4E0FE /* FortuneTweet-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FortuneTweet-Prefix.pch"; sourceTree = "<group>"; };
 		F2029EF515E5FDCD00A4E0FE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F2029EF615E5FDCD00A4E0FE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		F2029EF915E5FDCD00A4E0FE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		F2029EFB15E5FDCD00A4E0FE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		F2029EFC15E5FDCD00A4E0FE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		F2029F0315E5FDCD00A4E0FE /* FortuneTweetTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FortuneTweetTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2029F0415E5FDCD00A4E0FE /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		F2029F0C15E5FDCD00A4E0FE /* FortuneTweetTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FortuneTweetTests-Info.plist"; sourceTree = "<group>"; };
 		F2029F0E15E5FDCD00A4E0FE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F2029F1015E5FDCD00A4E0FE /* FortuneTweetTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FortuneTweetTests.h; sourceTree = "<group>"; };
 		F2029F1115E5FDCD00A4E0FE /* FortuneTweetTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FortuneTweetTests.m; sourceTree = "<group>"; };
+		F2029F1B15E5FDEF00A4E0FE /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Default.png; path = ../Default.png; sourceTree = "<group>"; };
+		F2029F1C15E5FDEF00A4E0FE /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
+		F2029F1D15E5FDEF00A4E0FE /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "../Icon-72.png"; sourceTree = "<group>"; };
+		F2029F1E15E5FDEF00A4E0FE /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small-50.png"; path = "../Icon-Small-50.png"; sourceTree = "<group>"; };
+		F2029F1F15E5FDEF00A4E0FE /* Icon-Small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small.png"; path = "../Icon-Small.png"; sourceTree = "<group>"; };
+		F2029F2015E5FDEF00A4E0FE /* Icon-Small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-Small@2x.png"; path = "../Icon-Small@2x.png"; sourceTree = "<group>"; };
+		F2029F2115E5FDEF00A4E0FE /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		F2029F2215E5FDEF00A4E0FE /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		F2029F2315E5FDEF00A4E0FE /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; name = iTunesArtwork; path = ../iTunesArtwork; sourceTree = "<group>"; };
+		F2029F2D15E5FE4800A4E0FE /* CoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTableViewController.h; sourceTree = "<group>"; };
+		F2029F2E15E5FE4800A4E0FE /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTableViewController.m; sourceTree = "<group>"; };
+		F2029F3015E5FE7000A4E0FE /* AskerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AskerViewController.h; sourceTree = "<group>"; };
+		F2029F3115E5FE7000A4E0FE /* AskerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AskerViewController.m; sourceTree = "<group>"; };
+		F2029F3315E5FEBF00A4E0FE /* blackArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blackArrow.png; sourceTree = "<group>"; };
+		F2029F3415E5FEBF00A4E0FE /* blackArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blackArrow@2x.png"; sourceTree = "<group>"; };
+		F2029F3515E5FEBF00A4E0FE /* blueArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blueArrow.png; sourceTree = "<group>"; };
+		F2029F3615E5FEBF00A4E0FE /* blueArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blueArrow@2x.png"; sourceTree = "<group>"; };
+		F2029F3915E5FEBF00A4E0FE /* grayArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grayArrow.png; sourceTree = "<group>"; };
+		F2029F3A15E5FEBF00A4E0FE /* grayArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grayArrow@2x.png"; sourceTree = "<group>"; };
+		F2029F4315E5FEDB00A4E0FE /* whiteArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteArrow.png; sourceTree = "<group>"; };
+		F2029F4415E5FEDB00A4E0FE /* whiteArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteArrow@2x.png"; sourceTree = "<group>"; };
+		F2029F4715E5FF0700A4E0FE /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
+		F2029F4815E5FF0700A4E0FE /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
+		F2029F4915E5FF0700A4E0FE /* EGORefreshTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableViewController.h; sourceTree = "<group>"; };
+		F2029F4A15E5FF0700A4E0FE /* EGORefreshTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableViewController.m; sourceTree = "<group>"; };
+		F2029F4E15E600AE00A4E0FE /* Storyboard_iphone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Storyboard_iphone.storyboard; path = ../Storyboard_iphone.storyboard; sourceTree = "<group>"; };
+		F2029F5015E600D200A4E0FE /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		F2029F5215E600DD00A4E0FE /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		F2029F5415E600F200A4E0FE /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		F2029F5615E6011A00A4E0FE /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		F2029F5A15E6015700A4E0FE /* FortuneTweetModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FortuneTweetModel.xcdatamodel; sourceTree = "<group>"; };
+		F2029F5C15E6049D00A4E0FE /* Fortune.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Fortune.h; sourceTree = "<group>"; };
+		F2029F5D15E6049D00A4E0FE /* Fortune.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fortune.m; sourceTree = "<group>"; };
+		F2029F5F15E6049D00A4E0FE /* TwitterUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterUser.h; sourceTree = "<group>"; };
+		F2029F6015E6049D00A4E0FE /* TwitterUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterUser.m; sourceTree = "<group>"; };
+		F2029F6215E6049D00A4E0FE /* History.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = History.h; sourceTree = "<group>"; };
+		F2029F6315E6049D00A4E0FE /* History.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = History.m; sourceTree = "<group>"; };
+		F2029F6515E607B600A4E0FE /* FrotuneBookTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FrotuneBookTableViewController.h; sourceTree = "<group>"; };
+		F2029F6615E607B600A4E0FE /* FrotuneBookTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FrotuneBookTableViewController.m; sourceTree = "<group>"; };
+		F2029F6815E607E200A4E0FE /* FortuneListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FortuneListTableViewController.h; sourceTree = "<group>"; };
+		F2029F6915E607E200A4E0FE /* FortuneListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FortuneListTableViewController.m; sourceTree = "<group>"; };
+		F2029F6B15E6080500A4E0FE /* HistoryListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryListTableViewController.h; sourceTree = "<group>"; };
+		F2029F6C15E6080500A4E0FE /* HistoryListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryListTableViewController.m; sourceTree = "<group>"; };
+		F2029F6E15E6082100A4E0FE /* UserListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserListTableViewController.h; sourceTree = "<group>"; };
+		F2029F6F15E6082100A4E0FE /* UserListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserListTableViewController.m; sourceTree = "<group>"; };
+		F2029F7115E6084900A4E0FE /* HistoryMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryMapViewController.h; sourceTree = "<group>"; };
+		F2029F7215E6084900A4E0FE /* HistoryMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryMapViewController.m; sourceTree = "<group>"; };
+		F2029F7415E6099700A4E0FE /* Placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Placeholder.png; sourceTree = "<group>"; };
+		F2029F7615E60B5200A4E0FE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +140,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2029F7715E60B5200A4E0FE /* QuartzCore.framework in Frameworks */,
+				F2029F5715E6011A00A4E0FE /* Twitter.framework in Frameworks */,
+				F2029F5515E600F200A4E0FE /* MapKit.framework in Frameworks */,
+				F2029F5315E600DD00A4E0FE /* CoreLocation.framework in Frameworks */,
+				F2029F5115E600D200A4E0FE /* CoreData.framework in Frameworks */,
 				F2029EE715E5FDCD00A4E0FE /* UIKit.framework in Frameworks */,
 				F2029EE915E5FDCD00A4E0FE /* Foundation.framework in Frameworks */,
 				F2029EEB15E5FDCD00A4E0FE /* CoreGraphics.framework in Frameworks */,
@@ -81,6 +167,8 @@
 		F2029ED715E5FDCD00A4E0FE = {
 			isa = PBXGroup;
 			children = (
+				F2029F2115E5FDEF00A4E0FE /* Icon.png */,
+				F2029F2215E5FDEF00A4E0FE /* Icon@2x.png */,
 				F2029EEC15E5FDCD00A4E0FE /* FortuneTweet */,
 				F2029F0A15E5FDCD00A4E0FE /* FortuneTweetTests */,
 				F2029EE515E5FDCD00A4E0FE /* Frameworks */,
@@ -100,6 +188,11 @@
 		F2029EE515E5FDCD00A4E0FE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F2029F7615E60B5200A4E0FE /* QuartzCore.framework */,
+				F2029F5615E6011A00A4E0FE /* Twitter.framework */,
+				F2029F5415E600F200A4E0FE /* MapKit.framework */,
+				F2029F5215E600DD00A4E0FE /* CoreLocation.framework */,
+				F2029F5015E600D200A4E0FE /* CoreData.framework */,
 				F2029EE615E5FDCD00A4E0FE /* UIKit.framework */,
 				F2029EE815E5FDCD00A4E0FE /* Foundation.framework */,
 				F2029EEA15E5FDCD00A4E0FE /* CoreGraphics.framework */,
@@ -111,12 +204,28 @@
 		F2029EEC15E5FDCD00A4E0FE /* FortuneTweet */ = {
 			isa = PBXGroup;
 			children = (
+				F2029F6515E607B600A4E0FE /* FrotuneBookTableViewController.h */,
+				F2029F6E15E6082100A4E0FE /* UserListTableViewController.h */,
+				F2029F6F15E6082100A4E0FE /* UserListTableViewController.m */,
+				F2029F7115E6084900A4E0FE /* HistoryMapViewController.h */,
+				F2029F7215E6084900A4E0FE /* HistoryMapViewController.m */,
+				F2029F6615E607B600A4E0FE /* FrotuneBookTableViewController.m */,
+				F2029F6815E607E200A4E0FE /* FortuneListTableViewController.h */,
+				F2029F6915E607E200A4E0FE /* FortuneListTableViewController.m */,
+				F2029F4E15E600AE00A4E0FE /* Storyboard_iphone.storyboard */,
+				F2029F4915E5FF0700A4E0FE /* EGORefreshTableViewController.h */,
+				F2029F4A15E5FF0700A4E0FE /* EGORefreshTableViewController.m */,
+				F2029F3015E5FE7000A4E0FE /* AskerViewController.h */,
+				F2029F4D15E5FF8400A4E0FE /* EGORefresh */,
+				F2029F3115E5FE7000A4E0FE /* AskerViewController.m */,
+				F2029F5815E6012D00A4E0FE /* CoreData */,
+				F2029F2D15E5FE4800A4E0FE /* CoreDataTableViewController.h */,
+				F2029F2E15E5FE4800A4E0FE /* CoreDataTableViewController.m */,
 				F2029EF515E5FDCD00A4E0FE /* AppDelegate.h */,
 				F2029EF615E5FDCD00A4E0FE /* AppDelegate.m */,
-				F2029EF815E5FDCD00A4E0FE /* MainStoryboard.storyboard */,
-				F2029EFB15E5FDCD00A4E0FE /* ViewController.h */,
-				F2029EFC15E5FDCD00A4E0FE /* ViewController.m */,
 				F2029EED15E5FDCD00A4E0FE /* Supporting Files */,
+				F2029F6B15E6080500A4E0FE /* HistoryListTableViewController.h */,
+				F2029F6C15E6080500A4E0FE /* HistoryListTableViewController.m */,
 			);
 			path = FortuneTweet;
 			sourceTree = "<group>";
@@ -124,6 +233,14 @@
 		F2029EED15E5FDCD00A4E0FE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F2029F1B15E5FDEF00A4E0FE /* Default.png */,
+				F2029F7415E6099700A4E0FE /* Placeholder.png */,
+				F2029F1C15E5FDEF00A4E0FE /* Default@2x.png */,
+				F2029F1D15E5FDEF00A4E0FE /* Icon-72.png */,
+				F2029F1E15E5FDEF00A4E0FE /* Icon-Small-50.png */,
+				F2029F1F15E5FDEF00A4E0FE /* Icon-Small.png */,
+				F2029F2015E5FDEF00A4E0FE /* Icon-Small@2x.png */,
+				F2029F2315E5FDEF00A4E0FE /* iTunesArtwork */,
 				F2029EEE15E5FDCD00A4E0FE /* FortuneTweet-Info.plist */,
 				F2029EEF15E5FDCD00A4E0FE /* InfoPlist.strings */,
 				F2029EF215E5FDCD00A4E0FE /* main.m */,
@@ -149,6 +266,37 @@
 				F2029F0D15E5FDCD00A4E0FE /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F2029F4D15E5FF8400A4E0FE /* EGORefresh */ = {
+			isa = PBXGroup;
+			children = (
+				F2029F3915E5FEBF00A4E0FE /* grayArrow.png */,
+				F2029F3A15E5FEBF00A4E0FE /* grayArrow@2x.png */,
+				F2029F3315E5FEBF00A4E0FE /* blackArrow.png */,
+				F2029F3415E5FEBF00A4E0FE /* blackArrow@2x.png */,
+				F2029F3515E5FEBF00A4E0FE /* blueArrow.png */,
+				F2029F3615E5FEBF00A4E0FE /* blueArrow@2x.png */,
+				F2029F4315E5FEDB00A4E0FE /* whiteArrow.png */,
+				F2029F4415E5FEDB00A4E0FE /* whiteArrow@2x.png */,
+				F2029F4715E5FF0700A4E0FE /* EGORefreshTableHeaderView.h */,
+				F2029F4815E5FF0700A4E0FE /* EGORefreshTableHeaderView.m */,
+			);
+			name = EGORefresh;
+			sourceTree = "<group>";
+		};
+		F2029F5815E6012D00A4E0FE /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				F2029F5915E6015700A4E0FE /* FortuneTweetModel.xcdatamodeld */,
+				F2029F6215E6049D00A4E0FE /* History.h */,
+				F2029F6315E6049D00A4E0FE /* History.m */,
+				F2029F5F15E6049D00A4E0FE /* TwitterUser.h */,
+				F2029F6015E6049D00A4E0FE /* TwitterUser.m */,
+				F2029F5C15E6049D00A4E0FE /* Fortune.h */,
+				F2029F5D15E6049D00A4E0FE /* Fortune.m */,
+			);
+			name = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,7 +371,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2029EF115E5FDCD00A4E0FE /* InfoPlist.strings in Resources */,
-				F2029EFA15E5FDCD00A4E0FE /* MainStoryboard.storyboard in Resources */,
+				F2029F2415E5FDEF00A4E0FE /* Default.png in Resources */,
+				F2029F2515E5FDEF00A4E0FE /* Default@2x.png in Resources */,
+				F2029F2615E5FDEF00A4E0FE /* Icon-72.png in Resources */,
+				F2029F2715E5FDEF00A4E0FE /* Icon-Small-50.png in Resources */,
+				F2029F2815E5FDEF00A4E0FE /* Icon-Small.png in Resources */,
+				F2029F2915E5FDEF00A4E0FE /* Icon-Small@2x.png in Resources */,
+				F2029F2A15E5FDEF00A4E0FE /* Icon.png in Resources */,
+				F2029F2B15E5FDEF00A4E0FE /* Icon@2x.png in Resources */,
+				F2029F2C15E5FDEF00A4E0FE /* iTunesArtwork in Resources */,
+				F2029F3B15E5FEBF00A4E0FE /* blackArrow.png in Resources */,
+				F2029F3C15E5FEBF00A4E0FE /* blackArrow@2x.png in Resources */,
+				F2029F3D15E5FEBF00A4E0FE /* blueArrow.png in Resources */,
+				F2029F3E15E5FEBF00A4E0FE /* blueArrow@2x.png in Resources */,
+				F2029F4115E5FEBF00A4E0FE /* grayArrow.png in Resources */,
+				F2029F4215E5FEBF00A4E0FE /* grayArrow@2x.png in Resources */,
+				F2029F4515E5FEDB00A4E0FE /* whiteArrow.png in Resources */,
+				F2029F4615E5FEDB00A4E0FE /* whiteArrow@2x.png in Resources */,
+				F2029F4F15E600AF00A4E0FE /* Storyboard_iphone.storyboard in Resources */,
+				F2029F7515E6099700A4E0FE /* Placeholder.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,7 +426,19 @@
 			files = (
 				F2029EF315E5FDCD00A4E0FE /* main.m in Sources */,
 				F2029EF715E5FDCD00A4E0FE /* AppDelegate.m in Sources */,
-				F2029EFD15E5FDCD00A4E0FE /* ViewController.m in Sources */,
+				F2029F2F15E5FE4800A4E0FE /* CoreDataTableViewController.m in Sources */,
+				F2029F3215E5FE7000A4E0FE /* AskerViewController.m in Sources */,
+				F2029F4B15E5FF0700A4E0FE /* EGORefreshTableHeaderView.m in Sources */,
+				F2029F4C15E5FF0700A4E0FE /* EGORefreshTableViewController.m in Sources */,
+				F2029F5B15E6015700A4E0FE /* FortuneTweetModel.xcdatamodeld in Sources */,
+				F2029F5E15E6049D00A4E0FE /* Fortune.m in Sources */,
+				F2029F6115E6049D00A4E0FE /* TwitterUser.m in Sources */,
+				F2029F6415E6049D00A4E0FE /* History.m in Sources */,
+				F2029F6715E607B600A4E0FE /* FrotuneBookTableViewController.m in Sources */,
+				F2029F6A15E607E200A4E0FE /* FortuneListTableViewController.m in Sources */,
+				F2029F6D15E6080500A4E0FE /* HistoryListTableViewController.m in Sources */,
+				F2029F7015E6082100A4E0FE /* UserListTableViewController.m in Sources */,
+				F2029F7315E6084900A4E0FE /* HistoryMapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,14 +467,6 @@
 				F2029EF015E5FDCD00A4E0FE /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		F2029EF815E5FDCD00A4E0FE /* MainStoryboard.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F2029EF915E5FDCD00A4E0FE /* en */,
-			);
-			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";
 		};
 		F2029F0D15E5FDCD00A4E0FE /* InfoPlist.strings */ = {
@@ -365,6 +535,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FortuneTweet/FortuneTweet-Prefix.pch";
 				INFOPLIST_FILE = "FortuneTweet/FortuneTweet-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -376,6 +547,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FortuneTweet/FortuneTweet-Prefix.pch";
 				INFOPLIST_FILE = "FortuneTweet/FortuneTweet-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -444,6 +616,19 @@
 			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F2029F5915E6015700A4E0FE /* FortuneTweetModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F2029F5A15E6015700A4E0FE /* FortuneTweetModel.xcdatamodel */,
+			);
+			currentVersion = F2029F5A15E6015700A4E0FE /* FortuneTweetModel.xcdatamodel */;
+			path = FortuneTweetModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F2029ED915E5FDCD00A4E0FE /* Project object */;
 }
