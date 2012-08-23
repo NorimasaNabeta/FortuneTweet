@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+#import "CoreDataTableViewController.h"
 
-@interface FrotuneBookTableViewController : UITableViewController
+@interface FrotuneBookTableViewController : UITableViewController  <CLLocationManagerDelegate>
+@property (nonatomic, retain) CLLocationManager *locationManager;
+@property (nonatomic, strong) UIManagedDocument *fortuneDatabase;
 
 @end

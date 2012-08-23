@@ -7,12 +7,76 @@
 //
 
 #import "HistoryListTableViewController.h"
+#import "History.h"
+#import "History+CLLocation.h"
 
 @interface HistoryListTableViewController ()
 
 @end
 
 @implementation HistoryListTableViewController
+@synthesize fortuneDatabase=_fortuneDatabase;
+
+- (void)setupFetchedResultsController // attaches an NSFetchRequest to this UITableViewController
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
+    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"timestamp" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)]];
+    // no predicate because we want ALL the Photographers
+    
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                                                        managedObjectContext:self.fortuneDatabase.managedObjectContext
+                                                                          sectionNameKeyPath:nil
+                                                                                   cacheName:nil];
+}
+
+
+- (void)locationDataIntoDocument:(UIManagedDocument *)document
+{
+    NSLog(@"locationDataIntoDocument");
+//    dispatch_queue_t fetchQ = dispatch_queue_create("Twitter fetcher", NULL);
+    CLLocation *newLocation = [[CLLocation alloc] initWithLatitude:37.733 longitude:-122.41];
+    [self.fortuneDatabase.managedObjectContext performBlock:^{
+        [History historyWithCLLocation:newLocation inManagedObjectContext:self.fortuneDatabase.managedObjectContext];
+        [self.fortuneDatabase saveToURL:self.fortuneDatabase.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:NULL];
+    }];
+//    dispatch_release(fetchQ);
+    
+}
+
+- (void)useDocument
+{
+    //NSLog(@"useDocument: %@", [self.fortuneDatabase.fileURL path]);
+    if (![[NSFileManager defaultManager] fileExistsAtPath:[self.fortuneDatabase.fileURL path]]) {
+        // does not exist on disk, so create it
+        [self.fortuneDatabase saveToURL:self.fortuneDatabase.fileURL
+                       forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
+                           NSLog(@"[H]useDocument:New %@", [self.fortuneDatabase.fileURL path]);
+                           [self setupFetchedResultsController];
+                           [self locationDataIntoDocument:self.fortuneDatabase];
+                           
+                       }];
+    } else if (self.fortuneDatabase.documentState == UIDocumentStateClosed) {
+        // exists on disk, but we need to open it
+        [self.fortuneDatabase openWithCompletionHandler:^(BOOL success) {
+            NSLog(@"[H]useDocument:Open %@", [self.fortuneDatabase.fileURL path]);
+            [self setupFetchedResultsController];
+            [self locationDataIntoDocument:self.fortuneDatabase];
+        }];
+    } else if (self.fortuneDatabase.documentState == UIDocumentStateNormal) {
+        // already open and ready to use
+        NSLog(@"[H]useDocument:Ready %@", [self.fortuneDatabase.fileURL path]);
+        [self setupFetchedResultsController];
+        [self locationDataIntoDocument:self.fortuneDatabase];
+    }
+}
+- (void)setFortuneDatabase:(UIManagedDocument *)fortuneDatabase
+{
+    if (_fortuneDatabase != fortuneDatabase) {
+        _fortuneDatabase = fortuneDatabase;
+    }
+    [self useDocument];
+}
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -34,6 +98,18 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if (!self.fortuneDatabase) {
+        NSURL *url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+        url = [url URLByAppendingPathComponent:@"FortuneDatabase"];
+        self.fortuneDatabase = [[UIManagedDocument alloc] initWithFileURL:url];
+    }
+    
+}
+
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -48,26 +124,20 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-// #warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-// #warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"History Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     // Configure the cell...
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    History *hist = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = [NSString stringWithFormat:@"[lat=%@, long=%@]", hist.latitude, hist.longitude];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", hist.timestamp];
+    
     
     return cell;
 }
@@ -81,19 +151,17 @@
 }
 */
 
-/*
 // Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+- (void) tableView:(UITableView *)tableView
+commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
 }
-*/
+
 
 /*
 // Override to support rearranging the table view.
@@ -122,6 +190,15 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+    History *hist = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    if ([segue.destinationViewController respondsToSelector:@selector(setHistory:)]) {
+        [segue.destinationViewController performSelector:@selector(setHistory:) withObject:hist];
+    }
 }
 
 @end

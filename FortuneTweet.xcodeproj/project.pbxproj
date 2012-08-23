@@ -62,6 +62,7 @@
 		F2029FB915E63D3000A4E0FE /* TwitterUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F2029FB815E63D3000A4E0FE /* TwitterUser.m */; };
 		F2029FBC15E63D3100A4E0FE /* Fortune.m in Sources */ = {isa = PBXBuildFile; fileRef = F2029FBB15E63D3000A4E0FE /* Fortune.m */; };
 		F2029FBF15E63D3100A4E0FE /* TwitterList.m in Sources */ = {isa = PBXBuildFile; fileRef = F2029FBE15E63D3100A4E0FE /* TwitterList.m */; };
+		F2029FD615E66BC200A4E0FE /* History+CLLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = F2029FD515E66BC200A4E0FE /* History+CLLocation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,6 +152,8 @@
 		F2029FBB15E63D3000A4E0FE /* Fortune.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Fortune.m; sourceTree = "<group>"; };
 		F2029FBD15E63D3100A4E0FE /* TwitterList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterList.h; sourceTree = "<group>"; };
 		F2029FBE15E63D3100A4E0FE /* TwitterList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterList.m; sourceTree = "<group>"; };
+		F2029FD415E66BC200A4E0FE /* History+CLLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "History+CLLocation.h"; sourceTree = "<group>"; };
+		F2029FD515E66BC200A4E0FE /* History+CLLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "History+CLLocation.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -313,6 +316,8 @@
 				F2029F2D15E5FE4800A4E0FE /* CoreDataTableViewController.h */,
 				F2029F5915E6015700A4E0FE /* FortuneTweetModel.xcdatamodeld */,
 				F2029FBD15E63D3100A4E0FE /* TwitterList.h */,
+				F2029FD415E66BC200A4E0FE /* History+CLLocation.h */,
+				F2029FD515E66BC200A4E0FE /* History+CLLocation.m */,
 				F2029FBE15E63D3100A4E0FE /* TwitterList.m */,
 				F2029FBA15E63D3000A4E0FE /* Fortune.h */,
 				F2029FBB15E63D3000A4E0FE /* Fortune.m */,
@@ -474,6 +479,7 @@
 				F2029FB915E63D3000A4E0FE /* TwitterUser.m in Sources */,
 				F2029FBC15E63D3100A4E0FE /* Fortune.m in Sources */,
 				F2029FBF15E63D3100A4E0FE /* TwitterList.m in Sources */,
+				F2029FD615E66BC200A4E0FE /* History+CLLocation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

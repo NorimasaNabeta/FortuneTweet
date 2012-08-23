@@ -7,12 +7,45 @@
 //
 
 #import "FrotuneBookTableViewController.h"
+#import "History.h"
+#import "History+CLLocation.h"
 
 @interface FrotuneBookTableViewController ()
 
 @end
 
 @implementation FrotuneBookTableViewController
+@synthesize locationManager=_locationManager;
+
+- (void)useDocument
+{
+    NSLog(@"useDocument: %@", [self.fortuneDatabase.fileURL path]);
+    if (![[NSFileManager defaultManager] fileExistsAtPath:[self.fortuneDatabase.fileURL path]]) {
+        // does not exist on disk, so create it
+        [self.fortuneDatabase saveToURL:self.fortuneDatabase.fileURL
+                       forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
+                           // [self setupFetchedResultsController];
+                           // [self fetchTwitterDataIntoDocument:self.fortuneDatabase];
+                           
+                       }];
+    } else if (self.fortuneDatabase.documentState == UIDocumentStateClosed) {
+        // exists on disk, but we need to open it
+        //[self.fortuneDatabase openWithCompletionHandler:^(BOOL success) {
+        //    [self setupFetchedResultsController];
+        //}];
+    } else if (self.fortuneDatabase.documentState == UIDocumentStateNormal) {
+        // already open and ready to use
+        // [self setupFetchedResultsController];
+    }
+}
+- (void)setFortuneDatabase:(UIManagedDocument *)fortuneDatabase
+{
+    if (_fortuneDatabase != fortuneDatabase) {
+        _fortuneDatabase = fortuneDatabase;
+    }
+    [self useDocument];
+}
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -29,9 +62,22 @@
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
+
+	// Start the location manager. -->didUpdateToLocation
+	// [[self locationManager] startUpdatingLocation];
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    if (!self.fortuneDatabase) {
+        NSURL *url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+        url = [url URLByAppendingPathComponent:@"FortuneDatabase"];
+        self.fortuneDatabase = [[UIManagedDocument alloc] initWithFileURL:url];
+    }
+    
 }
 
 - (void)viewDidUnload
@@ -39,6 +85,7 @@
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+	self.locationManager = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -116,5 +163,83 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
 }
+
+#pragma mark Location manager
+
+/**
+ Return a location manager -- create one if necessary.
+ */
+- (CLLocationManager *)locationManager
+{
+	
+    if (_locationManager != nil) {
+		return _locationManager;
+	}
+	_locationManager = [[CLLocationManager alloc] init];
+	[_locationManager setDesiredAccuracy:kCLLocationAccuracyNearestTenMeters];
+	[_locationManager setDelegate:self];
+	
+	return _locationManager;
+}
+
+#pragma mark - CLLocationManagerDelegate
+/**
+ Conditionally enable the Add button:
+ If the location manager is generating updates, then enable the button;
+ If the location manager is failing, then disable the button.
+ */
+
+- (void)locationManager:(CLLocationManager *)manager
+       didFailWithError:(NSError *)error {
+	NSLog(@"didFailWithError: %@", error);
+}
+
+
+- (void)locationManager:(CLLocationManager *)manager
+    didUpdateToLocation:(CLLocation *)newLocation
+           fromLocation:(CLLocation *)oldLocation {
+    NSTimeInterval locationAge = -[newLocation.timestamp timeIntervalSinceNow];
+    if (locationAge > 60.0) return; // 10.0 second
+    if (!self.fortuneDatabase) return;
+
+	NSLog(@"didUpdateToLocation %@ from %@", newLocation, oldLocation);
+
+    // [self.fortuneDatabase.managedObjectContext performBlock:^{
+    //     [History historyWithCLLocation:newLocation inManagedObjectContext:self.fortuneDatabase.managedObjectContext];
+    //     [self.fortuneDatabase saveToURL:self.fortuneDatabase.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:NULL];
+    //}];
+
+    
+	// Work around a bug in MapKit where user location is not initially zoomed to.
+	if (oldLocation == nil) {
+		// Zoom to the current user location.
+		// MKCoordinateRegion userLocation = MKCoordinateRegionMakeWithDistance(newLocation.coordinate, 1500.0, 1500.0);
+		// [regionsMapView setRegion:userLocation animated:YES];
+	}
+}
+
+
+- (void)locationManager:(CLLocationManager *)manager
+         didEnterRegion:(CLRegion *)region  {
+	// NSString *event = [NSString stringWithFormat:@"didEnterRegion %@ at %@", region.identifier, [NSDate date]];
+	// [self updateWithEvent:event];
+}
+
+
+- (void)locationManager:(CLLocationManager *)manager
+          didExitRegion:(CLRegion *)region {
+	// NSString *event = [NSString stringWithFormat:@"didExitRegion %@ at %@", region.identifier, [NSDate date]];
+	// [self updateWithEvent:event];
+}
+
+
+- (void)locationManager:(CLLocationManager *)manager
+monitoringDidFailForRegion:(CLRegion *)region
+              withError:(NSError *)error {
+	// NSString *event = [NSString stringWithFormat:@"monitoringDidFailForRegion %@: %@", region.identifier, error];
+	// [self updateWithEvent:event];
+}
+
+
 
 @end
