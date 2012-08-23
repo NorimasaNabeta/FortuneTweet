@@ -1,0 +1,449 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F2029EE715E5FDCD00A4E0FE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2029EE615E5FDCD00A4E0FE /* UIKit.framework */; };
+		F2029EE915E5FDCD00A4E0FE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2029EE815E5FDCD00A4E0FE /* Foundation.framework */; };
+		F2029EEB15E5FDCD00A4E0FE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2029EEA15E5FDCD00A4E0FE /* CoreGraphics.framework */; };
+		F2029EF115E5FDCD00A4E0FE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F2029EEF15E5FDCD00A4E0FE /* InfoPlist.strings */; };
+		F2029EF315E5FDCD00A4E0FE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F2029EF215E5FDCD00A4E0FE /* main.m */; };
+		F2029EF715E5FDCD00A4E0FE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F2029EF615E5FDCD00A4E0FE /* AppDelegate.m */; };
+		F2029EFA15E5FDCD00A4E0FE /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2029EF815E5FDCD00A4E0FE /* MainStoryboard.storyboard */; };
+		F2029EFD15E5FDCD00A4E0FE /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2029EFC15E5FDCD00A4E0FE /* ViewController.m */; };
+		F2029F0515E5FDCD00A4E0FE /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2029F0415E5FDCD00A4E0FE /* SenTestingKit.framework */; };
+		F2029F0615E5FDCD00A4E0FE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2029EE615E5FDCD00A4E0FE /* UIKit.framework */; };
+		F2029F0715E5FDCD00A4E0FE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2029EE815E5FDCD00A4E0FE /* Foundation.framework */; };
+		F2029F0F15E5FDCD00A4E0FE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F2029F0D15E5FDCD00A4E0FE /* InfoPlist.strings */; };
+		F2029F1215E5FDCD00A4E0FE /* FortuneTweetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F2029F1115E5FDCD00A4E0FE /* FortuneTweetTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F2029F0815E5FDCD00A4E0FE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F2029ED915E5FDCD00A4E0FE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F2029EE115E5FDCD00A4E0FE;
+			remoteInfo = FortuneTweet;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F2029EE215E5FDCD00A4E0FE /* FortuneTweet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FortuneTweet.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2029EE615E5FDCD00A4E0FE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F2029EE815E5FDCD00A4E0FE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F2029EEA15E5FDCD00A4E0FE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F2029EEE15E5FDCD00A4E0FE /* FortuneTweet-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FortuneTweet-Info.plist"; sourceTree = "<group>"; };
+		F2029EF015E5FDCD00A4E0FE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F2029EF215E5FDCD00A4E0FE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F2029EF415E5FDCD00A4E0FE /* FortuneTweet-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FortuneTweet-Prefix.pch"; sourceTree = "<group>"; };
+		F2029EF515E5FDCD00A4E0FE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		F2029EF615E5FDCD00A4E0FE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F2029EF915E5FDCD00A4E0FE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		F2029EFB15E5FDCD00A4E0FE /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		F2029EFC15E5FDCD00A4E0FE /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		F2029F0315E5FDCD00A4E0FE /* FortuneTweetTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FortuneTweetTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F2029F0415E5FDCD00A4E0FE /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		F2029F0C15E5FDCD00A4E0FE /* FortuneTweetTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FortuneTweetTests-Info.plist"; sourceTree = "<group>"; };
+		F2029F0E15E5FDCD00A4E0FE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F2029F1015E5FDCD00A4E0FE /* FortuneTweetTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FortuneTweetTests.h; sourceTree = "<group>"; };
+		F2029F1115E5FDCD00A4E0FE /* FortuneTweetTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FortuneTweetTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F2029EDF15E5FDCD00A4E0FE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2029EE715E5FDCD00A4E0FE /* UIKit.framework in Frameworks */,
+				F2029EE915E5FDCD00A4E0FE /* Foundation.framework in Frameworks */,
+				F2029EEB15E5FDCD00A4E0FE /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F2029EFF15E5FDCD00A4E0FE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2029F0515E5FDCD00A4E0FE /* SenTestingKit.framework in Frameworks */,
+				F2029F0615E5FDCD00A4E0FE /* UIKit.framework in Frameworks */,
+				F2029F0715E5FDCD00A4E0FE /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F2029ED715E5FDCD00A4E0FE = {
+			isa = PBXGroup;
+			children = (
+				F2029EEC15E5FDCD00A4E0FE /* FortuneTweet */,
+				F2029F0A15E5FDCD00A4E0FE /* FortuneTweetTests */,
+				F2029EE515E5FDCD00A4E0FE /* Frameworks */,
+				F2029EE315E5FDCD00A4E0FE /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F2029EE315E5FDCD00A4E0FE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F2029EE215E5FDCD00A4E0FE /* FortuneTweet.app */,
+				F2029F0315E5FDCD00A4E0FE /* FortuneTweetTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F2029EE515E5FDCD00A4E0FE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F2029EE615E5FDCD00A4E0FE /* UIKit.framework */,
+				F2029EE815E5FDCD00A4E0FE /* Foundation.framework */,
+				F2029EEA15E5FDCD00A4E0FE /* CoreGraphics.framework */,
+				F2029F0415E5FDCD00A4E0FE /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F2029EEC15E5FDCD00A4E0FE /* FortuneTweet */ = {
+			isa = PBXGroup;
+			children = (
+				F2029EF515E5FDCD00A4E0FE /* AppDelegate.h */,
+				F2029EF615E5FDCD00A4E0FE /* AppDelegate.m */,
+				F2029EF815E5FDCD00A4E0FE /* MainStoryboard.storyboard */,
+				F2029EFB15E5FDCD00A4E0FE /* ViewController.h */,
+				F2029EFC15E5FDCD00A4E0FE /* ViewController.m */,
+				F2029EED15E5FDCD00A4E0FE /* Supporting Files */,
+			);
+			path = FortuneTweet;
+			sourceTree = "<group>";
+		};
+		F2029EED15E5FDCD00A4E0FE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F2029EEE15E5FDCD00A4E0FE /* FortuneTweet-Info.plist */,
+				F2029EEF15E5FDCD00A4E0FE /* InfoPlist.strings */,
+				F2029EF215E5FDCD00A4E0FE /* main.m */,
+				F2029EF415E5FDCD00A4E0FE /* FortuneTweet-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F2029F0A15E5FDCD00A4E0FE /* FortuneTweetTests */ = {
+			isa = PBXGroup;
+			children = (
+				F2029F1015E5FDCD00A4E0FE /* FortuneTweetTests.h */,
+				F2029F1115E5FDCD00A4E0FE /* FortuneTweetTests.m */,
+				F2029F0B15E5FDCD00A4E0FE /* Supporting Files */,
+			);
+			path = FortuneTweetTests;
+			sourceTree = "<group>";
+		};
+		F2029F0B15E5FDCD00A4E0FE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F2029F0C15E5FDCD00A4E0FE /* FortuneTweetTests-Info.plist */,
+				F2029F0D15E5FDCD00A4E0FE /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F2029EE115E5FDCD00A4E0FE /* FortuneTweet */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F2029F1515E5FDCD00A4E0FE /* Build configuration list for PBXNativeTarget "FortuneTweet" */;
+			buildPhases = (
+				F2029EDE15E5FDCD00A4E0FE /* Sources */,
+				F2029EDF15E5FDCD00A4E0FE /* Frameworks */,
+				F2029EE015E5FDCD00A4E0FE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FortuneTweet;
+			productName = FortuneTweet;
+			productReference = F2029EE215E5FDCD00A4E0FE /* FortuneTweet.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F2029F0215E5FDCD00A4E0FE /* FortuneTweetTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F2029F1815E5FDCD00A4E0FE /* Build configuration list for PBXNativeTarget "FortuneTweetTests" */;
+			buildPhases = (
+				F2029EFE15E5FDCD00A4E0FE /* Sources */,
+				F2029EFF15E5FDCD00A4E0FE /* Frameworks */,
+				F2029F0015E5FDCD00A4E0FE /* Resources */,
+				F2029F0115E5FDCD00A4E0FE /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F2029F0915E5FDCD00A4E0FE /* PBXTargetDependency */,
+			);
+			name = FortuneTweetTests;
+			productName = FortuneTweetTests;
+			productReference = F2029F0315E5FDCD00A4E0FE /* FortuneTweetTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F2029ED915E5FDCD00A4E0FE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = "Norimasa Nabeta";
+			};
+			buildConfigurationList = F2029EDC15E5FDCD00A4E0FE /* Build configuration list for PBXProject "FortuneTweet" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F2029ED715E5FDCD00A4E0FE;
+			productRefGroup = F2029EE315E5FDCD00A4E0FE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F2029EE115E5FDCD00A4E0FE /* FortuneTweet */,
+				F2029F0215E5FDCD00A4E0FE /* FortuneTweetTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F2029EE015E5FDCD00A4E0FE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2029EF115E5FDCD00A4E0FE /* InfoPlist.strings in Resources */,
+				F2029EFA15E5FDCD00A4E0FE /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F2029F0015E5FDCD00A4E0FE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2029F0F15E5FDCD00A4E0FE /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F2029F0115E5FDCD00A4E0FE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F2029EDE15E5FDCD00A4E0FE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2029EF315E5FDCD00A4E0FE /* main.m in Sources */,
+				F2029EF715E5FDCD00A4E0FE /* AppDelegate.m in Sources */,
+				F2029EFD15E5FDCD00A4E0FE /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F2029EFE15E5FDCD00A4E0FE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2029F1215E5FDCD00A4E0FE /* FortuneTweetTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F2029F0915E5FDCD00A4E0FE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F2029EE115E5FDCD00A4E0FE /* FortuneTweet */;
+			targetProxy = F2029F0815E5FDCD00A4E0FE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F2029EEF15E5FDCD00A4E0FE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F2029EF015E5FDCD00A4E0FE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F2029EF815E5FDCD00A4E0FE /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F2029EF915E5FDCD00A4E0FE /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+		F2029F0D15E5FDCD00A4E0FE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F2029F0E15E5FDCD00A4E0FE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F2029F1315E5FDCD00A4E0FE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		F2029F1415E5FDCD00A4E0FE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F2029F1615E5FDCD00A4E0FE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FortuneTweet/FortuneTweet-Prefix.pch";
+				INFOPLIST_FILE = "FortuneTweet/FortuneTweet-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		F2029F1715E5FDCD00A4E0FE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FortuneTweet/FortuneTweet-Prefix.pch";
+				INFOPLIST_FILE = "FortuneTweet/FortuneTweet-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		F2029F1915E5FDCD00A4E0FE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FortuneTweet.app/FortuneTweet";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FortuneTweet/FortuneTweet-Prefix.pch";
+				INFOPLIST_FILE = "FortuneTweetTests/FortuneTweetTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		F2029F1A15E5FDCD00A4E0FE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FortuneTweet.app/FortuneTweet";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FortuneTweet/FortuneTweet-Prefix.pch";
+				INFOPLIST_FILE = "FortuneTweetTests/FortuneTweetTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F2029EDC15E5FDCD00A4E0FE /* Build configuration list for PBXProject "FortuneTweet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2029F1315E5FDCD00A4E0FE /* Debug */,
+				F2029F1415E5FDCD00A4E0FE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F2029F1515E5FDCD00A4E0FE /* Build configuration list for PBXNativeTarget "FortuneTweet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2029F1615E5FDCD00A4E0FE /* Debug */,
+				F2029F1715E5FDCD00A4E0FE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F2029F1815E5FDCD00A4E0FE /* Build configuration list for PBXNativeTarget "FortuneTweetTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2029F1915E5FDCD00A4E0FE /* Debug */,
+				F2029F1A15E5FDCD00A4E0FE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F2029ED915E5FDCD00A4E0FE /* Project object */;
+}
