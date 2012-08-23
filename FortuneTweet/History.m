@@ -12,9 +12,9 @@
 
 @implementation History
 
-@dynamic timestamp;
 @dynamic latitude;
 @dynamic longitude;
+@dynamic timestamp;
 @dynamic fortune;
 
 @end

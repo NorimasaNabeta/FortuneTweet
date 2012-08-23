@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CoreDataTableViewController.h"
 
-@interface HistoryListTableViewController : UITableViewController
-
+@interface HistoryListTableViewController : CoreDataTableViewController
 @end

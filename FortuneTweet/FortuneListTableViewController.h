@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CoreDataTableViewController.h"
 
-@interface FortuneListTableViewController : UITableViewController
+@interface FortuneListTableViewController : CoreDataTableViewController
 
 @end

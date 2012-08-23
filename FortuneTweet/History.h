@@ -13,9 +13,9 @@
 
 @interface History : NSManagedObject
 
-@property (nonatomic, retain) NSDate * timestamp;
 @property (nonatomic, retain) NSNumber * latitude;
 @property (nonatomic, retain) NSNumber * longitude;
+@property (nonatomic, retain) NSDate * timestamp;
 @property (nonatomic, retain) Fortune *fortune;
 
 @end

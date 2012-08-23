@@ -7,16 +7,18 @@
 //
 
 #import "TwitterUser.h"
+#import "TwitterList.h"
 
 
 @implementation TwitterUser
 
-@dynamic userid;
-@dynamic screenname;
-@dynamic friend;
-@dynamic followed;
 @dynamic blocked;
+@dynamic followed;
+@dynamic friend;
 @dynamic name;
 @dynamic profileimageURL;
+@dynamic screenname;
+@dynamic userid;
+@dynamic lists;
 
 @end

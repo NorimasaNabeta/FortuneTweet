@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class History;
 
 @interface Fortune : NSManagedObject
 
@@ -18,8 +19,8 @@
 
 @interface Fortune (CoreDataGeneratedAccessors)
 
-- (void)addTweetsObject:(NSManagedObject *)value;
-- (void)removeTweetsObject:(NSManagedObject *)value;
+- (void)addTweetsObject:(History *)value;
+- (void)removeTweetsObject:(History *)value;
 - (void)addTweets:(NSSet *)values;
 - (void)removeTweets:(NSSet *)values;
 

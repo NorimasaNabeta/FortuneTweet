@@ -10,6 +10,13 @@
         <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="fortune" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Fortune" inverseName="tweets" inverseEntity="Fortune" syncable="YES"/>
     </entity>
+    <entity name="TwitterList" representedClassName="TwitterList" syncable="YES">
+        <attribute name="descriptions" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="owner" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="users" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TwitterUser" inverseName="lists" inverseEntity="TwitterUser" syncable="YES"/>
+    </entity>
     <entity name="TwitterUser" representedClassName="TwitterUser" syncable="YES">
         <attribute name="blocked" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="followed" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -18,10 +25,12 @@
         <attribute name="profileimageURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="screenname" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userid" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="lists" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TwitterList" inverseName="users" inverseEntity="TwitterList" syncable="YES"/>
     </entity>
     <elements>
-        <element name="History" positionX="0" positionY="0" width="0" height="0"/>
         <element name="Fortune" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="History" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="TwitterList" positionX="0" positionY="0" width="0" height="0"/>
         <element name="TwitterUser" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

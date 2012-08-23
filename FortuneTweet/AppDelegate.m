@@ -10,6 +10,24 @@
 
 @implementation AppDelegate
 
+@synthesize imageCache = _imageCache;
+
+// http://stackoverflow.com/questions/7598820/correct-singleton-pattern-objective-c-ios
+// http://stackoverflow.com/questions/11691789/nscache-does-removeallobjects-release-the-memory-usage-im-using-arc
+//
+//
+- (NSCache*) imageCache
+{
+    if(_imageCache == nil){
+        _imageCache = [[NSCache alloc] init];
+        [_imageCache setName:@"TWProfileImageCache"];
+        [_imageCache setCountLimit:100];
+        [_imageCache setTotalCostLimit:1500000];
+        [_imageCache setEvictsObjectsWithDiscardedContent:YES];
+    }
+    return _imageCache;
+}
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.

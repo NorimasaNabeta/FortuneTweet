@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Accounts/Accounts.h>
 
-@interface UserListTableViewController : UITableViewController
+#import "CoreDataTableViewController.h"
+#import "TwitterList.h"
 
+@interface UserListTableViewController : CoreDataTableViewController
+@property (nonatomic, strong) TwitterList *twitterList;
 @end
