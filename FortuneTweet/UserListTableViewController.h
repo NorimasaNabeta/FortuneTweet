@@ -21,5 +21,4 @@
 
 @interface UserListTableViewController : CoreDataTableViewController
 @property (nonatomic, strong) TwitterList *twitterList;
-// @property (nonatomic, strong) ACAccount *account;
 @end

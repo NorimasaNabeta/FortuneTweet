@@ -54,7 +54,7 @@
     NSString *screen_name = [jsonList valueForKeyPath:@"user.screen_name"];
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"TwitterList"];
     NSString *twitterListTitle = [jsonList objectForKey:@"slug"];
-    request.predicate = [NSPredicate predicateWithFormat:@"owner = %@ AND title = %@", screen_name, twitterListTitle];
+    request.predicate = [NSPredicate predicateWithFormat:@"ownername = %@ AND title = %@", screen_name, twitterListTitle];
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
     request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
     

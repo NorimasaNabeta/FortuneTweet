@@ -40,6 +40,8 @@
     if (_twitterList != twitterList){
         _twitterList = twitterList;
     }
+    // self.title = twitterList.title;
+    self.title = [NSString stringWithFormat:@"%@ by %@", twitterList.title, twitterList.ownername];
     [self setupFetchedResultsController];
 }
 
@@ -55,7 +57,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//     [self fetchData];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

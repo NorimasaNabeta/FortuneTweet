@@ -2,7 +2,7 @@
 //  TwitterUser.h
 //  FortuneTweet
 //
-//  Created by Norimasa Nabeta on 2012/08/24.
+//  Created by Norimasa Nabeta on 2012/08/25.
 //  Copyright (c) 2012年 Norimasa Nabeta. All rights reserved.
 //
 
@@ -21,7 +21,6 @@
 @property (nonatomic, retain) NSString * screenname;
 @property (nonatomic, retain) NSString * userid;
 @property (nonatomic, retain) NSSet *lists;
-@property (nonatomic, retain) NSSet *has;
 @end
 
 @interface TwitterUser (CoreDataGeneratedAccessors)
@@ -30,10 +29,5 @@
 - (void)removeListsObject:(TwitterList *)value;
 - (void)addLists:(NSSet *)values;
 - (void)removeLists:(NSSet *)values;
-
-- (void)addHasObject:(TwitterList *)value;
-- (void)removeHasObject:(TwitterList *)value;
-- (void)addHas:(NSSet *)values;
-- (void)removeHas:(NSSet *)values;
 
 @end

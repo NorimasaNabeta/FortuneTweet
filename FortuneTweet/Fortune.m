@@ -2,7 +2,7 @@
 //  Fortune.m
 //  FortuneTweet
 //
-//  Created by Norimasa Nabeta on 2012/08/24.
+//  Created by Norimasa Nabeta on 2012/08/25.
 //  Copyright (c) 2012年 Norimasa Nabeta. All rights reserved.
 //
 
@@ -13,9 +13,9 @@
 
 @implementation Fortune
 
-@dynamic fortuneid;
 @dynamic content;
-@dynamic tweets;
+@dynamic fortuneid;
 @dynamic book;
+@dynamic tweets;
 
 @end

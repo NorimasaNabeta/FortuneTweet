@@ -23,7 +23,6 @@
         <attribute name="mode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ownername" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="owner" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TwitterUser" inverseName="has" inverseEntity="TwitterUser" syncable="YES"/>
         <relationship name="users" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TwitterUser" inverseName="lists" inverseEntity="TwitterUser" syncable="YES"/>
     </entity>
     <entity name="TwitterUser" representedClassName="TwitterUser" syncable="YES">
@@ -34,14 +33,13 @@
         <attribute name="profileimageURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="screenname" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userid" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="has" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TwitterList" inverseName="owner" inverseEntity="TwitterList" syncable="YES"/>
         <relationship name="lists" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TwitterList" inverseName="users" inverseEntity="TwitterList" syncable="YES"/>
     </entity>
     <elements>
         <element name="Fortune" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="FortuneBook" positionX="0" positionY="0" width="0" height="0"/>
         <element name="History" positionX="0" positionY="0" width="0" height="0"/>
         <element name="TwitterList" positionX="0" positionY="0" width="0" height="0"/>
         <element name="TwitterUser" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="FortuneBook" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>
