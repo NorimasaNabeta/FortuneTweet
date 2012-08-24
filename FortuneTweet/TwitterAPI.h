@@ -16,6 +16,7 @@
 + (TWRequest *) getUsersProfileImage:(ACAccount *)account screenname:(NSString*) screen_name;
 
 + (TWRequest *) getListsAll:(ACAccount *)account;
++ (TWRequest *) getListsMembers:(ACAccount *)account slug:(NSString *) slug owner:(NSString *) owner;
 
 + (TWRequest *) getStatusHomeTimeLine:(ACAccount *)account;
 + (TWRequest *) getListsStatuses:(ACAccount *)account slug:(NSString*)slug;

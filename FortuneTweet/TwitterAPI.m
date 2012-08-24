@@ -34,7 +34,9 @@
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://api.twitter.com/1/users/profile_image/%@", screen_name]];
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:@"bigger", @"size", nil];
     TWRequest *request = [[TWRequest alloc] initWithURL:url parameters:params requestMethod:TWRequestMethodGET];
-    [request setAccount:account];
+    if (! account) {
+        [request setAccount:account];
+    }
 
     return request;
 }
@@ -50,6 +52,20 @@
     
     return request;
 }
+
+// https://dev.twitter.com/docs/api/1/get/lists/members
+// GET lists/members
+// https://api.twitter.com/1/lists/members.json?slug=team&owner_screen_name=twitterapi&cursor=-1
++ (TWRequest *) getListsMembers:(ACAccount *)account slug:(NSString *) slug owner:(NSString *) owner
+{
+    NSURL *url = [NSURL URLWithString:@"https://api.twitter.com/1/lists/members.json"];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:owner, @"owner_screen_name", slug, @"slug", nil];
+    TWRequest *request = [[TWRequest alloc] initWithURL:url parameters:params requestMethod:TWRequestMethodGET];
+    [request setAccount:account];
+    
+    return request;
+}
+
 
 // https://dev.twitter.com/docs/api/1/get/statuses/home_timeline
 // GET statues/home_timeline

@@ -11,8 +11,15 @@
 
 #import "CoreDataTableViewController.h"
 #import "TwitterList.h"
+#import "TwitterUser.h"
+
+@class UserListTableViewController;
+@protocol UserListTableViewControllerDelegate <NSObject>
+- (UIImage *)userListController:(UserListTableViewController *)sender imageForUser:(TwitterUser *)user;
+@end
+
 
 @interface UserListTableViewController : CoreDataTableViewController
 @property (nonatomic, strong) TwitterList *twitterList;
-@property (nonatomic, strong) ACAccount *account;
+// @property (nonatomic, strong) ACAccount *account;
 @end

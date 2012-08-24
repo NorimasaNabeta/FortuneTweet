@@ -45,7 +45,7 @@
         // In particular, creating location managers in arbitrary dispatch queues (not attached to the main queue) is not supported
         // and will result in callbacks not being received.
         //
-        [[self locationManager] startUpdatingLocation];
+        // [[self locationManager] startUpdatingLocation];
     });
 
 }

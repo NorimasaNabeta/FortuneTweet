@@ -11,13 +11,15 @@
 #import "TwitterAPI.h"
 #import "AppDelegate.h"
 #import "TwitterUser.h"
+#import "TwitterUser+Twitter.h"
+#import "ManagedDocumentHelper.h"
+
 @interface UserListTableViewController ()
-// - (void)fetchData;
 @end
 
 @implementation UserListTableViewController
 @synthesize twitterList=_twitterList;
-@synthesize account=_account;
+// @synthesize account=_account;
 
 
 - (void)setupFetchedResultsController // attaches an NSFetchRequest to this UITableViewController
@@ -32,154 +34,14 @@
                                                                                    cacheName:nil];
 }
 
+
 - (void) setTwitterList:(TwitterList *)twitterList
 {
     if (_twitterList != twitterList){
         _twitterList = twitterList;
     }
     [self setupFetchedResultsController];
-    
 }
-/*
-
-- (void) fetchDataAux3:(ACAccount *)account userid:(NSArray*) ids
-{
-    TWRequest *request = [TwitterAPI getUsersLookup:account userids:[ids componentsJoinedByString:@","]];
-    [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-        if ([urlResponse statusCode] == 200) {
-            NSError *error;
-            id result = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&error];
-            if (result != nil) {
-                NSLog(@"[3] Friends: %@ %d", account.username, [result count]);
-                // NSLog(@"[%@ %@] received %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), result);
-                dispatch_sync(dispatch_get_main_queue(), ^{
-                    [self.friends setObject:result forKey:account.username];
-                    NSMutableDictionary *dict = [self.ids mutableCopy];
-                    for (int idx = 0; idx< [result count]; idx++) {
-                        NSString* screen_name = [[result objectAtIndex:idx] objectForKey:@"screen_name"];
-                        if (! [[dict allKeys] containsObject:screen_name]) {
-                            [dict setObject:[result objectAtIndex:idx] forKey:screen_name];
-                        } else {
-                            // NSLog(@"Skip: %@", screen_name);
-                        }
-                    }
-                    self.ids = dict;
-                    [self.tableView reloadData];
-                });
-            }
-        }
-    }];
-}
-
-// TODO: In case of over-100ids, you need the another procedure to handling this situtation.
-//
-- (void) fetchDataAux4:(ACAccount *)account userid:(NSArray*) ids
-{
-    TWRequest *request = [TwitterAPI getUsersLookup:account userids:[ids componentsJoinedByString:@","]];
-    [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-        if ([urlResponse statusCode] == 200) {
-            NSError *error;
-            id result = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&error];
-            if (result != nil) {
-                // NSLog(@"[%@ %@] received %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), result);
-                NSLog(@"[4] Followers: %@ %d", account.username, [result count]);
-                dispatch_sync(dispatch_get_main_queue(), ^{
-                    [self.followers setObject:result forKey:account.username];
-                    NSMutableDictionary *dict = [self.ids mutableCopy];
-                    for (int idx = 0; idx< [result count]; idx++) {
-                        NSString* screen_name = [[result objectAtIndex:idx] objectForKey:@"screen_name"];
-                        if (! [[dict allKeys] containsObject:screen_name]) {
-                            [dict setObject:[result objectAtIndex:idx] forKey:screen_name];
-                        } else {
-                            // NSLog(@"Skip: %@", screen_name);
-                        }
-                    }
-                    self.ids = dict;
-                    [self.tableView reloadData];
-                });
-            }
-        }
-    }];
-}
-
-// TODO: set this result into NSUserDefaults, as the dictionary for key screen_name.
--(void) fetchDataAux1:(ACAccount*) account
-{
-    TWRequest *request=[TwitterAPI getFriendsIds:account screenname:account.username];
-    [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-        if ([urlResponse statusCode] == 200) {
-            NSError *jsonError = nil;
-            id jsonResult = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&jsonError];
-            if (jsonResult != nil) {
-                NSLog(@"[1] Friends: %@ %d", account.username, [[jsonResult objectForKey:@"ids"] count]);
-                if( [[jsonResult objectForKey:@"ids"] count] > 0){
-                    [self fetchDataAux3:account userid:[jsonResult objectForKey:@"ids"]];
-                }
-            }
-            else {
-                NSString *message = [NSString stringWithFormat:@"Could not parse your timeline: %@", [jsonError localizedDescription]];
-                [[[UIAlertView alloc] initWithTitle:@"Error"
-                                            message:message
-                                           delegate:nil
-                                  cancelButtonTitle:@"Cancel"
-                                  otherButtonTitles:nil] show];
-            }
-        }
-    }];
-    
-}
-
-// TODO: set this result into NSUserDefaults, as the dictionary for key screen_name.
-- (void)fetchDataAux2:(ACAccount*)account
-{
-    TWRequest *request=[TwitterAPI getFollowersIds:account screenname:account.username];
-    [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-        if ([urlResponse statusCode] == 200) {
-            NSError *jsonError = nil;
-            id jsonResult = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&jsonError];
-            if (jsonResult != nil) {
-                // [self.followerslist setObject:jsonResult forKey:account.username];
-                NSLog(@"[2] Followers: %@ %d", account.username, [[jsonResult objectForKey:@"ids"] count]);
-                if( [[jsonResult objectForKey:@"ids"] count] > 0 ){
-                    [self fetchDataAux4:account userid:[jsonResult objectForKey:@"ids"]];
-                }
-            }
-            else {
-                NSString *message = [NSString stringWithFormat:@"Could not parse your timeline: %@", [jsonError localizedDescription]];
-                [[[UIAlertView alloc] initWithTitle:@"Error"
-                                            message:message
-                                           delegate:nil
-                                  cancelButtonTitle:@"Cancel"
-                                  otherButtonTitles:nil] show];
-            }
-        }
-    }];
-}
-
-
-- (void)fetchData
-{
-    if (_accountStore == nil) {
-        self.accountStore = [[ACAccountStore alloc] init];
-        if (_accounts == nil) {
-            ACAccountType *accountTypeTwitter = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-            [self.accountStore requestAccessToAccountsWithType:accountTypeTwitter
-                                         withCompletionHandler:^(BOOL granted, NSError *error) {
-                                             if(granted) {
-                                                 self.accounts = [self.accountStore accountsWithAccountType:accountTypeTwitter];
-                                                 for(ACAccount *account in self.accounts) {
-                                                     [self fetchDataAux1:account];
-                                                     [self fetchDataAux2:account];
-                                                 }
-                                             } else {
-                                                 NSLog(@"ACCOUNT FAILED OR NOT GRANTED.");
-                                             }
-                                         }];
-        }
-    }
-}
-*/
-
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -229,6 +91,26 @@
     cell.textLabel.text = user.name;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"@%@", user.screenname];
     
+    id appDelegate = (id)[[UIApplication sharedApplication] delegate];
+    UIImage *image = [[appDelegate imageCache] objectForKey:user.screenname];
+    if (image) {
+        // NSLog(@"Hit: %@", account.username);
+        cell.imageView.image = image;
+    }
+    else {
+        ACAccount *account;
+        TWRequest *fetchUserImageRequest = [TwitterAPI getUsersProfileImage:account screenname:user.screenname];
+        [fetchUserImageRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+            if ([urlResponse statusCode] == 200) {
+                UIImage *image = [UIImage imageWithData:responseData];
+                [[appDelegate imageCache] setObject:image forKey:user.screenname];
+                dispatch_sync(dispatch_get_main_queue(), ^{
+                    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:NO];
+                });
+            }
+        }];
+    }
+        
     return cell;
 }
 

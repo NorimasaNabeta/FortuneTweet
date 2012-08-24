@@ -9,5 +9,6 @@
 #import "TwitterUser.h"
 
 @interface TwitterUser (Twitter)
-
++ (TwitterUser *) listWithTwitterUser:(NSDictionary *) json
+                 inManagedObjectContext:(NSManagedObjectContext *)context;
 @end

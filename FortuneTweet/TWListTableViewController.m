@@ -7,12 +7,15 @@
 //
 
 #import "TWListTableViewController.h"
-#import "TwitterList.h"
 #import "TwitterAPI.h"
+#import "TwitterList.h"
 #import "TwitterList+Twitter.h"
+#import "TwitterUser.h"
+#import "TwitterUser+Twitter.h"
 #import "ManagedDocumentHelper.h"
+// #import "UserListTableViewController.h"
 
-@interface TWListTableViewController ()
+@interface TWListTableViewController () // <UserListTableViewControllerDelegate>
 
 @end
 
@@ -60,9 +63,11 @@
 {
     UIManagedDocument *sharedDocument = [ManagedDocumentHelper sharedManagedDocumentFortuneTweet];
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"TwitterList"];
-    NSSortDescriptor *sort1 = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)];
-    NSSortDescriptor *owner = [[NSSortDescriptor alloc] initWithKey:@"owner" ascending:YES];
-    request.sortDescriptors = [NSArray arrayWithObjects:sort1, owner, nil];
+    NSSortDescriptor *sort1 = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES
+                                                             selector:@selector(localizedCaseInsensitiveCompare:)];
+    NSSortDescriptor *owner = [NSSortDescriptor sortDescriptorWithKey:@"owner" ascending:YES
+                                                             selector:@selector(localizedCaseInsensitiveCompare:)];
+    request.sortDescriptors = [NSArray arrayWithObjects:owner, sort1, nil];
     // no predicate because we want ALL the Photographers
     
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
@@ -90,6 +95,53 @@
 
 
 
+
+- (void) fetchListMembers:(NSDictionary *) jsonResult
+{
+    dispatch_queue_t fetchQ2 = dispatch_queue_create("Twitter fetcher2", NULL);
+    UIManagedDocument *sharedDocument = [ManagedDocumentHelper sharedManagedDocumentFortuneTweet];
+    ACAccount *account = [self.accounts objectAtIndex:0];
+
+    dispatch_async(fetchQ2, ^{
+    for (id listResult in jsonResult) {
+        NSString *screen_name = [listResult valueForKeyPath:@"user.screen_name"];
+        NSString *slug = [listResult objectForKey:@"slug"];
+        TWRequest *request = [TwitterAPI getListsMembers:account slug:slug owner:screen_name];
+        // NSLog(@"[1] List: %@ %@ %@", screen_name, slug, account.username);
+        [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+            // NSLog(@"[2] List: %d %@", [urlResponse statusCode],[error localizedDescription]);
+            if ([urlResponse statusCode] == 200) {
+                NSError *error;
+                id result = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&error];
+                if (result != nil) {
+                    // NSLog(@"MEMBER[%@ %@] received %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), result);
+                    NSDictionary *chk = [result valueForKeyPath:@"users"];
+                    // NSLog(@"[3] List: %@ %@%d", account.username, slug, [chk count]);
+                    dispatch_sync(dispatch_get_main_queue(), ^{
+                        [sharedDocument.managedObjectContext performBlock:^{
+                            [TwitterList listWithTwitterAccount:listResult members:chk inManagedObjectContext:sharedDocument.managedObjectContext];
+                            [sharedDocument saveToURL:sharedDocument.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:NULL];
+                        }];
+                        [self.tableView reloadData];
+                    });
+                } else {
+                    NSString *message = [NSString stringWithFormat:@"Could not parse your timeline: %@", [error localizedDescription]];
+                    [[[UIAlertView alloc] initWithTitle:@"Error"
+                                                message:message
+                                               delegate:nil
+                                      cancelButtonTitle:@"Cancel"
+                                      otherButtonTitles:nil] show];
+                    
+                }
+                
+            } else {
+            }
+        }];
+    }
+    });
+    dispatch_release(fetchQ2);
+}
+
 - (void)fetchTwitterDataIntoDocument:(UIManagedDocument *)document
 {
     NSLog(@"fetchTwitterDataIntoDocument");
@@ -107,13 +159,9 @@
                     NSError *jsonError = nil;
                     id jsonResult = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&jsonError];
                     if (jsonResult != nil) {
-                        NSLog(@"ADD ENTITIES");
-                        for (id tweet in jsonResult){
-                            [document.managedObjectContext performBlock:^{
-                                [TwitterList listWithTwitterAccount:tweet inManagedObjectContext:document.managedObjectContext];
-                                [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:NULL];
-                            }];
-                        }
+                        NSLog(@"ADD ENTITIES:");
+                        // NSLog(@"[%@ %@] received %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), jsonResult);
+                        [self fetchListMembers:jsonResult];
                     }
                     else {
                         NSString *message = [NSString stringWithFormat:@"Could not parse your timeline: %@", [jsonError localizedDescription]];
@@ -173,7 +221,7 @@
     }
     
     TwitterList *twlist = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = twlist.title;
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ [%d]", twlist.title, [twlist.users count]];
     cell.detailTextLabel.text = [NSString stringWithFormat:@"[%@] %@ by %@", twlist.mode, twlist.descriptions, twlist.owner];
     
     return cell;
@@ -183,14 +231,22 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-    ACAccount *account = [self.accounts objectAtIndex:0];
     TwitterList *twlist = [self.fetchedResultsController objectAtIndexPath:indexPath];
     if ([segue.destinationViewController respondsToSelector:@selector(setTwitterList:)]) {
         [segue.destinationViewController performSelector:@selector(setTwitterList:) withObject:twlist];
-        [segue.destinationViewController performSelector:@selector(setAccount:) withObject:account];
-
     }
 }
 
+/*
+#pragma mark - UserListTableViewControllerDelegate
+- (UIImage *)userListController:(UserListTableViewController *)sender imageForUser:(TwitterUser *)user
+{
+//    FlickrPhotoAnnotation *fpa = (FlickrPhotoAnnotation *)annotation;
+//    NSURL *url = [FlickrFetcher urlForPhoto:fpa.photo format:FlickrPhotoFormatSquare];
+//    NSData *data = [NSData dataWithContentsOfURL:url];
+    
+    return data ? [UIImage imageWithData:data] : nil;
+}
+*/
 
 @end
