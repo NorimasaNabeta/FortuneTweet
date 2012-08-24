@@ -5,26 +5,29 @@
 //  Created by Norimasa Nabeta on 2012/08/23.
 //  Copyright (c) 2012年 Norimasa Nabeta. All rights reserved.
 //
-
+#import <Accounts/Accounts.h>
 #import "HistoryListTableViewController.h"
 #import "History.h"
 #import "History+CLLocation.h"
+#import "ManagedDocumentHelper.h"
 
 @interface HistoryListTableViewController ()
-
 @end
 
 @implementation HistoryListTableViewController
-@synthesize fortuneDatabase=_fortuneDatabase;
+@synthesize accountStore=_accountStore;
+@synthesize accounts=_accounts;
 
-- (void)setupFetchedResultsController // attaches an NSFetchRequest to this UITableViewController
+- (void)setupFetchedResultsController
 {
+    UIManagedDocument *sharedDocument = [ManagedDocumentHelper sharedManagedDocumentFortuneTweet];
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
-    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"timestamp" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)]];
+    NSSortDescriptor *sort1 = [NSSortDescriptor sortDescriptorWithKey:@"timestamp" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)];
+    request.sortDescriptors = [NSArray arrayWithObject:sort1];
     // no predicate because we want ALL the Photographers
     
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
-                                                                        managedObjectContext:self.fortuneDatabase.managedObjectContext
+                                                                        managedObjectContext:sharedDocument.managedObjectContext
                                                                           sectionNameKeyPath:nil
                                                                                    cacheName:nil];
 }
@@ -33,48 +36,42 @@
 - (void)locationDataIntoDocument:(UIManagedDocument *)document
 {
     NSLog(@"locationDataIntoDocument");
+    UIManagedDocument *sharedDocument = [ManagedDocumentHelper sharedManagedDocumentFortuneTweet];
 //    dispatch_queue_t fetchQ = dispatch_queue_create("Twitter fetcher", NULL);
     CLLocation *newLocation = [[CLLocation alloc] initWithLatitude:37.733 longitude:-122.41];
-    [self.fortuneDatabase.managedObjectContext performBlock:^{
-        [History historyWithCLLocation:newLocation inManagedObjectContext:self.fortuneDatabase.managedObjectContext];
-        [self.fortuneDatabase saveToURL:self.fortuneDatabase.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:NULL];
+    [sharedDocument.managedObjectContext performBlock:^{
+        [History historyWithCLLocation:newLocation inManagedObjectContext:sharedDocument.managedObjectContext];
+        [sharedDocument saveToURL:sharedDocument.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:NULL];
     }];
 //    dispatch_release(fetchQ);
     
 }
 
-- (void)useDocument
+- (void)useDocument:(UIManagedDocument*) sharedDocument
 {
     //NSLog(@"useDocument: %@", [self.fortuneDatabase.fileURL path]);
-    if (![[NSFileManager defaultManager] fileExistsAtPath:[self.fortuneDatabase.fileURL path]]) {
+    if (![[NSFileManager defaultManager] fileExistsAtPath:[sharedDocument.fileURL path]]) {
         // does not exist on disk, so create it
-        [self.fortuneDatabase saveToURL:self.fortuneDatabase.fileURL
+        [sharedDocument saveToURL:sharedDocument.fileURL
                        forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
-                           NSLog(@"[H]useDocument:New %@", [self.fortuneDatabase.fileURL path]);
+                           NSLog(@"[H]New: useDocument %@", [sharedDocument.fileURL path]);
                            [self setupFetchedResultsController];
                            //[self locationDataIntoDocument:self.fortuneDatabase];
                            
                        }];
-    } else if (self.fortuneDatabase.documentState == UIDocumentStateClosed) {
+    } else if (sharedDocument.documentState == UIDocumentStateClosed) {
         // exists on disk, but we need to open it
-        [self.fortuneDatabase openWithCompletionHandler:^(BOOL success) {
-            NSLog(@"[H]useDocument:Open %@", [self.fortuneDatabase.fileURL path]);
+        [sharedDocument openWithCompletionHandler:^(BOOL success) {
+            NSLog(@"[H]Open: useDocument %@", [sharedDocument.fileURL path]);
             [self setupFetchedResultsController];
             //[self locationDataIntoDocument:self.fortuneDatabase];
         }];
-    } else if (self.fortuneDatabase.documentState == UIDocumentStateNormal) {
+    } else if (sharedDocument.documentState == UIDocumentStateNormal) {
         // already open and ready to use
-        NSLog(@"[H]useDocument:Ready %@", [self.fortuneDatabase.fileURL path]);
+        NSLog(@"[H]Ready: useDocument %@", [sharedDocument.fileURL path]);
         [self setupFetchedResultsController];
         //[self locationDataIntoDocument:self.fortuneDatabase];
     }
-}
-- (void)setFortuneDatabase:(UIManagedDocument *)fortuneDatabase
-{
-    if (_fortuneDatabase != fortuneDatabase) {
-        _fortuneDatabase = fortuneDatabase;
-    }
-    [self useDocument];
 }
 
 
@@ -98,16 +95,34 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+- (ACAccountStore *) accountStore
+{
+    if (_accountStore == nil) {
+        _accountStore = [[ACAccountStore alloc] init];
+    }
+    return _accountStore;
+}
+
+- (void) checkAccount
+{
+    if (_accounts == nil) {
+        ACAccountType *accountTypeTwitter = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+        [self.accountStore requestAccessToAccountsWithType:accountTypeTwitter
+                                     withCompletionHandler:^(BOOL granted, NSError *error) {
+                                         if(granted) {
+                                             self.accounts = [self.accountStore accountsWithAccountType:accountTypeTwitter];
+                                             [self useDocument:[ManagedDocumentHelper sharedManagedDocumentFortuneTweet]];
+                                         } else {
+                                             NSLog(@"ACCOUNT FAILED OR NOT GRANTED.");
+                                         }
+                                     }];
+    }
+}
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if (!self.fortuneDatabase) {
-        NSURL *url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-        url = [url URLByAppendingPathComponent:@"FortuneDatabase"];
-        self.fortuneDatabase = [[UIManagedDocument alloc] initWithFileURL:url];
-    }
-    
+    [self checkAccount];
 }
 
 - (void)viewDidUnload

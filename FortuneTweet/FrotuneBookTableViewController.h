@@ -11,7 +11,8 @@
 #import "CoreDataTableViewController.h"
 
 @interface FrotuneBookTableViewController : UITableViewController  <CLLocationManagerDelegate>
+@property (strong, nonatomic) ACAccountStore *accountStore;
+@property (strong, nonatomic) NSArray *accounts;
 @property (nonatomic, retain) CLLocationManager *locationManager;
-@property (nonatomic, strong) UIManagedDocument *fortuneDatabase;
 
 @end

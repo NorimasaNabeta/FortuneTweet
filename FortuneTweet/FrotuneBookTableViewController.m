@@ -5,45 +5,96 @@
 //  Created by Norimasa Nabeta on 2012/08/23.
 //  Copyright (c) 2012年 Norimasa Nabeta. All rights reserved.
 //
+#import <Accounts/Accounts.h>
 
 #import "FrotuneBookTableViewController.h"
 #import "History.h"
 #import "History+CLLocation.h"
+#import "ManagedDocumentHelper.h"
+
 
 @interface FrotuneBookTableViewController ()
-
+@property (nonatomic,strong) NSFetchedResultsController *FRC;
 @end
 
 @implementation FrotuneBookTableViewController
 @synthesize locationManager=_locationManager;
-
-- (void)useDocument
+@synthesize accountStore=_accountStore;
+@synthesize accounts=_accounts;
+@synthesize FRC=_FRC;
+- (void)setupFetchedResultsController // attaches an NSFetchRequest to this UITableViewController
 {
-    NSLog(@"useDocument: %@", [self.fortuneDatabase.fileURL path]);
-    if (![[NSFileManager defaultManager] fileExistsAtPath:[self.fortuneDatabase.fileURL path]]) {
+/* 
+    UIManagedDocument *sharedDocument = [ManagedDocumentHelper sharedManagedDocumentFortuneTweet];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"TwitterList"];
+    NSSortDescriptor *sort1 = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)];
+    request.sortDescriptors = [NSArray arrayWithObject:sort1];
+    // no predicate because we want ALL the Photographers
+    
+    self.FRC = [[NSFetchedResultsController alloc] initWithFetchRequest:request
+    // self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                                                        managedObjectContext:sharedDocument.managedObjectContext
+                                                                          sectionNameKeyPath:nil
+                                                                                   cacheName:nil];
+    */
+	// Start the location manager. -->didUpdateToLocation
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        // NOTICE,A location manager (0xfe6aa20) was created on a dispatch queue executing on a thread other than the main thread.
+        // It is the developer's responsibility to ensure that there is a run loop running on the thread on
+        // which the location manager object is allocated.
+        // In particular, creating location managers in arbitrary dispatch queues (not attached to the main queue) is not supported
+        // and will result in callbacks not being received.
+        //
+       // [[self locationManager] startUpdatingLocation];
+    });
+
+}
+
+- (void)useDocument:(UIManagedDocument*) sharedDocument
+{
+    if (![[NSFileManager defaultManager] fileExistsAtPath:[sharedDocument.fileURL path]]) {
+        NSLog(@"useDocument:New %@", [sharedDocument.fileURL path]);
         // does not exist on disk, so create it
-        [self.fortuneDatabase saveToURL:self.fortuneDatabase.fileURL
-                       forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
-                           // [self setupFetchedResultsController];
-                           // [self fetchTwitterDataIntoDocument:self.fortuneDatabase];
-                           
-                       }];
-    } else if (self.fortuneDatabase.documentState == UIDocumentStateClosed) {
+        [sharedDocument saveToURL:sharedDocument.fileURL
+                 forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
+                     [self setupFetchedResultsController];
+                     // [self fetchTwitterDataIntoDocument:sharedDocument];
+                 }];
+    } else if (sharedDocument.documentState == UIDocumentStateClosed) {
+        NSLog(@"useDocument:Open %@", [sharedDocument.fileURL path]);
         // exists on disk, but we need to open it
-        //[self.fortuneDatabase openWithCompletionHandler:^(BOOL success) {
-        //    [self setupFetchedResultsController];
-        //}];
-    } else if (self.fortuneDatabase.documentState == UIDocumentStateNormal) {
+        [sharedDocument openWithCompletionHandler:^(BOOL success) {
+            [self setupFetchedResultsController];
+        }];
+    } else if (sharedDocument.documentState == UIDocumentStateNormal) {
+        NSLog(@"useDocument:Ready %@", [sharedDocument.fileURL path]);
         // already open and ready to use
-        // [self setupFetchedResultsController];
+        [self setupFetchedResultsController];
     }
 }
-- (void)setFortuneDatabase:(UIManagedDocument *)fortuneDatabase
+
+- (ACAccountStore *) accountStore
 {
-    if (_fortuneDatabase != fortuneDatabase) {
-        _fortuneDatabase = fortuneDatabase;
+    if (_accountStore == nil) {
+        _accountStore = [[ACAccountStore alloc] init];
     }
-    [self useDocument];
+    return _accountStore;
+}
+
+- (void) checkAccount
+{
+    if (_accounts == nil) {
+        ACAccountType *accountTypeTwitter = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+        [self.accountStore requestAccessToAccountsWithType:accountTypeTwitter
+                                     withCompletionHandler:^(BOOL granted, NSError *error) {
+                                         if(granted) {
+                                             self.accounts = [self.accountStore accountsWithAccountType:accountTypeTwitter];
+                                             [self useDocument:[ManagedDocumentHelper sharedManagedDocumentFortuneTweet]];
+                                         } else {
+                                             NSLog(@"ACCOUNT FAILED OR NOT GRANTED.");
+                                         }
+                                     }];
+    }
 }
 
 
@@ -72,12 +123,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if (!self.fortuneDatabase) {
-        NSURL *url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-        url = [url URLByAppendingPathComponent:@"FortuneDatabase"];
-        self.fortuneDatabase = [[UIManagedDocument alloc] initWithFileURL:url];
-    }
-    
+    [self checkAccount];
 }
 
 - (void)viewDidUnload
@@ -200,14 +246,14 @@
            fromLocation:(CLLocation *)oldLocation {
     NSTimeInterval locationAge = -[newLocation.timestamp timeIntervalSinceNow];
     if (locationAge > 60.0) return; // 10.0 second
-    if (!self.fortuneDatabase) return;
 
 	NSLog(@"didUpdateToLocation %@ from %@", newLocation, oldLocation);
 
-    // [self.fortuneDatabase.managedObjectContext performBlock:^{
-    //     [History historyWithCLLocation:newLocation inManagedObjectContext:self.fortuneDatabase.managedObjectContext];
-    //     [self.fortuneDatabase saveToURL:self.fortuneDatabase.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:NULL];
-    //}];
+    UIManagedDocument *sharedDocument = [ManagedDocumentHelper sharedManagedDocumentFortuneTweet];
+    [sharedDocument.managedObjectContext performBlock:^{
+        [History historyWithCLLocation:newLocation inManagedObjectContext:sharedDocument.managedObjectContext];
+         [sharedDocument saveToURL:sharedDocument.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:NULL];
+    }];
 
     
 	// Work around a bug in MapKit where user location is not initially zoomed to.
@@ -217,29 +263,4 @@
 		// [regionsMapView setRegion:userLocation animated:YES];
 	}
 }
-
-
-- (void)locationManager:(CLLocationManager *)manager
-         didEnterRegion:(CLRegion *)region  {
-	// NSString *event = [NSString stringWithFormat:@"didEnterRegion %@ at %@", region.identifier, [NSDate date]];
-	// [self updateWithEvent:event];
-}
-
-
-- (void)locationManager:(CLLocationManager *)manager
-          didExitRegion:(CLRegion *)region {
-	// NSString *event = [NSString stringWithFormat:@"didExitRegion %@ at %@", region.identifier, [NSDate date]];
-	// [self updateWithEvent:event];
-}
-
-
-- (void)locationManager:(CLLocationManager *)manager
-monitoringDidFailForRegion:(CLRegion *)region
-              withError:(NSError *)error {
-	// NSString *event = [NSString stringWithFormat:@"monitoringDidFailForRegion %@: %@", region.identifier, error];
-	// [self updateWithEvent:event];
-}
-
-
-
 @end

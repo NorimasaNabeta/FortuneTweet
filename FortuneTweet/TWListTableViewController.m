@@ -10,25 +10,24 @@
 #import "TwitterList.h"
 #import "TwitterAPI.h"
 #import "TwitterList+Twitter.h"
+#import "ManagedDocumentHelper.h"
 
 @interface TWListTableViewController ()
 
 @end
 
 @implementation TWListTableViewController
-@synthesize fortuneDatabase=_fortuneDatabase;
-
-@synthesize accounts=_accounts;
 @synthesize accountStore=_accountStore;
+@synthesize accounts=_accounts;
 
-- (ACAccountStore*) accountStore
+- (ACAccountStore *) accountStore
 {
     if (_accountStore == nil) {
         _accountStore = [[ACAccountStore alloc] init];
-
     }
     return _accountStore;
 }
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -59,13 +58,16 @@
 
 - (void)setupFetchedResultsController // attaches an NSFetchRequest to this UITableViewController
 {
+    UIManagedDocument *sharedDocument = [ManagedDocumentHelper sharedManagedDocumentFortuneTweet];
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"TwitterList"];
-    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)]];
+    NSSortDescriptor *sort1 = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)];
+    NSSortDescriptor *owner = [[NSSortDescriptor alloc] initWithKey:@"owner" ascending:YES];
+    request.sortDescriptors = [NSArray arrayWithObjects:sort1, owner, nil];
     // no predicate because we want ALL the Photographers
     
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
-                                                                        managedObjectContext:self.fortuneDatabase.managedObjectContext
-                                                                          sectionNameKeyPath:nil
+                                                                        managedObjectContext:sharedDocument.managedObjectContext
+                                                                          sectionNameKeyPath:@"owner"
                                                                                    cacheName:nil];
 }
 
@@ -78,7 +80,7 @@
                                      withCompletionHandler:^(BOOL granted, NSError *error) {
                                          if(granted) {
                                             self.accounts = [self.accountStore accountsWithAccountType:accountTypeTwitter];
-                                            [self useDocument];
+                                            [self useDocument:[ManagedDocumentHelper sharedManagedDocumentFortuneTweet]];
                                          } else {
                                             NSLog(@"ACCOUNT FAILED OR NOT GRANTED.");
                                          }
@@ -128,45 +130,34 @@
     
  }
 
-- (void)useDocument
+- (void)useDocument:(UIManagedDocument*) sharedDocument
 {
-    NSLog(@"useDocument: %@", [self.fortuneDatabase.fileURL path]);
-    if (![[NSFileManager defaultManager] fileExistsAtPath:[self.fortuneDatabase.fileURL path]]) {
+    if (![[NSFileManager defaultManager] fileExistsAtPath:[sharedDocument.fileURL path]]) {
+        NSLog(@"useDocument:New %@", [sharedDocument.fileURL path]);
         // does not exist on disk, so create it
-        [self.fortuneDatabase saveToURL:self.fortuneDatabase.fileURL
+        [sharedDocument saveToURL:sharedDocument.fileURL
                        forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
                            [self setupFetchedResultsController];
-                           [self fetchTwitterDataIntoDocument:self.fortuneDatabase];
-                           
+                           [self fetchTwitterDataIntoDocument:sharedDocument];                           
                        }];
-    } else if (self.fortuneDatabase.documentState == UIDocumentStateClosed) {
+    } else if (sharedDocument.documentState == UIDocumentStateClosed) {
+        NSLog(@"useDocument:Open %@", [sharedDocument.fileURL path]);
         // exists on disk, but we need to open it
-        [self.fortuneDatabase openWithCompletionHandler:^(BOOL success) {
+        [sharedDocument openWithCompletionHandler:^(BOOL success) {
             [self setupFetchedResultsController];
         }];
-    } else if (self.fortuneDatabase.documentState == UIDocumentStateNormal) {
+    } else if (sharedDocument.documentState == UIDocumentStateNormal) {
+        NSLog(@"useDocument:Ready %@", [sharedDocument.fileURL path]);
         // already open and ready to use
         [self setupFetchedResultsController];
+        // [self fetchTwitterDataIntoDocument:sharedDocument];
     }
 }
-- (void)setFortuneDatabase:(UIManagedDocument *)fortuneDatabase
-{
-    if (_fortuneDatabase != fortuneDatabase) {
-        _fortuneDatabase = fortuneDatabase;
-        [self checkAccount];
-    }
-}
-
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    if (!self.fortuneDatabase) {
-        NSURL *url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
-        url = [url URLByAppendingPathComponent:@"FortuneDatabase"];
-        self.fortuneDatabase = [[UIManagedDocument alloc] initWithFileURL:url];
-    }
-    
+    [self checkAccount];
 }
 
 #pragma mark - Table view data source
@@ -191,11 +182,12 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+    ACAccount *account = [self.accounts objectAtIndex:0];
     TwitterList *twlist = [self.fetchedResultsController objectAtIndexPath:indexPath];
     if ([segue.destinationViewController respondsToSelector:@selector(setTwitterList:)]) {
-        // use performSelector:withObject: to send without compiler checking
-        // (which is acceptable here because we used introspection to be sure this is okay)
         [segue.destinationViewController performSelector:@selector(setTwitterList:) withObject:twlist];
+        [segue.destinationViewController performSelector:@selector(setAccount:) withObject:account];
+
     }
 }
 

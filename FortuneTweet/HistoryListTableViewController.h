@@ -10,5 +10,6 @@
 #import "CoreDataTableViewController.h"
 
 @interface HistoryListTableViewController : CoreDataTableViewController
-@property (nonatomic, strong) UIManagedDocument *fortuneDatabase;
+@property (strong, nonatomic) ACAccountStore *accountStore;
+@property (strong, nonatomic) NSArray *accounts;
 @end

@@ -14,5 +14,4 @@
 @interface TWListTableViewController : CoreDataTableViewController
 @property (strong, nonatomic) ACAccountStore *accountStore;
 @property (strong, nonatomic) NSArray *accounts;
-@property (nonatomic, strong) UIManagedDocument *fortuneDatabase;
 @end

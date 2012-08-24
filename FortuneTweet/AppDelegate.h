@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Accounts/Accounts.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+
+// @property (strong, nonatomic) ACAccountStore *accountStore;
+// @property (strong, nonatomic) NSArray *accounts;
 @property (strong, nonatomic) NSCache *imageCache;
 
 @end

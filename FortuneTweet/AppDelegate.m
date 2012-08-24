@@ -9,8 +9,36 @@
 #import "AppDelegate.h"
 
 @implementation AppDelegate
-
 @synthesize imageCache = _imageCache;
+
+/*
+@synthesize accountStore=_accountStore;
+@synthesize accounts=_accounts;
+
+- (ACAccountStore *) accountStore
+{
+    if (_accountStore == nil) {
+        _accountStore = [[ACAccountStore alloc] init];
+    }
+    return _accountStore;
+}
+
+- (NSArray *) accounts
+{
+    if (_accounts == nil) {
+        ACAccountType *accountTypeTwitter = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+        [self.accountStore requestAccessToAccountsWithType:accountTypeTwitter
+                                     withCompletionHandler:^(BOOL granted, NSError *error) {
+                                         if(granted) {
+                                             self.accounts = [self.accountStore accountsWithAccountType:accountTypeTwitter];
+                                         } else {
+                                             NSLog(@"ACCOUNT FAILED OR NOT GRANTED.");
+                                         }
+                                     }];
+    }
+    return _accounts;
+}
+*/
 
 // http://stackoverflow.com/questions/7598820/correct-singleton-pattern-objective-c-ios
 // http://stackoverflow.com/questions/11691789/nscache-does-removeallobjects-release-the-memory-usage-im-using-arc

@@ -63,6 +63,7 @@
 		F2029FBC15E63D3100A4E0FE /* Fortune.m in Sources */ = {isa = PBXBuildFile; fileRef = F2029FBB15E63D3000A4E0FE /* Fortune.m */; };
 		F2029FBF15E63D3100A4E0FE /* TwitterList.m in Sources */ = {isa = PBXBuildFile; fileRef = F2029FBE15E63D3100A4E0FE /* TwitterList.m */; };
 		F2029FD615E66BC200A4E0FE /* History+CLLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = F2029FD515E66BC200A4E0FE /* History+CLLocation.m */; };
+		F2029FEF15E70EB700A4E0FE /* ManagedDocumentHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F2029FEE15E70EB600A4E0FE /* ManagedDocumentHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,6 +155,8 @@
 		F2029FBE15E63D3100A4E0FE /* TwitterList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterList.m; sourceTree = "<group>"; };
 		F2029FD415E66BC200A4E0FE /* History+CLLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "History+CLLocation.h"; sourceTree = "<group>"; };
 		F2029FD515E66BC200A4E0FE /* History+CLLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "History+CLLocation.m"; sourceTree = "<group>"; };
+		F2029FED15E70EB400A4E0FE /* ManagedDocumentHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManagedDocumentHelper.h; sourceTree = "<group>"; };
+		F2029FEE15E70EB600A4E0FE /* ManagedDocumentHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagedDocumentHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,6 +240,8 @@
 				F2029F6915E607E200A4E0FE /* FortuneListTableViewController.m */,
 				F2029F4E15E600AE00A4E0FE /* Storyboard_iphone.storyboard */,
 				F2029F7815E613B000A4E0FE /* TWListTableViewController.h */,
+				F2029FED15E70EB400A4E0FE /* ManagedDocumentHelper.h */,
+				F2029FEE15E70EB600A4E0FE /* ManagedDocumentHelper.m */,
 				F2029F9F15E61A7400A4E0FE /* TwitterAPI.h */,
 				F2029FA015E61A7400A4E0FE /* TwitterAPI.m */,
 				F2029F7915E613B000A4E0FE /* TWListTableViewController.m */,
@@ -480,6 +485,7 @@
 				F2029FBC15E63D3100A4E0FE /* Fortune.m in Sources */,
 				F2029FBF15E63D3100A4E0FE /* TwitterList.m in Sources */,
 				F2029FD615E66BC200A4E0FE /* History+CLLocation.m in Sources */,
+				F2029FEF15E70EB700A4E0FE /* ManagedDocumentHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
