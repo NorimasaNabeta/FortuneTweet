@@ -89,6 +89,7 @@
 }
 
 
+
 - (void)fetchTwitterDataIntoDocument:(UIManagedDocument *)document
 {
     NSLog(@"fetchTwitterDataIntoDocument");
@@ -109,7 +110,7 @@
                         NSLog(@"ADD ENTITIES");
                         for (id tweet in jsonResult){
                             [document.managedObjectContext performBlock:^{
-                                [TwitterList listWithTwitterAccount:account listAll:tweet inManagedObjectContext:document.managedObjectContext];
+                                [TwitterList listWithTwitterAccount:tweet inManagedObjectContext:document.managedObjectContext];
                                 [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:NULL];
                             }];
                         }
@@ -128,7 +129,7 @@
     }
     dispatch_release(fetchQ);
     
- }
+}
 
 - (void)useDocument:(UIManagedDocument*) sharedDocument
 {
@@ -150,7 +151,7 @@
         NSLog(@"useDocument:Ready %@", [sharedDocument.fileURL path]);
         // already open and ready to use
         [self setupFetchedResultsController];
-        // [self fetchTwitterDataIntoDocument:sharedDocument];
+        [self fetchTwitterDataIntoDocument:sharedDocument];
     }
 }
 

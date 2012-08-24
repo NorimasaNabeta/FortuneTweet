@@ -10,8 +10,6 @@
 #import <Accounts/Accounts.h>
 
 @interface TwitterList (Twitter)
-+ (TwitterList *)listWithTwitterAccount:(ACAccount *)account
-                                listAll:(NSDictionary *) json
++ (TwitterList *)listWithTwitterAccount:(NSDictionary *) json
                  inManagedObjectContext:(NSManagedObjectContext *)context;
-
 @end

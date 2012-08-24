@@ -11,16 +11,15 @@
 
 @implementation TwitterList (Twitter)
 
-     
-+ (TwitterList *)listWithTwitterAccount:(ACAccount *) account
-                                listAll:(NSDictionary *) json
-                inManagedObjectContext:(NSManagedObjectContext *)context
++ (TwitterList *)listWithTwitterAccount:(NSDictionary *) json
+                 inManagedObjectContext:(NSManagedObjectContext *)context
 {
     TwitterList *list = nil;
+    NSString *screen_name = [json valueForKeyPath:@"user.screen_name"];
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"TwitterList"];
     NSString *twitterListTitle = [json objectForKey:@"slug"];
     // account.username == screen_name
-    request.predicate = [NSPredicate predicateWithFormat:@"owner = %@ AND title = %@", account.username, twitterListTitle];
+    request.predicate = [NSPredicate predicateWithFormat:@"owner = %@ AND title = %@", screen_name, twitterListTitle];
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES];
     request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
     
@@ -34,14 +33,14 @@
         list.title = twitterListTitle;
         list.descriptions = [json objectForKey:@"description"];
         list.mode = [json objectForKey:@"mode"];
-        list.owner = account.username;
+        list.owner = screen_name;
         NSLog(@"List: %@ owned by %@", list.title, list.owner);
     } else {
         list = [matches lastObject];
     }
     
     return list;
-
+    
 }
 
 @end
