@@ -10,7 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "CoreDataTableViewController.h"
 
-@interface FrotuneBookTableViewController : UITableViewController  <CLLocationManagerDelegate>
+@interface FrotuneBookTableViewController : CoreDataTableViewController  <CLLocationManagerDelegate>
 @property (strong, nonatomic) ACAccountStore *accountStore;
 @property (strong, nonatomic) NSArray *accounts;
 @property (nonatomic, retain) CLLocationManager *locationManager;

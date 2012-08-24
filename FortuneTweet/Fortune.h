@@ -2,26 +2,33 @@
 //  Fortune.h
 //  FortuneTweet
 //
-//  Created by Norimasa Nabeta on 2012/08/23.
+//  Created by Norimasa Nabeta on 2012/08/24.
 //  Copyright (c) 2012年 Norimasa Nabeta. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class History;
+@class FortuneBook, History;
 
 @interface Fortune : NSManagedObject
 
 @property (nonatomic, retain) NSString * fortuneid;
-@property (nonatomic, retain) NSSet *tweets;
+@property (nonatomic, retain) NSString * content;
+@property (nonatomic, retain) NSOrderedSet *tweets;
+@property (nonatomic, retain) FortuneBook *book;
 @end
 
 @interface Fortune (CoreDataGeneratedAccessors)
 
+- (void)insertObject:(History *)value inTweetsAtIndex:(NSUInteger)idx;
+- (void)removeObjectFromTweetsAtIndex:(NSUInteger)idx;
+- (void)insertTweets:(NSArray *)value atIndexes:(NSIndexSet *)indexes;
+- (void)removeTweetsAtIndexes:(NSIndexSet *)indexes;
+- (void)replaceObjectInTweetsAtIndex:(NSUInteger)idx withObject:(History *)value;
+- (void)replaceTweetsAtIndexes:(NSIndexSet *)indexes withTweets:(NSArray *)values;
 - (void)addTweetsObject:(History *)value;
 - (void)removeTweetsObject:(History *)value;
-- (void)addTweets:(NSSet *)values;
-- (void)removeTweets:(NSSet *)values;
-
+- (void)addTweets:(NSOrderedSet *)values;
+- (void)removeTweets:(NSOrderedSet *)values;
 @end

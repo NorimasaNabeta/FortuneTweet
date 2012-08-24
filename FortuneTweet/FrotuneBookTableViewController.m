@@ -12,31 +12,27 @@
 #import "History+CLLocation.h"
 #import "ManagedDocumentHelper.h"
 
+#import "FortuneBook.h"
 
 @interface FrotuneBookTableViewController ()
-@property (nonatomic,strong) NSFetchedResultsController *FRC;
 @end
 
 @implementation FrotuneBookTableViewController
 @synthesize locationManager=_locationManager;
 @synthesize accountStore=_accountStore;
 @synthesize accounts=_accounts;
-@synthesize FRC=_FRC;
-- (void)setupFetchedResultsController // attaches an NSFetchRequest to this UITableViewController
+
+
+- (void)setupFetchedResultsController
 {
-/* 
     UIManagedDocument *sharedDocument = [ManagedDocumentHelper sharedManagedDocumentFortuneTweet];
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"TwitterList"];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"FortuneBook"];
     NSSortDescriptor *sort1 = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)];
     request.sortDescriptors = [NSArray arrayWithObject:sort1];
-    // no predicate because we want ALL the Photographers
-    
-    self.FRC = [[NSFetchedResultsController alloc] initWithFetchRequest:request
-    // self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
                                                                         managedObjectContext:sharedDocument.managedObjectContext
                                                                           sectionNameKeyPath:nil
                                                                                    cacheName:nil];
-    */
 	// Start the location manager. -->didUpdateToLocation
     dispatch_sync(dispatch_get_main_queue(), ^{
         // NOTICE,A location manager (0xfe6aa20) was created on a dispatch queue executing on a thread other than the main thread.
@@ -81,6 +77,8 @@
     return _accountStore;
 }
 
+// TODO: If account is ok, fetch the profile of current accounts, and save into the database. 
+//
 - (void) checkAccount
 {
     if (_accounts == nil) {
@@ -140,20 +138,19 @@
 }
 
 #pragma mark - Table view data source
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-// #warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 1;
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Book Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     // Configure the cell...
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    FortuneBook *book = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = book.title;
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"@%d", [book.contents count]];
     
     return cell;
 }

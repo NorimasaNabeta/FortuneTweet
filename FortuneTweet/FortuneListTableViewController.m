@@ -7,12 +7,80 @@
 //
 
 #import "FortuneListTableViewController.h"
+#import "ManagedDocumentHelper.h"
+#import "Fortune.h"
 
 @interface FortuneListTableViewController ()
 
 @end
 
 @implementation FortuneListTableViewController
+
+@synthesize accountStore=_accountStore;
+@synthesize accounts=_accounts;
+
+- (ACAccountStore *) accountStore
+{
+    if (_accountStore == nil) {
+        _accountStore = [[ACAccountStore alloc] init];
+    }
+    return _accountStore;
+}
+
+
+- (void)setupFetchedResultsController // attaches an NSFetchRequest to this UITableViewController
+{
+    UIManagedDocument *sharedDocument = [ManagedDocumentHelper sharedManagedDocumentFortuneTweet];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Fortune"];
+    NSSortDescriptor *sort1 = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES
+                                                             selector:@selector(localizedCaseInsensitiveCompare:)];
+    request.sortDescriptors = [NSArray arrayWithObjects:sort1, nil];
+    // no predicate because we want ALL the Photographers
+    
+    self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                                                        managedObjectContext:sharedDocument.managedObjectContext
+                                                                          sectionNameKeyPath:nil
+                                                                                   cacheName:nil];
+}
+
+- (void)useDocument:(UIManagedDocument*) sharedDocument
+{
+    if (![[NSFileManager defaultManager] fileExistsAtPath:[sharedDocument.fileURL path]]) {
+        NSLog(@"useDocument:New %@", [sharedDocument.fileURL path]);
+        // does not exist on disk, so create it
+        [sharedDocument saveToURL:sharedDocument.fileURL
+                 forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
+                     [self setupFetchedResultsController];
+                 }];
+    } else if (sharedDocument.documentState == UIDocumentStateClosed) {
+        NSLog(@"useDocument:Open %@", [sharedDocument.fileURL path]);
+        // exists on disk, but we need to open it
+        [sharedDocument openWithCompletionHandler:^(BOOL success) {
+            [self setupFetchedResultsController];
+        }];
+    } else if (sharedDocument.documentState == UIDocumentStateNormal) {
+        NSLog(@"useDocument:Ready %@", [sharedDocument.fileURL path]);
+        // already open and ready to use
+        [self setupFetchedResultsController];
+    }
+}
+
+- (void) checkAccount
+{
+    if (_accounts == nil) {
+        ACAccountType *accountTypeTwitter = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+        [self.accountStore requestAccessToAccountsWithType:accountTypeTwitter
+                                     withCompletionHandler:^(BOOL granted, NSError *error) {
+                                         if(granted) {
+                                             self.accounts = [self.accountStore accountsWithAccountType:accountTypeTwitter];
+                                             [self useDocument:[ManagedDocumentHelper sharedManagedDocumentFortuneTweet]];
+                                         } else {
+                                             NSLog(@"ACCOUNT FAILED OR NOT GRANTED.");
+                                         }
+                                     }];
+    }
+}
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -48,68 +116,22 @@
 
 #pragma mark - Table view data source
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-// #warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 0;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-// #warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"Fortune Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     // Configure the cell...
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
     
+    Fortune *fortune = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@", fortune.content];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"[%@] %d", fortune.fortuneid, [fortune.tweets count]];
+
     return cell;
 }
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 

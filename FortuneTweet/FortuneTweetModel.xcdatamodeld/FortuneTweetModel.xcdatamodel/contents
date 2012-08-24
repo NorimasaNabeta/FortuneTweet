@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1487" systemVersion="12A269" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Fortune" representedClassName="Fortune" syncable="YES">
+        <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fortuneid" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="tweets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="History" inverseName="fortune" inverseEntity="History" syncable="YES"/>
+        <relationship name="book" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="FortuneBook" inverseName="contents" inverseEntity="FortuneBook" syncable="YES"/>
+        <relationship name="tweets" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="History" inverseName="fortune" inverseEntity="History" syncable="YES"/>
+    </entity>
+    <entity name="FortuneBook" representedClassName="FortuneBook" syncable="YES">
+        <attribute name="bookid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rwmode" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="contents" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Fortune" inverseName="book" inverseEntity="Fortune" syncable="YES"/>
     </entity>
     <entity name="History" representedClassName="History" syncable="YES">
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
@@ -13,8 +21,9 @@
     <entity name="TwitterList" representedClassName="TwitterList" syncable="YES">
         <attribute name="descriptions" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mode" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="owner" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ownername" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="owner" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TwitterUser" inverseName="has" inverseEntity="TwitterUser" syncable="YES"/>
         <relationship name="users" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TwitterUser" inverseName="lists" inverseEntity="TwitterUser" syncable="YES"/>
     </entity>
     <entity name="TwitterUser" representedClassName="TwitterUser" syncable="YES">
@@ -25,6 +34,7 @@
         <attribute name="profileimageURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="screenname" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userid" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="has" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TwitterList" inverseName="owner" inverseEntity="TwitterList" syncable="YES"/>
         <relationship name="lists" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TwitterList" inverseName="users" inverseEntity="TwitterList" syncable="YES"/>
     </entity>
     <elements>
@@ -32,5 +42,6 @@
         <element name="History" positionX="0" positionY="0" width="0" height="0"/>
         <element name="TwitterList" positionX="0" positionY="0" width="0" height="0"/>
         <element name="TwitterUser" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="FortuneBook" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

@@ -68,7 +68,7 @@
         list.title = twitterListTitle;
         list.descriptions = [jsonList objectForKey:@"description"];
         list.mode = [jsonList objectForKey:@"mode"];
-        list.owner = screen_name;
+        list.ownername = screen_name;
         
         
         NSMutableSet *users = [[NSMutableSet alloc] initWithObjects: nil];
@@ -81,7 +81,7 @@
             }
         }
         list.users = users;
-        NSLog(@"List: %@ owned by %@", list.title, list.owner);
+        NSLog(@"List: %@ owned by %@", list.title, list.ownername);
     } else {
         list = [matches lastObject];
     }

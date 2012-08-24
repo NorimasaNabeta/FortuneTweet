@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Accounts/Accounts.h>
 #import "CoreDataTableViewController.h"
 
 @interface FortuneListTableViewController : CoreDataTableViewController
+@property (strong, nonatomic) ACAccountStore *accountStore;
+@property (strong, nonatomic) NSArray *accounts;
 
 @end

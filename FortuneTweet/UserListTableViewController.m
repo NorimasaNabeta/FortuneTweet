@@ -19,10 +19,10 @@
 
 @implementation UserListTableViewController
 @synthesize twitterList=_twitterList;
-// @synthesize account=_account;
 
 
-- (void)setupFetchedResultsController // attaches an NSFetchRequest to this UITableViewController
+// attaches an NSFetchRequest to this UITableViewController
+- (void)setupFetchedResultsController
 {
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"TwitterUser"];
     NSSortDescriptor *sort1 = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)];
@@ -80,6 +80,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    // Twitter User Cell
     static NSString *CellIdentifier = @"Twitter User Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -93,6 +94,8 @@
     
     id appDelegate = (id)[[UIApplication sharedApplication] delegate];
     UIImage *image = [[appDelegate imageCache] objectForKey:user.screenname];
+    
+    // UIImage *image = [UIImage imageWithData:user.profileImageBob];
     if (image) {
         // NSLog(@"Hit: %@", account.username);
         cell.imageView.image = image;
@@ -104,7 +107,9 @@
             if ([urlResponse statusCode] == 200) {
                 UIImage *image = [UIImage imageWithData:responseData];
                 [[appDelegate imageCache] setObject:image forKey:user.screenname];
+                // NSData *imageBob = UIImagePNGRepresentation(image);
                 dispatch_sync(dispatch_get_main_queue(), ^{
+                    // user.profileImageBob = imageBob;
                     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:NO];
                 });
             }
