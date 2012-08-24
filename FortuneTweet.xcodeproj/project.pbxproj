@@ -64,6 +64,7 @@
 		F2029FBF15E63D3100A4E0FE /* TwitterList.m in Sources */ = {isa = PBXBuildFile; fileRef = F2029FBE15E63D3100A4E0FE /* TwitterList.m */; };
 		F2029FD615E66BC200A4E0FE /* History+CLLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = F2029FD515E66BC200A4E0FE /* History+CLLocation.m */; };
 		F2029FEF15E70EB700A4E0FE /* ManagedDocumentHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F2029FEE15E70EB600A4E0FE /* ManagedDocumentHelper.m */; };
+		F2029FF515E7461800A4E0FE /* HistoryAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = F2029FF415E7461600A4E0FE /* HistoryAnnotation.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,6 +158,8 @@
 		F2029FD515E66BC200A4E0FE /* History+CLLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "History+CLLocation.m"; sourceTree = "<group>"; };
 		F2029FED15E70EB400A4E0FE /* ManagedDocumentHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManagedDocumentHelper.h; sourceTree = "<group>"; };
 		F2029FEE15E70EB600A4E0FE /* ManagedDocumentHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagedDocumentHelper.m; sourceTree = "<group>"; };
+		F2029FF315E7461600A4E0FE /* HistoryAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryAnnotation.h; sourceTree = "<group>"; };
+		F2029FF415E7461600A4E0FE /* HistoryAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryAnnotation.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +237,8 @@
 				F2029F6E15E6082100A4E0FE /* UserListTableViewController.h */,
 				F2029F6F15E6082100A4E0FE /* UserListTableViewController.m */,
 				F2029F7115E6084900A4E0FE /* HistoryMapViewController.h */,
+				F2029FF315E7461600A4E0FE /* HistoryAnnotation.h */,
+				F2029FF415E7461600A4E0FE /* HistoryAnnotation.m */,
 				F2029F7215E6084900A4E0FE /* HistoryMapViewController.m */,
 				F2029F6615E607B600A4E0FE /* FrotuneBookTableViewController.m */,
 				F2029F6815E607E200A4E0FE /* FortuneListTableViewController.h */,
@@ -486,6 +491,7 @@
 				F2029FBF15E63D3100A4E0FE /* TwitterList.m in Sources */,
 				F2029FD615E66BC200A4E0FE /* History+CLLocation.m in Sources */,
 				F2029FEF15E70EB700A4E0FE /* ManagedDocumentHelper.m in Sources */,
+				F2029FF515E7461800A4E0FE /* HistoryAnnotation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

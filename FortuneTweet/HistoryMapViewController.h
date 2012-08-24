@@ -10,8 +10,10 @@
 #import <MapKit/MapKit.h>
 #import "CoreDataTableViewController.h"
 #import "History.h"
+#import "HistoryAnnotation.h"
+
 
 @interface HistoryMapViewController : UIViewController
-@property (nonatomic,strong) History *history;
+@property (nonatomic,strong) NSArray *annotations;
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @end

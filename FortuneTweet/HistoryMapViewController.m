@@ -14,13 +14,29 @@
 
 @implementation HistoryMapViewController
 @synthesize mapView=_mapView;
-@synthesize history=_history;
+@synthesize annotations=_annotations;
 
-- (void) setHistory:(History *)history
+- (void) setAnnotations:(NSArray *)annotations;
 {
-    if (_history != history) {
-        _history=history;
+    if (_annotations != annotations) {
+        _annotations = annotations;
     }
+    [self updateMapView];
+}
+
+-(void) updateMapView
+{
+    if (self.mapView.annotations) {
+        [self.mapView removeAnnotations:self.mapView.annotations];
+    }
+    if (self.annotations) {
+        [self.mapView addAnnotations:self.annotations];
+    }
+}
+-(void)setMapView:(MKMapView *)mapView
+{
+    _mapView=mapView;
+    [self updateMapView];
 }
 
 
@@ -96,10 +112,13 @@ calloutAccessoryControlTapped:(UIControl *)control
 -(void) mapView:(MKMapView *)mapView
 didAddAnnotationViews:(NSArray *)views
 {
-    if (self.history && self.mapView.window) {
+    if (self.annotations && self.mapView.window) {
         
-        // http://stackoverflow.com/questions/2509223/apple-documentation-incorrect-about-mkmapview-regionthatfits
-        self.mapView.centerCoordinate=CLLocationCoordinate2DMake([self.history.latitude doubleValue],  [self.history.longitude doubleValue]);
+        for (HistoryAnnotation *annotation in self.annotations){
+            self.mapView.centerCoordinate = annotation.coordinate;
+            // http://stackoverflow.com/questions/2509223/apple-documentation-incorrect-about-mkmapview-regionthatfits
+            // self.mapView.centerCoordinate=CLLocationCoordinate2DMake([self.history.latitude doubleValue],  [self.history.longitude doubleValue]);
+        }
     }
 }
 

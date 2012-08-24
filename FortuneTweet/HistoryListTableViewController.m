@@ -10,6 +10,7 @@
 #import "History.h"
 #import "History+CLLocation.h"
 #import "ManagedDocumentHelper.h"
+#import "HistoryAnnotation.h"
 
 @interface HistoryListTableViewController ()
 @end
@@ -212,8 +213,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
     History *hist = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    if ([segue.destinationViewController respondsToSelector:@selector(setHistory:)]) {
-        [segue.destinationViewController performSelector:@selector(setHistory:) withObject:hist];
+    HistoryAnnotation *annotation = [HistoryAnnotation annotationForHistory:hist];
+    NSArray *annotations = [[NSArray alloc] initWithObjects:annotation, nil ];
+    if ([segue.destinationViewController respondsToSelector:@selector(setAnnotations:)]) {
+        [segue.destinationViewController performSelector:@selector(setAnnotations:) withObject:annotations];
     }
 }
 
