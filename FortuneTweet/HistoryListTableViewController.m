@@ -22,7 +22,7 @@
 {
     UIManagedDocument *sharedDocument = [ManagedDocumentHelper sharedManagedDocumentFortuneTweet];
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
-    NSSortDescriptor *sort1 = [NSSortDescriptor sortDescriptorWithKey:@"timestamp" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)];
+    NSSortDescriptor *sort1 = [NSSortDescriptor sortDescriptorWithKey:@"timestamp" ascending:YES];
     request.sortDescriptors = [NSArray arrayWithObject:sort1];
     // no predicate because we want ALL the Photographers
     

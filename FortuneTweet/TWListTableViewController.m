@@ -108,10 +108,10 @@
                     if (jsonResult != nil) {
                         NSLog(@"ADD ENTITIES");
                         for (id tweet in jsonResult){
-                        [document.managedObjectContext performBlock:^{
-                            [TwitterList listWithTwitterAccount:account listAll:tweet inManagedObjectContext:document.managedObjectContext];
-                            [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:NULL];
-                        }];
+                            [document.managedObjectContext performBlock:^{
+                                [TwitterList listWithTwitterAccount:account listAll:tweet inManagedObjectContext:document.managedObjectContext];
+                                [document saveToURL:document.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:NULL];
+                            }];
                         }
                     }
                     else {
