@@ -22,7 +22,6 @@
 @synthesize accountStore=_accountStore;
 @synthesize accounts=_accounts;
 
-
 - (void)setupFetchedResultsController
 {
     UIManagedDocument *sharedDocument = [ManagedDocumentHelper sharedManagedDocumentFortuneTweet];
@@ -88,6 +87,7 @@
                                          if(granted) {
                                              self.accounts = [self.accountStore accountsWithAccountType:accountTypeTwitter];
                                              [self useDocument:[ManagedDocumentHelper sharedManagedDocumentFortuneTweet]];
+
                                          } else {
                                              NSLog(@"ACCOUNT FAILED OR NOT GRANTED.");
                                          }

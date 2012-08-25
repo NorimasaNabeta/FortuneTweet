@@ -43,6 +43,7 @@
     // self.title = twitterList.title;
     self.title = [NSString stringWithFormat:@"%@ by %@", twitterList.title, twitterList.ownername];
     [self setupFetchedResultsController];
+    [self.tableView reloadData];
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -173,6 +174,7 @@
      */
 }
 
+/*
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
@@ -181,6 +183,6 @@
         [segue.destinationViewController performSelector:@selector(setTwitterUser:) withObject:user];
     }
 }
-
+*/
 
 @end
