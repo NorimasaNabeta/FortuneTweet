@@ -40,7 +40,7 @@
         // In particular, creating location managers in arbitrary dispatch queues (not attached to the main queue) is not supported
         // and will result in callbacks not being received.
         //
-        // [[self locationManager] startUpdatingLocation];
+         //[[self locationManager] startUpdatingLocation];
     });
 
 }
@@ -229,14 +229,11 @@
 	NSLog(@"didUpdateToLocation %@ from %@", newLocation, oldLocation);
     if (locationAge > 30.0) return; // 10.0 second
 
-    // dispatch_sync(dispatch_get_main_queue(), ^{
-        UIManagedDocument *sharedDocument = [ManagedDocumentHelper sharedManagedDocumentFortuneTweet];
-        //[sharedDocument.managedObjectContext performBlock:^{
-        [sharedDocument.managedObjectContext performBlockAndWait:^{
-            [History historyWithCLLocation:newLocation inManagedObjectContext:sharedDocument.managedObjectContext];
-            [sharedDocument saveToURL:sharedDocument.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:NULL];
-        }];
-    //});
+    UIManagedDocument *sharedDocument = [ManagedDocumentHelper sharedManagedDocumentFortuneTweet];
+    [sharedDocument.managedObjectContext performBlock:^{
+        [History historyWithCLLocation:newLocation inManagedObjectContext:sharedDocument.managedObjectContext];
+        [sharedDocument saveToURL:sharedDocument.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:NULL];
+    }];
     
 	// Work around a bug in MapKit where user location is not initially zoomed to.
 	if (oldLocation == nil) {

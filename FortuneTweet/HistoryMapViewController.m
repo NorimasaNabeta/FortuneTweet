@@ -126,6 +126,16 @@ didAddAnnotationViews:(NSArray *)views
 - (void)mapView:(MKMapView *)mapView
 didSelectAnnotationView:(MKAnnotationView *)aView
 {
+    // dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+    //    UIImage *image = [self.delegate mapViewController:self imageForAnnotation:aView.annotation];
+        // DEBUG
+        // [NSThread sleepUntilDate:[NSDate dateWithTimeIntervalSinceNow:2]]; // simulate 2 sec latency
+    //    dispatch_async(dispatch_get_main_queue(), ^{
+    //        NSString *idCurrent = [FlickrFetcher stringValueFromKey:((FlickrPhotoAnnotation *) aView.annotation).photo nameKey:FLICKR_PHOTO_ID];
+    //            [(UIImageView *)aView.leftCalloutAccessoryView setImage:image];
+    //     });
+    // });
+
 }
 
 

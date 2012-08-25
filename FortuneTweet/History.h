@@ -16,6 +16,7 @@
 @property (nonatomic, retain) NSNumber * latitude;
 @property (nonatomic, retain) NSNumber * longitude;
 @property (nonatomic, retain) NSDate * timestamp;
+@property (nonatomic, retain) NSString * address;
 @property (nonatomic, retain) Fortune *fortune;
 
 @end

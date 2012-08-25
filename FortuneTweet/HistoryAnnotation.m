@@ -23,14 +23,11 @@
 - (NSString *)title
 {
     return [NSString stringWithFormat:@"%@", self.history.timestamp];
-    //return [FlickrFetcher stringValueFromKey:self.photo nameKey:FLICKR_PHOTO_TITLE];
 }
 
 - (NSString *)subtitle
 {
-    return @"Here";
-    //return [self.photo valueForKeyPath:FLICKR_PHOTO_DESCRIPTION];
-    // return [FlickrFetcher stringValueFromKey:self.photo nameKey:FLICKR_PHOTO_DESCRIPTION];
+    return (self.history.address ? self.history.address: @"Here" );
 }
 
 - (CLLocationCoordinate2D)coordinate

@@ -14,5 +14,4 @@
 
 @property (nonatomic, strong) History *history;
 + (HistoryAnnotation *)annotationForHistory:(History *)history;
-
 @end

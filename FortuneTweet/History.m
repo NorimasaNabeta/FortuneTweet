@@ -15,6 +15,7 @@
 @dynamic latitude;
 @dynamic longitude;
 @dynamic timestamp;
+@dynamic address;
 @dynamic fortune;
 
 @end

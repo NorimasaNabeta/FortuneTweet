@@ -122,16 +122,42 @@
 {
     static NSString *CellIdentifier = @"History Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    // Configure the cell...
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    History *hist = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [NSString stringWithFormat:@"[lat=%@, long=%@]", hist.latitude, hist.longitude];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@", hist.timestamp];
+    // Configure the cell...
     
+    History *hist = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    // cell.textLabel.text = [NSString stringWithFormat:@"[lat=%@, long=%@]", hist.latitude, hist.longitude];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@", hist.timestamp];
+
+    //
+    // address-fetching is required the network environment, but this application's purpose is outdoor environment,
+    // mostly you cannot reatch any network.
+    // because of this concern, eliminating unefficent network trafic, here.
+    if( hist.address ){
+        cell.detailTextLabel.text = hist.address;
+    } else {
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"[lat=%@, long=%@]", hist.latitude, hist.longitude];
+        CLGeocoder *fgeo = [[CLGeocoder alloc] init];
+        CLLocation *pnt = [[CLLocation alloc] initWithLatitude:[hist.latitude doubleValue] longitude:[hist.longitude doubleValue]];
+        [fgeo reverseGeocodeLocation:pnt
+               completionHandler:^(NSArray *placemarks, NSError *error){
+                   if(!error){
+                       NSString *address = [[placemarks objectAtIndex:0] description];
+                       dispatch_async(dispatch_get_main_queue(), ^{
+                           cell.detailTextLabel.text = address;
+                           [[ManagedDocumentHelper sharedManagedDocumentFortuneTweet].managedObjectContext performBlock:^{
+                               hist.address = address;
+                           }];
+                       });
+                   } else {
+                       NSLog(@"There was a reverse geocoding error\n%@",[error localizedDescription]);
+                       
+                   }
+               }];
+    }
     
     return cell;
 }
