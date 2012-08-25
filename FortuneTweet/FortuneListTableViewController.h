@@ -8,12 +8,22 @@
 
 #import <UIKit/UIKit.h>
 #import <Accounts/Accounts.h>
+#import <CoreLocation/CoreLocation.h>
+
 #import "CoreDataTableViewController.h"
 #import "FortuneBook.h"
 #import "Fortune.h"
+
+
+@class FortuneListTableViewController;
+@protocol FortuneListTableViewControllerDelegate <NSObject>
+- (CLLocation *) locationOfTweetController:(FortuneListTableViewController *)sender;
+@end
+
 
 @interface FortuneListTableViewController : CoreDataTableViewController
 @property (strong, nonatomic) ACAccountStore *accountStore;
 @property (strong, nonatomic) NSArray *accounts;
 @property (strong, nonatomic) FortuneBook *fortunebook;
+@property (weak, nonatomic) id <FortuneListTableViewControllerDelegate> delegate;
 @end

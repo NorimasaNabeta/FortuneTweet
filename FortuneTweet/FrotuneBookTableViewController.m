@@ -15,7 +15,9 @@
 #import "FortuneBook.h"
 #import "FortuneBook+Plist.h"
 
-@interface FrotuneBookTableViewController ()
+#import "FortuneListTableViewController.h"
+
+@interface FrotuneBookTableViewController () <FortuneListTableViewControllerDelegate>
 @end
 
 @implementation FrotuneBookTableViewController
@@ -108,6 +110,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [[self locationManager] startUpdatingLocation];    
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -242,14 +245,14 @@
     didUpdateToLocation:(CLLocation *)newLocation
            fromLocation:(CLLocation *)oldLocation {
     NSTimeInterval locationAge = -[newLocation.timestamp timeIntervalSinceNow];
+    if (locationAge > 60.0) return; // 10.0 second
 	NSLog(@"didUpdateToLocation %@ from %@", newLocation, oldLocation);
-    if (locationAge > 30.0) return; // 10.0 second
 
-    UIManagedDocument *sharedDocument = [ManagedDocumentHelper sharedManagedDocumentFortuneTweet];
-    [sharedDocument.managedObjectContext performBlock:^{
-        [History historyWithCLLocation:newLocation inManagedObjectContext:sharedDocument.managedObjectContext];
-        [sharedDocument saveToURL:sharedDocument.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:NULL];
-    }];
+//    UIManagedDocument *sharedDocument = [ManagedDocumentHelper sharedManagedDocumentFortuneTweet];
+//    [sharedDocument.managedObjectContext performBlock:^{
+//        [History historyWithCLLocation:newLocation inManagedObjectContext:sharedDocument.managedObjectContext];
+//        [sharedDocument saveToURL:sharedDocument.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:NULL];
+//    }];
     
 	// Work around a bug in MapKit where user location is not initially zoomed to.
 	if (oldLocation == nil) {
@@ -268,7 +271,17 @@
     FortuneBook *book = [self.fetchedResultsController objectAtIndexPath:indexPath];
     if ([segue.destinationViewController respondsToSelector:@selector(setFortunebook:)]) {
         [segue.destinationViewController performSelector:@selector(setFortunebook:) withObject:book];
+        [segue.destinationViewController performSelector:@selector(setDelegate:) withObject:self];
+        
     }
 }
+
+#pragma mark - FortuneListTableViewControllerDelegate
+
+- (CLLocation *) locationOfTweetController:(FortuneListTableViewController *)sender
+{
+    return [self.locationManager location];
+}
+
 
 @end

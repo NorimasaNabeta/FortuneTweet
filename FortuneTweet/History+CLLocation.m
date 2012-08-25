@@ -10,11 +10,14 @@
 
 @implementation History (CLLocation)
 
+#define COREDATA_ENTITY_NAME  @"History"
+
 + (History *)historyWithCLLocation:(CLLocation *)location
+                      fortuneTweet:(Fortune*)fortune
             inManagedObjectContext:(NSManagedObjectContext *)context
 {
     History *hist = nil;
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"History"];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:COREDATA_ENTITY_NAME];
     // request.predicate = [NSPredicate predicateWithFormat:@"timestamp = %@ ", location.timestamp];
     // NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"timestamp" ascending:YES];
     // request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
@@ -22,17 +25,12 @@
     NSError *error = nil;
     NSArray *matches = [context executeFetchRequest:request error:&error];
     
-    // if (!matches || ([matches count] > 1)) {
-        // handle error
-    // } else if ([matches count] == 0) {
-        hist = [NSEntityDescription insertNewObjectForEntityForName:@"History" inManagedObjectContext:context];
-        hist.timestamp = location.timestamp;
-        hist.latitude = [NSNumber numberWithDouble:location.coordinate.latitude];
-        hist.longitude = [NSNumber numberWithDouble:location.coordinate.longitude];
-        NSLog(@"Hist[%d] %@, %@", [matches count], hist.latitude, hist.longitude);
-    // } else {
-    //     hist = [matches lastObject];
-    // }
+    hist = [NSEntityDescription insertNewObjectForEntityForName:COREDATA_ENTITY_NAME inManagedObjectContext:context];
+    hist.timestamp = location.timestamp;
+    hist.latitude = [NSNumber numberWithDouble:location.coordinate.latitude];
+    hist.longitude = [NSNumber numberWithDouble:location.coordinate.longitude];
+    hist.fortune = fortune;
+    NSLog(@"Hist[%d] %@, %@", [matches count], hist.latitude, hist.longitude);
     
     return hist;
     

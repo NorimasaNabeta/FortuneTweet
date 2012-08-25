@@ -10,6 +10,8 @@
 #import "FortuneListTableViewController.h"
 #import "ManagedDocumentHelper.h"
 #import "Fortune.h"
+#import "History.h"
+#import "History+CLLocation.h"
 
 #import "SectionInfo.h"
 
@@ -191,19 +193,15 @@
     
     // Create the completion handler block.
     [tweetViewController setCompletionHandler:^(TWTweetComposeViewControllerResult result) {
-        NSString *output;
-        
-        switch (result) {
-            case TWTweetComposeViewControllerResultCancelled:
-                // The cancel button was tapped.
-                output = @"Tweet cancelled.";
-                break;
-            case TWTweetComposeViewControllerResultDone:
-                // The tweet was sent.
-                output = @"Tweet done.";
-                break;
-            default:
-                break;
+        if (result == TWTweetComposeViewControllerResultDone){
+                CLLocation *location = [self.delegate locationOfTweetController:self];
+                if (location) {
+                    [self.fortunebook.managedObjectContext performBlock:^{
+                        // Event *event = (Event *)[NSEntityDescription insertNewObjectForEntityForName:@"Event" inManagedObjectContext:managedObjectContext];
+                        [History historyWithCLLocation:location fortuneTweet:fortune inManagedObjectContext:self.fortunebook.managedObjectContext];
+                        // [sharedDocument saveToURL:sharedDocument.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:NULL];
+                    }];
+                }
         }
         // -----
         // Show alert to see how things went...
@@ -217,7 +215,7 @@
         [self dismissModalViewControllerAnimated:YES];
     }];
     [self presentModalViewController:tweetViewController animated:YES];
-    
+
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath

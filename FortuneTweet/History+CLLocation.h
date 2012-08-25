@@ -7,9 +7,11 @@
 //
 #import <CoreLocation/CoreLocation.h>
 #import "History.h"
+#import "Fortune.h"
 
 @interface History (CLLocation)
 + (History *)historyWithCLLocation:(CLLocation *)location
-                 inManagedObjectContext:(NSManagedObjectContext *)context;
+                      fortuneTweet:(Fortune*)fortune
+            inManagedObjectContext:(NSManagedObjectContext *)context;
 
 @end

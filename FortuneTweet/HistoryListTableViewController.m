@@ -33,7 +33,7 @@
                                                                                    cacheName:nil];
 }
 
-
+/*
 - (void)locationDataIntoDocument:(UIManagedDocument *)document
 {
     NSLog(@"locationDataIntoDocument");
@@ -41,13 +41,13 @@
 //    dispatch_queue_t fetchQ = dispatch_queue_create("Twitter fetcher", NULL);
     CLLocation *newLocation = [[CLLocation alloc] initWithLatitude:37.733 longitude:-122.41];
     [sharedDocument.managedObjectContext performBlock:^{
-        [History historyWithCLLocation:newLocation inManagedObjectContext:sharedDocument.managedObjectContext];
+        [History historyWithCLLocation:newLocation fortuneTweet:nil inManagedObjectContext:sharedDocument.managedObjectContext];
         [sharedDocument saveToURL:sharedDocument.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:NULL];
     }];
 //    dispatch_release(fetchQ);
     
 }
-
+*/
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
