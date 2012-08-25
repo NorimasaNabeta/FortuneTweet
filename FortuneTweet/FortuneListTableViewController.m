@@ -5,18 +5,42 @@
 //  Created by Norimasa Nabeta on 2012/08/23.
 //  Copyright (c) 2012年 Norimasa Nabeta. All rights reserved.
 //
+#import <Twitter/Twitter.h>
 
 #import "FortuneListTableViewController.h"
 #import "ManagedDocumentHelper.h"
 #import "Fortune.h"
-#import <Twitter/Twitter.h>
+
+#import "SectionInfo.h"
 
 @interface FortuneListTableViewController ()
-
+@property (nonatomic, strong) NSIndexPath* pinchedIndexPath;
+@property (nonatomic, assign) NSInteger openSectionIndex;
+@property (nonatomic, assign) CGFloat initialPinchHeight;
+@property (nonatomic, assign) NSInteger uniformRowHeight;
+@property (nonatomic, strong) NSMutableArray* sectionInfoArray;
 @end
 
 @implementation FortuneListTableViewController
 @synthesize fortunebook=_fortunebook;
+
+#define DEFAULT_ROW_HEIGHT 78
+#define HEADER_HEIGHT 45
+
+@synthesize pinchedIndexPath=_pinchedIndexPath;
+@synthesize openSectionIndex=_openSectionIndex;
+@synthesize initialPinchHeight=_initialPinchHeight;
+@synthesize uniformRowHeight=_uniformRowHeight;
+@synthesize sectionInfoArray=_sectionInfoArray;
+
+-(void) setSectionInfoArray:(NSMutableArray *)sectionInfoArray
+{
+    if(_sectionInfoArray != sectionInfoArray){
+        _sectionInfoArray = sectionInfoArray;
+        [self.tableView reloadData];
+    }
+}
+
 
 - (void)setFortunebook:(FortuneBook *)fortunebook
 {
@@ -59,12 +83,59 @@
 {
     [super viewDidLoad];
 
+    UIPinchGestureRecognizer* pinchRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
+    [self.tableView addGestureRecognizer:pinchRecognizer];
+    self.tableView.sectionHeaderHeight = HEADER_HEIGHT;
+    self.uniformRowHeight=DEFAULT_ROW_HEIGHT;
+    self.openSectionIndex= NSNotFound;
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+
+//
+//
+//
+// -(BOOL)canBecomeFirstResponder {
+//     return YES;
+// }
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+
+	if ((self.sectionInfoArray == nil) ||
+        ([self.sectionInfoArray count] != [self numberOfSectionsInTableView:nil])) {
+        
+		NSMutableArray *infoArray = [[NSMutableArray alloc] init];
+        for (NSInteger sec = 0; sec <[self numberOfSectionsInTableView:nil]; sec++) {
+			SectionInfo *sectionInfo = [[SectionInfo alloc] init];
+			// sectionInfo.title = [self titleCookedForHeaderInSection:sec];
+			// sectionInfo.titleRaw = [self tableView:nil titleForHeaderInSection:sec];
+			sectionInfo.open = YES;
+			// NSLog(@"%d: %@", sec, sectionInfo.title);
+            NSNumber *defaultRowHeight = [NSNumber numberWithInteger:DEFAULT_ROW_HEIGHT];
+            NSInteger countOfQuotations = [self.tableView numberOfRowsInSection:sec];
+			for (NSInteger i = 0; i < countOfQuotations; i++) {
+				[sectionInfo insertObject:defaultRowHeight inRowHeightsAtIndex:i];
+			}
+			[infoArray addObject:sectionInfo];
+		}
+		self.sectionInfoArray = infoArray;
+        
+	}
+}
+
+-(CGFloat)      tableView:(UITableView*)tableView
+  heightForRowAtIndexPath:(NSIndexPath*)indexPath {
+	SectionInfo *sectionInfo = [self.sectionInfoArray objectAtIndex:indexPath.section];
+    return [[sectionInfo objectInRowHeightsAtIndex:indexPath.row] floatValue];
+}
+//
+//
+//
 
 - (void)viewDidUnload
 {
@@ -88,6 +159,8 @@
     // Configure the cell...
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        // cell.textLabel.numberOfLines = 3;
+        // cell.textLabel.adjustsFontSizeToFitWidth=NO;
     }
     
     Fortune *fortune = [self.fetchedResultsController objectAtIndexPath:indexPath];
@@ -101,15 +174,8 @@
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+- (void) tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
     TWTweetComposeViewController *tweetViewController = [[TWTweetComposeViewController alloc] init];
     
     // Set the initial tweet text. See the framework for additional properties that can be set.
@@ -122,7 +188,7 @@
     NSString *preinput = [NSString stringWithFormat:@"  (%@ -- %@,%@)",
                           fortune.quotation, fortune.character, fortune.act];
     [tweetViewController setInitialText:preinput];
-
+    
     // Create the completion handler block.
     [tweetViewController setCompletionHandler:^(TWTweetComposeViewControllerResult result) {
         NSString *output;
@@ -150,10 +216,87 @@
         // Dismiss the tweet composition view controller.
         [self dismissModalViewControllerAnimated:YES];
     }];
+    [self presentModalViewController:tweetViewController animated:YES];
     
-    // Present the tweet composition view controller modally.
-    // [self presentModalViewController:tweetViewController animated:YES];
-    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    for(SectionInfo *sectionInfo in self.sectionInfoArray){
+        for (NSInteger i = 0; i < sectionInfo.rowHeights.count; i++) {
+            [sectionInfo replaceObjectInRowHeightsAtIndex:i withObject:[NSNumber numberWithFloat:DEFAULT_ROW_HEIGHT]];
+        }
+    }
+    SectionInfo *sectionInfo = [self.sectionInfoArray objectAtIndex:indexPath.section];
+    for (NSInteger i = 0; i < sectionInfo.rowHeights.count; i++) {
+        if(i == indexPath.row){
+            [sectionInfo replaceObjectInRowHeightsAtIndex:i withObject:[NSNumber numberWithFloat:DEFAULT_ROW_HEIGHT*2]];
+        }
+    }
+    [self.tableView beginUpdates];
+    [self.tableView endUpdates];
+
+    // Navigation logic may go here. Create and push another view controller.
+    /*
+     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
+     // ...
+     // Pass the selected object to the new view controller.
+     [self.navigationController pushViewController:detailViewController animated:YES];
+     */
+    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
+}
+
+
+#pragma mark Handling pinches
+-(void)handlePinch:(UIPinchGestureRecognizer*)pinchRecognizer
+{
+    if (pinchRecognizer.state == UIGestureRecognizerStateBegan) {
+        CGPoint pinchLocation = [pinchRecognizer locationInView:self.tableView];
+        NSIndexPath *newPinchedIndexPath = [self.tableView indexPathForRowAtPoint:pinchLocation];
+		self.pinchedIndexPath = newPinchedIndexPath;
+        
+		SectionInfo *sectionInfo = [self.sectionInfoArray objectAtIndex:newPinchedIndexPath.section];
+        self.initialPinchHeight = [[sectionInfo objectInRowHeightsAtIndex:newPinchedIndexPath.row] floatValue];
+        // Alternatively, set initialPinchHeight = uniformRowHeight.
+        
+        [self updateForPinchScale:pinchRecognizer.scale atIndexPath:newPinchedIndexPath];
+    }
+    else {
+        if (pinchRecognizer.state == UIGestureRecognizerStateChanged) {
+            [self updateForPinchScale:pinchRecognizer.scale atIndexPath:self.pinchedIndexPath];
+        }
+        else if ((pinchRecognizer.state == UIGestureRecognizerStateCancelled) ||
+                 (pinchRecognizer.state == UIGestureRecognizerStateEnded)) {
+            self.pinchedIndexPath = nil;
+        }
+    }
+}
+
+
+-(void)updateForPinchScale:(CGFloat)scale
+               atIndexPath:(NSIndexPath*)indexPath
+{
+    if (indexPath && (indexPath.section != NSNotFound) && (indexPath.row != NSNotFound)) {
+        
+		CGFloat newHeight = round(MAX(self.initialPinchHeight * scale, DEFAULT_ROW_HEIGHT));
+        
+        if(newHeight < DEFAULT_ROW_HEIGHT *3){
+            SectionInfo *sectionInfo = [self.sectionInfoArray objectAtIndex:indexPath.section];
+            [sectionInfo replaceObjectInRowHeightsAtIndex:indexPath.row withObject:[NSNumber numberWithFloat:newHeight]];
+            // Alternatively, set uniformRowHeight = newHeight.
+            
+            /*
+             Switch off animations during the row height resize,
+             otherwise there is a lag before the user's action is seen.
+             */
+            BOOL animationsEnabled = [UIView areAnimationsEnabled];
+            [UIView setAnimationsEnabled:NO];
+            [self.tableView beginUpdates];
+            [self.tableView endUpdates];
+            [UIView setAnimationsEnabled:animationsEnabled];
+        }
+    }
+}
+
 
 @end

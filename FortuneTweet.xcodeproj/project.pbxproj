@@ -72,6 +72,7 @@
 		F28AE77E15E8BAEE00623997 /* TwitterList.m in Sources */ = {isa = PBXBuildFile; fileRef = F28AE77D15E8BAEE00623997 /* TwitterList.m */; };
 		F28AE78115E8BAEF00623997 /* FortuneBook.m in Sources */ = {isa = PBXBuildFile; fileRef = F28AE78015E8BAEE00623997 /* FortuneBook.m */; };
 		F28AE78415E8BAEF00623997 /* TwitterUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F28AE78315E8BAEF00623997 /* TwitterUser.m */; };
+		F28AE79715E8F3AF00623997 /* SectionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F28AE79615E8F3AE00623997 /* SectionInfo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -180,6 +181,8 @@
 		F28AE78015E8BAEE00623997 /* FortuneBook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FortuneBook.m; sourceTree = "<group>"; };
 		F28AE78215E8BAEF00623997 /* TwitterUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterUser.h; sourceTree = "<group>"; };
 		F28AE78315E8BAEF00623997 /* TwitterUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterUser.m; sourceTree = "<group>"; };
+		F28AE79515E8F3AD00623997 /* SectionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectionInfo.h; sourceTree = "<group>"; };
+		F28AE79615E8F3AE00623997 /* SectionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectionInfo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -267,6 +270,8 @@
 				F2029F4E15E600AE00A4E0FE /* Storyboard_iphone.storyboard */,
 				F2029F7815E613B000A4E0FE /* TWListTableViewController.h */,
 				F2029FED15E70EB400A4E0FE /* ManagedDocumentHelper.h */,
+				F28AE79515E8F3AD00623997 /* SectionInfo.h */,
+				F28AE79615E8F3AE00623997 /* SectionInfo.m */,
 				F2029FEE15E70EB600A4E0FE /* ManagedDocumentHelper.m */,
 				F2029F9F15E61A7400A4E0FE /* TwitterAPI.h */,
 				F2029FA015E61A7400A4E0FE /* TwitterAPI.m */,
@@ -540,6 +545,7 @@
 				F28AE77E15E8BAEE00623997 /* TwitterList.m in Sources */,
 				F28AE78115E8BAEF00623997 /* FortuneBook.m in Sources */,
 				F28AE78415E8BAEF00623997 /* TwitterUser.m in Sources */,
+				F28AE79715E8F3AF00623997 /* SectionInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
