@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1487" systemVersion="12A269" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Fortune" representedClassName="Fortune" syncable="YES">
+        <attribute name="act" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="character" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="fortuneid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="quotation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="scene" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="book" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="FortuneBook" inverseName="contents" inverseEntity="FortuneBook" syncable="YES"/>
         <relationship name="tweets" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="History" inverseName="fortune" inverseEntity="History" syncable="YES"/>
     </entity>

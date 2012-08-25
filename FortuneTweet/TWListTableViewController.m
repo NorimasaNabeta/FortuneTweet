@@ -122,6 +122,7 @@
 - (void)fetchTwitterDataIntoDocument:(UIManagedDocument *)document
 {
     NSLog(@"fetchTwitterDataIntoDocument");
+    
     if (self.accounts == nil) {
         NSLog(@"fetchTwitterDataIntoDocument:failed");
         return;

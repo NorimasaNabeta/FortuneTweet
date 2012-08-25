@@ -15,6 +15,10 @@
 
 @property (nonatomic, retain) NSString * content;
 @property (nonatomic, retain) NSString * fortuneid;
+@property (nonatomic, retain) NSString * character;
+@property (nonatomic, retain) NSString * scene;
+@property (nonatomic, retain) NSString * quotation;
+@property (nonatomic, retain) NSString * act;
 @property (nonatomic, retain) FortuneBook *book;
 @property (nonatomic, retain) NSOrderedSet *tweets;
 @end

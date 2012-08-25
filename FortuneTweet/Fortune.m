@@ -15,6 +15,10 @@
 
 @dynamic content;
 @dynamic fortuneid;
+@dynamic character;
+@dynamic scene;
+@dynamic quotation;
+@dynamic act;
 @dynamic book;
 @dynamic tweets;
 

@@ -178,9 +178,11 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
         History *hist = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        [self.fetchedResultsController.managedObjectContext deleteObject:hist];
+        [[ManagedDocumentHelper sharedManagedDocumentFortuneTweet].managedObjectContext performBlock:^{
+            [self.fetchedResultsController.managedObjectContext deleteObject:hist];
+        }];
         // [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
+    }
 }
 
 

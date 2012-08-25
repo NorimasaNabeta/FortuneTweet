@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><array>
+    <dict><key>playId</key><string>d232c6c498283da7cb5b433a82e2b2bb9d5b39a9</string><key>playName</key><string>startrek</string><key>quotations</key><array>
+	<dict><key>qid</key><string>d0e8b2c867343776542b4cdea97d6d5bd4f8c640</string><key>act</key><string>stardate 3468.1.</string><key>scene</key><string>"Who Mourns for Adonais?"</string>
+	  <key>character</key><string>Lt. Carolyn Palamas</string><key>quotation</key><string>A father doesn't destroy his children.</string></dict>
+	<dict><key>qid</key><string>674fc980a3fb15f29fc144ab3be0d57a29b4e4be</string><key>act</key><string>stardate 1514.0</string><key>scene</key><string>"The Corbomite Maneuver"</string>
+	  <key>character</key><string>Kirk</string><key>quotation</key><string>A little suffering is good for the soul.</string></dict>
+	<dict><key>qid</key><string>ff64ea9304b97fdf4ff043cbbeb23f5c23540288</string><key>act</key><string>stardate 3018.2</string><key>scene</key><string>"Catspaw"</string>
+	  <key>character</key><string>Kirk</string><key>quotation</key><string>A woman should have compassion.</string></dict>
+	<dict><key>qid</key><string>e3b3939c9d6c31eebb71cebe4be72a3af497d491</string><key>act</key><string>stardate 3193.0</string><key>scene</key><string>"A Taste of Armageddon"</string>
+	  <key>character</key><string>Kirk</string><key>quotation</key><string>Actual war is a very messy business.  Very, very messy business.</string></dict>
+	<dict><key>qid</key><string>25dd23f15c4b36e5dbba566af3f286c1dfdadc04</string><key>act</key><string>stardate 3259.2</string><key>scene</key><string>"The Gamesters of Triskelion"</string>
+	  <key>character</key><string>Kirk</string><key>quotation</key><string>All your people must learn before you can reach for the stars.</string></dict>
+	<dict><key>qid</key><string>44ff245783ee72a940fb41fc816ab5e12b8bfa83</string><key>act</key><string>stardate 3417.3</string><key>scene</key><string>"This side of Paradise"</string>
+	  <key>character</key><string>Kirk</string><key>quotation</key><string>Another dream that failed.  There's nothing sadder.</string></dict>
+	<dict><key>qid</key><string>eee009520f99b241ccb1ff43d9033fc531cd155e</string><key>act</key><string>stardate unknown</string><key>scene</key><string>"That Which Survives"</string>
+	  <key>character</key><string>Spock and Kirk</string><key>quotation</key><string>"Beauty is transitory.""Beauty survives."</string></dict>
+	<dict><key>qid</key><string>36b2061f8e18ad102791d067eada2e835bf9deb3</string><key>act</key><string>Mudd"</string><key>scene</key><string>"I</string>
+	  <key>character</key><string>Harry Mudd</string><key>quotation</key><string>Behind every great man, there is a woman,urging him on.</string></dict>
+	<dict><key>qid</key><string>cf34011305c125df00d20d410d0756eb60f80a24</string><key>act</key><string>stardate 5730.2</string><key>scene</key><string>"Let That Be Your Last Battlefield"</string>
+	  <key>character</key><string>Spock</string><key>quotation</key><string>Change is the essential process of all existence.</string></dict>
+	<dict><key>qid</key><string>2078d5e8f488a9b445d82c02e75d59a0996e343a</string><key>act</key><string>Mirror"</string><key>scene</key><string>"Mirror</string>
+	  <key>character</key><string>Kirk</string><key>quotation</key><string>Conquest is easy. Control is not.</string></dict>
+	<dict><key>qid</key><string>932e70d6457a35d50652de7462bfc64694eb9819</string><key>act</key><string>stardate 5843.7</string><key>scene</key><string>"Requiem for Methuselah"</string>
+	  <key>character</key><string>Flint</string><key>quotation</key><string>Death, when unnecessary, is a tragic thing.</string></dict>
+	<dict><key>qid</key><string>023f601b6a1adae2ba22b658ecc57742db3c1311</string><key>act</key><string>"The Paradise Syndrome"</string><key>scene</key><string>Kirk's wife</string>
+	  <key>character</key><string>Miramanee</string><key>quotation</key><string>Each kiss is as the first.</string></dict>
+	<dict><key>qid</key><string>1b2c34000c94f90a11f1cd0b958167ccd5665c2d</string><key>act</key><string>stardate 368.1</string><key>scene</key><string>"Who Mourns for Adonais?"</string>
+	  <key>character</key><string>Apollo</string><key>quotation</key><string>Earth, mother of the most beautiful women in the universe.</string></dict>
+	<dict><key>qid</key><string>6febcb3c2330ea5cdf59f6fd6555b1a667e42da8</string><key>act</key><string>stardate 3196.1</string><key>scene</key><string>"The Devil in the Dark"</string>
+	  <key>character</key><string>Kirk</string><key>quotation</key><string>Either one of us, by himself, is expendable.  Both of us are not.</string></dict>
+	<dict><key>qid</key><string>c70a72192b62e475cae90bed0a8e5641fb122004</string><key>act</key><string>stardate 3417.3</string><key>scene</key><string>"This Side of Paradise"</string>
+	  <key>character</key><string>Spock</string><key>quotation</key><string>Emotions are alien to me.  I'm a scientist.</string></dict>
+	<dict><key>qid</key><string>685ff48c679445c7a17aeb06367fb341b9dd5ba7</string><key>act</key><string>stardate 4731.3</string><key>scene</key><string>"The Ultimate Computer"</string>
+	  <key>character</key><string>Spock</string><key>quotation</key><string>Every living thing wants to survive.</string></dict>
+	<dict><key>qid</key><string>7f20d448e294c5f21ecd1c47a07e5bea24286557</string><key>act</key><string>stardate 5818.4</string><key>scene</key><string>"The Cloud Minders"</string>
+	  <key>character</key><string>Spock</string><key>quotation</key><string>Extreme feminine beauty is always disturbing.</string></dict>
+	<dict><key>qid</key><string>111fb88df11c36cdbd3db1f8c6f27adc9277f921</string><key>act</key><string>stardate 2124.5</string><key>scene</key><string>"The Squire of Gothos"</string>
+	  <key>character</key><string>Spock</string><key>quotation</key><string>Fascinating is a word I use for the unexpected.</string></dict>
+	<dict><key>qid</key><string>4c013db4cec8921ed418f4d1e3145c38a2c50671</string><key>act</key><string>stardate 3219.8</string><key>scene</key><string>"Metamorphosis"</string>
+	  <key>character</key><string>Spock</string><key>quotation</key><string>Fascinating, a totally parochial attitude.</string></dict>
+	<dict><key>qid</key><string>f62ce27495b0319dddfbcb53d129bd3ff5c1a60e</string><key>act</key><string>stardate 1709.2</string><key>scene</key><string>"Balance of Terror"</string>
+	  <key>character</key><string>Romulan Commander</string><key>quotation</key><string>First study the enemy.  Seek weakness.</string></dict>
+	<dict><key>qid</key><string>97aa6f8afd35962da61845acfb55d8b3ce471f83</string><key>act</key><string>stardate unknown</string><key>scene</key><string>"Day of the Dove"</string>
+	  <key>character</key><string>Klingon Soldier</string><key>quotation</key><string>Four thousand throats may be cut in one night by a running man.</string></dict>
+	<dict><key>qid</key><string>0f6d6f392223209b561ad87cc9f01db8d9b8bfc1</string><key>act</key><string>stardate unknown</string><key>scene</key><string>"The Omega Glory"</string>
+	  <key>character</key><string>Cloud William and Kirk</string><key>quotation</key><string>"... freedom ... is a worship word...""It is our worship word too."</string></dict>
+	<dict><key>qid</key><string>e7203fc8e67efdc9accc9d5a228c9bc497e7c4d3</string><key>act</key><string>stardate 3417.3</string><key>scene</key><string>"This Side of Paradise"</string>
+	  <key>character</key><string>Kirk and Mr. Leslie</string><key>quotation</key><string>"Get back to your stations!""We're beaming down to the planet, sir."</string></dict>
+	<dict><key>qid</key><string>d8ca268d91af3a9bb58bae8bb5cf5a1557f5845c</string><key>act</key><string>stardate 3196.1</string><key>scene</key><string>"The Devil in the Dark"</string>
+	  <key>character</key><string>McCoy</string><key>quotation</key><string>He's dead, Jim</string></dict>
+	<dict><key>qid</key><string>0e657e096361a0f2f5fd685062aa1406f4d0e27c</string><key>act</key><string>stardate 5906.4</string><key>scene</key><string>"The Savage Curtain"</string>
+	  <key>character</key><string>Col. Green</string><key>quotation</key><string>History tends to exaggerate.</string></dict>
+	<dict><key>qid</key><string>2af6c29ac8e834697113806bd51c014b386bff79</string><key>act</key><string>stardate 5725.6</string><key>scene</key><string>"The Lights of Zetar"</string>
+	  <key>character</key><string>Spock</string><key>quotation</key><string>Humans do claim a great deal for that particular emotion (love).</string></dict>
+	<dict><key>qid</key><string>8a57e3afd728ecd8805a18da801178a4badaa22f</string><key>act</key><string>stardate 3198.9</string><key>scene</key><string>"Errand of Mercy"</string>
+	  <key>character</key><string>Kirk</string><key>quotation</key><string>I'm a soldier, not a diplomat.  I can only tell the truth.</string></dict>
+	<dict><key>qid</key><string>e510022af2ed431104301a0a8f5c2136c9a6f0c2</string><key>act</key><string>stardate 2822.3</string><key>scene</key><string>"The Galileo Seven"</string>
+	  <key>character</key><string>Spock</string><key>quotation</key><string>I'm frequently appalled by the low regard you Earthmen have for life.</string></dict>
+	<dict><key>qid</key><string>c9521e6a9cd5cb78f3b30b58d6262322d0d6a453</string><key>act</key><string>stardate 3141.9</string><key>scene</key><string>"Space Seed"</string>
+	  <key>character</key><string>Kirk</string><key>quotation</key><string>If I can have honesty, it's easier to overlook mistakes.</string></dict>
+	<dict><key>qid</key><string>fd3dde302d4b1c71820338b0c201883ddd85cea4</string><key>act</key><string>stardate 3417.7</string><key>scene</key><string>"This Side of Paradise"</string>
+	  <key>character</key><string>Spock</string><key>quotation</key><string>If there are self-made purgatories, then we all have to live in them.</string></dict>
+	<dict><key>qid</key><string>28525dd4ea0318d2a4ffe01034100357059f2806</string><key>act</key><string>stardate 3219.8</string><key>scene</key><string>"Metamorphosis"</string>
+	  <key>character</key><string>Zefrem Cochrane</string><key>quotation</key><string>Immortality consists largely of boredom.</string></dict>
+	<dict><key>qid</key><string>e74fe7dd5054b7c3dce83ecf4447d0ba9a6e7ced</string><key>act</key><string>stardate 3615.4</string><key>scene</key><string>"Wolf in the Fold"</string>
+	  <key>character</key><string>Spock</string><key>quotation</key><string>In the strict scientific sense we all feed on death, evenvegetarians.</string></dict>
+	<dict><key>qid</key><string>3c1f6ab93627acbe9ff7322bcc53d0e6f71206cd</string><key>act</key><string>stardate 3141.9</string><key>scene</key><string>"Space Seed"</string>
+	  <key>character</key><string>Spock</string><key>quotation</key><string>Insufficient facts always invite danger.</string></dict>
+	<dict><key>qid</key><string>ec0ecc50b718246caaf8e08652797b02e318b293</string><key>act</key><string>stardate 3468.1</string><key>scene</key><string>"Who Mourns for Adonais?"</string>
+	  <key>character</key><string>Spock</string><key>quotation</key><string>Insults are effective only where emotion is present.</string></dict>
+	<dict><key>qid</key><string>27d47f360c3546ff4249744e0aeadc5e75746716</string><key>act</key><string>stardate 3620.7</string><key>scene</key><string>"Obsession"</string>
+	  <key>character</key><string>Kirk</string><key>quotation</key><string>Intuition, however illogical, is recognized as a command prerogative.</string></dict>
+	<dict><key>qid</key><string>695a898f43c737718d6a4a4090701e4d76aef788</string><key>act</key><string>stardate 5476.4.</string><key>scene</key><string>"For the World is Hollow and I have Touchedthe Sky"</string>
+	  <key>character</key><string>Natira</string><key>quotation</key><string>Is truth not truth for all?</string></dict>
+	<dict><key>qid</key><string>c2d0baa71635bdc405d2873a273b57e08feb6b4c</string><key>act</key><string>stardate 2822.3</string><key>scene</key><string>"The Galileo Seven"</string>
+	  <key>character</key><string>Spock</string><key>quotation</key><string>It is more rational to sacrifice one life than six.</string></dict>
+	<dict><key>qid</key><string>78da6b10b03494dc109679de6b58c05e961a9bd6</string><key>act</key><string>Mudd"</string><key>scene</key><string>"I</string>
+	  <key>character</key><string>Alice #1</string><key>quotation</key><string>It is necessary to have purpose.</string></dict>
+	<dict><key>qid</key><string>a78842c1a12736ab4fa9039f985e8bce04cdbad4</string><key>act</key><string>stardate 5027.3</string><key>scene</key><string>"The Enterprise" Incident"</string>
+	  <key>character</key><string>Spock</string><key>quotation</key><string>It would be illogical to assume that all conditions remain stable</string></dict>
+	<dict><key>qid</key><string>9769abd0ef769df4b177fb81cb58ef52b402012a</string><key>act</key><string>stardate 3842.4</string><key>scene</key><string>"Journey to Babel"</string>
+	  <key>character</key><string>Spock</string><key>quotation</key><string>It would be illogical to kill without reason</string></dict>
+	<dict><key>qid</key><string>cc9664da0803a25ca5d8414b25e98d8599018740</string><key>act</key><string>stardate 5906.5</string><key>scene</key><string>"The Savage Curtain"</string>
+	  <key>character</key><string>Yarnek of Excalbia</string><key>quotation</key><string>It would seem that evil retreats when forcibly confronted</string></dict>
+	<dict><key>qid</key><string>5aceb9df0fb28872eb1088e2cb85938c3a748c1a</string><key>act</key><string>stardate 4211.8</string><key>scene</key><string>"A Private Little War"</string>
+	  <key>character</key><string>McCoy</string><key>quotation</key><string>Killing is stupid; useless!</string></dict>
+	<dict><key>qid</key><string>fc4478fd5e209df1b50ef75e42ebebe416fbbb71</string><key>act</key><string>stardate unknown</string><key>scene</key><string>"That Which Survives"</string>
+	  <key>character</key><string>Losira</string><key>quotation</key><string>Killing is wrong.</string></dict>
+	<dict><key>qid</key><string>b68101860df79465678dd1f4c7b9128488271776</string><key>act</key><string>Mudd"</string><key>scene</key><string>"I</string>
+	  <key>character</key><string>Harry Mudd</string><key>quotation</key><string>Knowledge, sir, should be free to all!</string></dict>
+	<dict><key>qid</key><string>287c991246aac501e67850fb5d9e03acdd802fdb</string><key>act</key><string>stardate 3157.4</string><key>scene</key><string>"The Return of the Archons"</string>
+	  <key>character</key><string>A Beta 3-oid</string><key>quotation</key><string>Landru! Guide us!</string></dict>
+	<dict><key>qid</key><string>25c947e28644d15997699168aedb545479f6b8bb</string><key>act</key><string>stardate 1709.2</string><key>scene</key><string>"Balance of Terror"</string>
+	  <key>character</key><string>Kirk</string><key>quotation</key><string>Leave bigotry in your quarters; there's no room for it on the bridge.</string></dict>
+	<dict><key>qid</key><string>c513c615399b62521886c398360ba38165693272</string><key>act</key><string>stardate 3372.7</string><key>scene</key><string>"Amok Time"</string>
+	  <key>character</key><string>Spock</string><key>quotation</key><string>Live long and prosper.</string></dict>
+	<dict><key>qid</key><string>998500ab8ed83e9ed672b6554272c49b2ff02513</string><key>act</key><string>stardate unknown</string><key>scene</key><string>"The City on the Edge of Forever"</string>
+	  <key>character</key><string>Edith Keeler</string><key>quotation</key><string>Lots of people drink from the wrong bottle sometimes.</string></dict>
+	<dict><key>qid</key><string>dbf4933bf1b644a0dd42186b4156708fe32ce457</string><key>act</key><string>stardate 3220.3</string><key>scene</key><string>"Metamorphosis"</string>
+	  <key>character</key><string>Kirk</string><key>quotation</key><string>Love sometimes expresses itself in sacrifice.</string></dict>
+	<dict><key>qid</key><string>b7d6d8738dbc4521d1b7629a6755c42d3785ed77</string><key>act</key><string>stardate 3088.7</string><key>scene</key><string>"The Alternative Factor"</string>
+	  <key>character</key><string>Spock</string><key>quotation</key><string>Madness has no purpose.  Or reason.  But it may have a goal.</string></dict>
+	<dict><key>qid</key><string>71bd40ca9198730d756ac33f2aa039b9420231fb</string><key>act</key><string>stardate 5832.3</string><key>scene</key><string>"The Way to Eden"</string>
+	  <key>character</key><string>Spock</string><key>quotation</key><string>Many Myths are based on truth</string></dict>
+	<dict><key>qid</key><string>ebb279d99bb913e2bcf7a6d3f6663075295c53f6</string><key>act</key><string>stardate 5906.4</string><key>scene</key><string>"The Savage Curtain"</string>
+	  <key>character</key><string>Col. Green</string><key>quotation</key><string>Men don't talk peace unless they're ready to back it up with war.</string></dict>
+	<dict><key>qid</key><string>7686350f3761ad9661d260493a1809f0aa979fa1</string><key>act</key><string>stardate 5906.5</string><key>scene</key><string>"The Savage Curtain"</string>
+	  <key>character</key><string>Spock</string><key>quotation</key><string>Men of peace usually are [brave].</string></dict>
+	<dict><key>qid</key><string>4e825a1f58b5dd4b7fd5f5b3f2f3e19e65733f1f</string><key>act</key><string>stardate 1329.8</string><key>scene</key><string>"Mudd's Women"</string>
+	  <key>character</key><string>Harry Mudd</string><key>quotation</key><string>Men will always be men, no matter where they are.</string></dict>
+	<dict><key>qid</key><string>a913ffec0c29e7bcba22dc5fc521e45c56909fe1</string><key>act</key><string>stardate 5027.4</string><key>scene</key><string>"The Enterprise Incident"</string>
+	  <key>character</key><string>Spock</string><key>quotation</key><string>Military secrets are the most fleeting of all.</string></dict>
+	<dict><key>qid</key><string>784560f71d52eed2482b3a6aaddcc90c327c0bb7</string><key>act</key><string>stardate 5029.5</string><key>scene</key><string>"And The Children Shall Lead"</string>
+	  <key>character</key><string>Kirk</string><key>quotation</key><string>Most legends have their basis in facts.</string></dict>
+	<dict><key>qid</key><string>ecdb5bca754dbceecf7dcd029247a6666954dc8d</string><key>act</key><string>stardate 4731.3</string><key>scene</key><string>"The Ultimate Computer"</string>
+	  <key>character</key><string>M-5 Computer</string><key>quotation</key><string>Murder is contrary to the laws of man and God.</string></dict>
+	<dict><key>qid</key><string>e0b12d1dfbc1e18afd6dca620ba43bc0333db589</string><key>act</key><string>stardate 2713.6</string><key>scene</key><string>"Miri"</string>
+	  <key>character</key><string>Kirk</string><key>quotation</key><string>No more blah, blah, blah!</string></dict>
+	<dict><key>qid</key><string>ba8dbca03a759d148db51195f36b146eabbac8d7</string><key>act</key><string>stardate unknown</string><key>scene</key><string>"Day of the Dove"</string>
+	  <key>character</key><string>Spock</string><key>quotation</key><string>No one can guarantee the actions of another.</string></dict>
+	<dict><key>qid</key><string>55e2e5aac015c00927fa00573cf5ff67f44c93f0</string><key>act</key><string>stardate 5431.6</string><key>scene</key><string>"Spock's Brain"</string>
+	  <key>character</key><string>Kirk</string><key>quotation</key><string>No one may kill a man.  Not for any purpose.  It cannot be condoned.</string></dict>
+	<dict><key>qid</key><string>688890a565ba07f8c9aee737062f0ecdd41321c9</string><key>act</key><string>stardate 3201.7</string><key>scene</key><string>"Errand of Mercy"</string>
+	  <key>character</key><string>Kirk</string><key>quotation</key><string>No one wants war.</string></dict>
+	<dict><key>qid</key><string>59a8a3477fd6fe8686a8d61c9f5708b5592d27ed</string><key>act</key><string>stardate 3479.4</string><key>scene</key><string>"The Deadly Years"</string>
+	  <key>character</key><string>Dr. Janet Wallace</string><key>quotation</key><string>No problem is insoluble.</string></dict>
+	<dict><key>qid</key><string>1367d0b0d6c74a6de589ffb8a3b9928853524d3a</string><key>act</key><string>stardate 3219.8</string><key>scene</key><string>"Metamorphosis"</string>
+	  <key>character</key><string>Kirk</string><key>quotation</key><string>Not one hundred percent efficient, of course ... but nothing ever is.</string></dict>
+	<dict><key>qid</key><string>2ae233ad21ff6617564bf6fa51019269b2713c76</string><key>act</key><string>stardate 4770.3.</string><key>scene</key><string>"Return to Tomorrow"</string>
+	  <key>character</key><string>Thalassa (in Anne Mulhall's body)</string><key>quotation</key><string>Oblivion together does not frighten me, beloved.</string></dict>
+	<dict><key>qid</key><string>8138352bbd78bc57a770c9b726bd1bbbdd20d0bf</string><key>act</key><string>stardate 3842.4</string><key>scene</key><string>"Journey to Babel"</string>
+	  <key>character</key><string>Sarek</string><key>quotation</key><string>One does not thank logic.</string></dict>
+	<dict><key>qid</key><string>818ce046d461f251a3c89fc9a46f6ad7513fd20f</string><key>act</key><string>stardate unknown</string><key>scene</key><string>"Day of the Dove"</string>
+	  <key>character</key><string>Kank the Klingon</string><key>quotation</key><string>Only a fool fights in a burning house.</string></dict>
+	<dict><key>qid</key><string>8ae36a44b51ccb310037b73e4d4b75b15ea80f84</string><key>act</key><string>"Bread and Circuses"</string><key>scene</key><string>the Son Worshiper</string>
+	  <key>character</key><string>Septimus</string><key>quotation</key><string>Our way is peace.</string></dict>
+	<dict><key>qid</key><string>457effa2f771f2c774fc9a1ac7ed362f5dafd30b</string><key>act</key><string>Annihilate!"</string><key>scene</key><string>"Operation</string>
+	  <key>character</key><string>Spock</string><key>quotation</key><string>Pain is a thing of the mind.  The mind can be controlled.</string></dict>
+	<dict><key>qid</key><string>6b242dfc0c00e67042643b3c282b3cf0cd09e5c7</string><key>act</key><string>stardate unknown</string><key>scene</key><string>"The City on the Edge of Forever"</string>
+	  <key>character</key><string>Kirk</string><key>quotation</key><string>Peace was the way.</string></dict>
+	<dict><key>qid</key><string>d48c1c2f367455ecc1740e8158f0986475e2f96d</string><key>act</key><string>stardate 1709.2</string><key>scene</key><string>"Balance of Terror"</string>
+	  <key>character</key><string>The Centurion</string><key>quotation</key><string>Power is danger.</string></dict>
+	<dict><key>qid</key><string>7ceab340710f76f98658e7c14186f8690d09b7e6</string><key>act</key><string>stardate unknown</string><key>scene</key><string>"The City On the Edge of Forever"</string>
+	  <key>character</key><string>Edith Keeler</string><key>quotation</key><string>Prepare for tomorrow, get ready.</string></dict>
+	<dict><key>qid</key><string>d9f469582ea9ba23ceb3dac94703960283163ea5</string><key>act</key><string>stardate 2822.3</string><key>scene</key><string>"The Galileo Seven"</string>
+	  <key>character</key><string>McCoy</string><key>quotation</key><string>Respect is a rational process</string></dict>
+	<dict><key>qid</key><string>5dfed87231b5714a493372e9785572c672f90b63</string><key>act</key><string>stardate 3046.2</string><key>scene</key><string>"Arena"</string>
+	  <key>character</key><string>The Gorn</string><key>quotation</key><string>Schshschshchsch.</string></dict>
+	<dict><key>qid</key><string>94ace23ed708d1e86a664b708f7f51c8d7def41b</string><key>act</key><string>stardate 3193.9</string><key>scene</key><string>"A Taste of Armageddon"</string>
+	  <key>character</key><string>Kirk</string><key>quotation</key><string>Sometimes a feeling is all we humans have to go on.</string></dict>
+	<dict><key>qid</key><string>c2262e4daf1b86e3d83bd5dee1c986220b2dca2d</string><key>act</key><string>stardate 3142.8</string><key>scene</key><string>"Space Seed"</string>
+	  <key>character</key><string>Khan Noonian Singh</string><key>quotation</key><string>Suffocating together ... would create heroic camaraderie.</string></dict>
+	<dict><key>qid</key><string>9c9c8cdad1821600fbf69d20717391b299322c35</string><key>act</key><string>stardate 3141.9</string><key>scene</key><string>"Space Seed"</string>
+	  <key>character</key><string>Spock</string><key>quotation</key><string>Superior ability breeds superior ambition.</string></dict>
+	<dict><key>qid</key><string>c507329e3202ca7e47475895cad1b4b1a67ef5aa</string><key>act</key><string>stardate 3541.9</string><key>scene</key><string>"The Changeling"</string>
+	  <key>character</key><string>Spock and Nomad</string><key>quotation</key><string>"That unit is a woman.""A mass of conflicting impulses."</string></dict>
+	<dict><key>qid</key><string>c12bc24d641632ec8f532d0669fd29bc566ed348</string><key>act</key><string>stardate 3479.4</string><key>scene</key><string>"The Deadly Years"</string>
+	  <key>character</key><string>Dr. Janet Wallace</string><key>quotation</key><string>The heart is not a logical organ.</string></dict>
+	<dict><key>qid</key><string>76ba8e5d825afc5cb245e3b741bafc3f731c51a8</string><key>act</key><string>stardate 3219.8</string><key>scene</key><string>"Metamorphosis"</string>
+	  <key>character</key><string>Kirk</string><key>quotation</key><string>The idea of male and female are universal constants.</string></dict>
+	<dict><key>qid</key><string>6cbf521321d7f97b4751645fc66e3a4753337cc8</string><key>act</key><string>stardate 3497.2</string><key>scene</key><string>"Friday's Child"</string>
+	  <key>character</key><string>Kras the Klingon</string><key>quotation</key><string>The sight of death frightens them [Earthers].</string></dict>
+	<dict><key>qid</key><string>86c0ef0f88f29883d7775c49f5df6d0aa6d3e0dc</string><key>act</key><string>stardate 4842.6</string><key>scene</key><string>"The Paradise Syndrome"</string>
+	  <key>character</key><string>Miramanee</string><key>quotation</key><string>The sooner our happiness together begins, the longer it will last.</string></dict>
+	<dict><key>qid</key><string>f707bfbceff6a96fefbaf4e26781eb0812b26397</string><key>act</key><string>stardate 2822.3</string><key>scene</key><string>"The Galileo Seven"</string>
+	  <key>character</key><string>Spock</string><key>quotation</key><string>There are always alternatives.</string></dict>
+	<dict><key>qid</key><string>9022bc4ac538474ecea1d2c4849ae1315f58f8e9</string><key>act</key><string>stardate 4929.4</string><key>scene</key><string>"The Ultimate Computer"</string>
+	  <key>character</key><string>Kirk</string><key>quotation</key><string>There are certain things men must do to remain men.</string></dict>
+	<dict><key>qid</key><string>c12ec7d6aa0c3908e5037216b92f6c984739d94e</string><key>act</key><string>stardate 3201.7</string><key>scene</key><string>"Errand of Mercy"</string>
+	  <key>character</key><string>Kirk</string><key>quotation</key><string>There are some things worth dying for.</string></dict>
+	<dict><key>qid</key><string>976b8ec5ad63d4dd4ffb939b4accb545ae2ba534</string><key>act</key><string>stardate 3193.9</string><key>scene</key><string>"A Taste of Armageddon"</string>
+	  <key>character</key><string>Spock</string><key>quotation</key><string>There is a multi-legged creature crawling on your shoulder.</string></dict>
+	<dict><key>qid</key><string>5a9925ce90a3ce3d395d0ad28becb10744fdf86a</string><key>act</key><string>stardate 3468.1</string><key>scene</key><string>"Who Mourns for Adonais?"</string>
+	  <key>character</key><string>Apollo</string><key>quotation</key><string>There is an order of things in this universe.</string></dict>
+	<dict><key>qid</key><string>83c373166005bf5a4859689ec6da0cb4e3317f6b</string><key>act</key><string>stardate unknown.</string><key>scene</key><string>"The Menagerie" ("The Cage")</string>
+	  <key>character</key><string>Captain Christopher Pike</string><key>quotation</key><string>There's a way out of any cage.</string></dict>
+	<dict><key>qid</key><string>24b6d5a4b15d8ae7c156ac3c771ddf99c2d112b3</string><key>act</key><string>stardate unknown</string><key>scene</key><string>"Day of the Dove"</string>
+	  <key>character</key><string>Kirk</string><key>quotation</key><string>There's another way to survive.  Mutual trust, and help.</string></dict>
+	<dict><key>qid</key><string>30a280449c7d36adc5f6471cadcb9f41d6e7bb0c</string><key>act</key><string>stardate 3134.0</string><key>scene</key><string>"The City on the Edge of Forever"</string>
+	  <key>character</key><string>Spock</string><key>quotation</key><string>Time is fluid ... like a river with currents, eddies, backwash.</string></dict>
+	<dict><key>qid</key><string>45fedd69ea660da278732cb93e2dca22a6b02de5</string><key>act</key><string>stardate 3498.9</string><key>scene</key><string>"Friday's Child"</string>
+	  <key>character</key><string>Eleen the Capellan</string><key>quotation</key><string>To live is always desirable.</string></dict>
+	<dict><key>qid</key><string>09567b2a33d78e2f9aedd11dbef16307117abc42</string><key>act</key><string>stardate 4525.6</string><key>scene</key><string>"The Trouble with Tribbles"</string>
+	  <key>character</key><string>Kirk</string><key>quotation</key><string>Too much of anything, even love, isn't necessarily a good thing.</string></dict>
+	<dict><key>qid</key><string>826d0bc7e90211f281eb0c006ac07ffb14613696</string><key>act</key><string>stardate 2822.3</string><key>scene</key><string>"The Galileo Seven"</string>
+	  <key>character</key><string>Spock</string><key>quotation</key><string>Totally illogical, there was no chance.</string></dict>
+	<dict><key>qid</key><string>460aa89be3c662cf6a12e823065892525d34d550</string><key>act</key><string>stardate 5818.4</string><key>scene</key><string>"The Cloud Minders"</string>
+	  <key>character</key><string>Spock</string><key>quotation</key><string>Violence in reality is quite different from theory.</string></dict>
+	<dict><key>qid</key><string>3940f2e9b56b48552652d38185f45264259ed016</string><key>act</key><string>stardate 3499.1</string><key>scene</key><string>"Friday's Child"</string>
+	  <key>character</key><string>Spock</string><key>quotation</key><string>Virtue is a relative term.</string></dict>
+	<dict><key>qid</key><string>f415bbd46a452a3e7cc5e15ec436d39fa223433e</string><key>act</key><string>stardate 3842.3</string><key>scene</key><string>"Journey to Babel"</string>
+	  <key>character</key><string>Amanda</string><key>quotation</key><string>Vulcans believe peace should not depend on force.</string></dict>
+	<dict><key>qid</key><string>45c88f13a98aac634066122db06a0f40eb453ae4</string><key>act</key><string>stardate 3842.4</string><key>scene</key><string>"Journey to Babel"</string>
+	  <key>character</key><string>Spock</string><key>quotation</key><string>Vulcans do not approve of violence.</string></dict>
+	<dict><key>qid</key><string>e133255714665a5de7658aa8a2a7846ea6234afc</string><key>act</key><string>stardate 4202.1</string><key>scene</key><string>"The Doomsday Machine"</string>
+	  <key>character</key><string>Spock</string><key>quotation</key><string>Vulcans never bluff.</string></dict>
+	<dict><key>qid</key><string>0c4a09e907b8ba18c0ba6571ad0a5d09ede75254</string><key>act</key><string>stardate 4768.3</string><key>scene</key><string>"Return to Tomorrow"</string>
+	  <key>character</key><string>McCoy</string><key>quotation</key><string>Vulcans worship peace above all.</string></dict>
+	<dict><key>qid</key><string>df88f7a571e7ee5491d6cf0ff2047b5808d2e727</string><key>act</key><string>stardate 3113.2</string><key>scene</key><string>"Tomorrow is Yesterday"</string>
+	  <key>character</key><string>Mr. Atoz</string><key>quotation</key><string>Wait!  You have not been prepared!</string></dict>
+	<dict><key>qid</key><string>0dff8a19b0432a25a8ff519cdc691c01a805b540</string><key>act</key><string>stardate 1709.2</string><key>scene</key><string>"Balance of Terror"</string>
+	  <key>character</key><string>McCoy</string><key>quotation</key><string>War is never imperative.</string></dict>
+	<dict><key>qid</key><string>baf63af4af0c6eaebbd61587ad4a7ff228dd7e7e</string><key>act</key><string>stardate 4211.8</string><key>scene</key><string>"A Private Little War"</string>
+	  <key>character</key><string>Kirk</string><key>quotation</key><string>War isn't a good life, but it's life.</string></dict>
+	<dict><key>qid</key><string>62a6162ad3540c32bee2214157ddbe882443fa2d</string><key>act</key><string>stardate 1514.2</string><key>scene</key><string>"The Corbomite Maneuver"</string>
+	  <key>character</key><string>Bailey</string><key>quotation</key><string>We have phasers, I vote we blast 'em!</string></dict>
+	<dict><key>qid</key><string>1db55b7bd777859b6174302674d18e1f01454cef</string><key>act</key><string>stardate 5710.5</string><key>scene</key><string>"Wink of An Eye"</string>
+	  <key>character</key><string>Deela and Kirk</string><key>quotation</key><string>"We have the right to survive!""Not be killing others."</string></dict>
+	<dict><key>qid</key><string>40376069cd6c18af5392a7be7b189a11459bf8dd</string><key>act</key><string>stardate unknown</string><key>scene</key><string>"That Which Survives"</string>
+	  <key>character</key><string>Sulu and Kirk</string><key>quotation</key><string>"What terrible way to die.""There are no good ways."</string></dict>
+	<dict><key>qid</key><string>50971b7a0df33b6fdfa1a503669932fc2733d724</string><key>act</key><string>stardate 2715.1</string><key>scene</key><string>"Dagger of the Mind"</string>
+	  <key>character</key><string>Spock</string><key>quotation</key><string>Where there's no emotion, there's no motive for violence.</string></dict>
+	<dict><key>qid</key><string>b34aaf0e8c7d4ed1273b60d0425f7427679d2393</string><key>act</key><string>stardate unknown</string><key>scene</key><string>"Tomorrow is Yesterday"</string>
+	  <key>character</key><string>Hag</string><key>quotation</key><string>Witch!  Witch!  They'll burn ya!</string></dict>
+	<dict><key>qid</key><string>c7e3ed07e2328e3cdec8ea5c40697bd271589c60</string><key>act</key><string>stardate 5029.5</string><key>scene</key><string>"And The Children Shall Lead"</string>
+	  <key>character</key><string>Spock</string><key>quotation</key><string>Without followers, evil cannot spread.</string></dict>
+	<dict><key>qid</key><string>c794d0066fc2d4956ee513088529175a21469cbd</string><key>act</key><string>stardate 3157.4</string><key>scene</key><string>"The return of the Archons"</string>
+	  <key>character</key><string>Kirk</string><key>quotation</key><string>Without freedom of choice there is no creativity.</string></dict>
+	<dict><key>qid</key><string>0679a5db89800db791ca2b46352e90d9a871efa9</string><key>act</key><string>stardate 1312.9.</string><key>scene</key><string>"Where No Man Has Gone Before"</string>
+	  <key>character</key><string>Dr. Elizabeth Dehaver</string><key>quotation</key><string>Women professionals do tend to over-compensate.</string></dict>
+	<dict><key>qid</key><string>bd7e6498e09859ccb7f35220e31ff2010d3859d8</string><key>act</key><string>stardate unknown</string><key>scene</key><string>"The Omega Glory"</string>
+	  <key>character</key><string>Sirah the Yang</string><key>quotation</key><string>Yes, it is written.  Good shall always destroy evil.</string></dict>
+	<dict><key>qid</key><string>7bde6d3380ded4a781614d876f045fc0799bbc19</string><key>act</key><string>Mudd"</string><key>scene</key><string>"I</string>
+	  <key>character</key><string>McCoy</string><key>quotation</key><string>You can't evaluate a man by logic alone.</string></dict>
+	<dict><key>qid</key><string>e7b968ed3b12e31133e0726d87478db38e27b168</string><key>act</key><string>stardate 3134.0</string><key>scene</key><string>"The City on the Edge of Forever"</string>
+	  <key>character</key><string>McCoy</string><key>quotation</key><string>You!  What PLANET is this!</string></dict>
+	<dict><key>qid</key><string>d92cfa6c1949d46f85df4a0ca9a837e3fbf56aa1</string><key>act</key><string>stardate 3372.7</string><key>scene</key><string>"Amok Time"</string>
+	  <key>character</key><string>McCoy</string><key>quotation</key><string>You're dead, Jim.</string></dict>
+	<dict><key>qid</key><string>7f1ee0c02c33ee850fc828bf7e858e9fffe2388e</string><key>act</key><string>stardate unknown</string><key>scene</key><string>"The Tholian Web"</string>
+	  <key>character</key><string>McCoy</string><key>quotation</key><string>You're dead, Jim.</string></dict>
+	<dict><key>qid</key><string>c1b7e6d72dba18805a54ff1414b468110f548d17</string><key>act</key><string>stardate unknown</string><key>scene</key><string>"The Enemy Within"</string>
+	  <key>character</key><string>Kirk to Yeoman Rand</string><key>quotation</key><string>You're too beautiful to ignore.  Too much woman.</string></dict>
+	<dict><key>qid</key><string>5c53550adff1564ea032d0f520d0336ccc633fd5</string><key>act</key><string>stardate 5928.5.</string><key>scene</key><string>"Turnabout Intruder"</string>
+	  <key>character</key><string>Dr. Janice Lester (in Kirk's body)</string><key>quotation</key><string>Youth doesn't excuse everything.</string></dict>
+    </array></dict>
+</array></plist>

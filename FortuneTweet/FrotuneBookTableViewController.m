@@ -13,6 +13,7 @@
 #import "ManagedDocumentHelper.h"
 
 #import "FortuneBook.h"
+#import "FortuneBook+Plist.h"
 
 @interface FrotuneBookTableViewController ()
 @end
@@ -21,6 +22,40 @@
 @synthesize locationManager=_locationManager;
 @synthesize accountStore=_accountStore;
 @synthesize accounts=_accounts;
+
+- (void) importDefaultBook
+{
+    NSURL *url = [[NSBundle mainBundle] URLForResource:@"startrek" withExtension:@"plist"];
+    NSArray *playDictionariesArray = [[NSArray alloc] initWithContentsOfURL:url];
+    
+    UIManagedDocument *sharedDocument = [ManagedDocumentHelper sharedManagedDocumentFortuneTweet];
+    for (NSDictionary *playDictionary in playDictionariesArray) {
+        [sharedDocument.managedObjectContext performBlock:^{
+            [FortuneBook bookFromPlist:playDictionary inManagedObjectContext:sharedDocument.managedObjectContext];
+            [sharedDocument saveToURL:sharedDocument.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:NULL];
+        }];
+    }
+    /*
+    for (NSDictionary *playDictionary in playDictionariesArray) {
+        NSString *titleBook = [playDictionary objectForKey:@"playName"];
+        NSArray *dictQuot = [playDictionary objectForKey:@"quotations"];
+        NSLog(@"BOOK=%@",titleBook);
+        for (NSDictionary *dict in dictQuot) {
+            // @synthesize character, act, scene, quotation;
+            // <dict><key>act</key><string>stardate 3468.1.</string>
+            // <key>scene</key><string>"Who Mourns for Adonais?"</string>
+            // <key>character</key><string>Lt. Carolyn Palamas</string>
+            // <key>quotation</key><string>A father doesn't destroy his children.</string></dict>
+            NSString *act = [dict objectForKey:@"act"];
+            NSString *scene = [dict objectForKey:@"scene"];
+            NSString *character = [dict objectForKey:@"character"];
+            NSString *quotation = [dict objectForKey:@"quotation"];
+            NSLog(@"act=%@, scn=%@, chr=%@, qot=%@", act,scene,character,quotation);
+        }
+    }
+     */
+}
+
 
 - (void)setupFetchedResultsController
 {
@@ -41,6 +76,7 @@
         // and will result in callbacks not being received.
         //
          //[[self locationManager] startUpdatingLocation];
+        [self importDefaultBook];
     });
 
 }
