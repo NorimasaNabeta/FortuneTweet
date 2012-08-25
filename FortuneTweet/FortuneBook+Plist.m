@@ -30,9 +30,9 @@
     if (!matches || ([matches count] > 1)) {
         // handle error
     } else if ([matches count] == 0) {
-        NSLog(@"BOOK=%@",bookId);
+        // NSLog(@"BOOK=%@",bookId);
         book = [NSEntityDescription insertNewObjectForEntityForName:COREDATA_ENTITY_NAME inManagedObjectContext:context];
-        book.title = [pList objectForKey:@"playId"];
+        book.title = [pList objectForKey:@"playName"];
         book.bookid = bookId;
         book.rwmode = 0; // the book that loaded from plist is always readonly(0)
 

@@ -9,6 +9,7 @@
 #import "FortuneListTableViewController.h"
 #import "ManagedDocumentHelper.h"
 #import "Fortune.h"
+#import <Twitter/Twitter.h>
 
 @interface FortuneListTableViewController ()
 
@@ -109,6 +110,49 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
+    TWTweetComposeViewController *tweetViewController = [[TWTweetComposeViewController alloc] init];
+    
+    // Set the initial tweet text. See the framework for additional properties that can be set.
+    //[tweetViewController addImage:[UIImage imageNamed:@"iOSDevTips.png"]];
+    //[tweetViewController addURL:[NSURL URLWithString:[NSString stringWithString:@"http:/MobileDeveloperTips.com/"]]];
+    //[tweetViewController setInitialText:@"Tweet from iOS 5 app using the Twitter framework."];
+    //[tweetViewController setInitialText:@"Hello. This is a tweet."];
+    
+    Fortune *fortune = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    NSString *preinput = [NSString stringWithFormat:@"  (%@ -- %@,%@)",
+                          fortune.quotation, fortune.character, fortune.act];
+    [tweetViewController setInitialText:preinput];
+
+    // Create the completion handler block.
+    [tweetViewController setCompletionHandler:^(TWTweetComposeViewControllerResult result) {
+        NSString *output;
+        
+        switch (result) {
+            case TWTweetComposeViewControllerResultCancelled:
+                // The cancel button was tapped.
+                output = @"Tweet cancelled.";
+                break;
+            case TWTweetComposeViewControllerResultDone:
+                // The tweet was sent.
+                output = @"Tweet done.";
+                break;
+            default:
+                break;
+        }
+        // -----
+        // Show alert to see how things went...
+        // UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:title message:msg delegate:self cancelButtonTitle:@"Okay" otherButtonTitles:nil];
+        // [alertView show];
+        // -----
+        
+        // Dismiss the controller
+        [self dismissModalViewControllerAnimated:YES];
+        // Dismiss the tweet composition view controller.
+        [self dismissModalViewControllerAnimated:YES];
+    }];
+    
+    // Present the tweet composition view controller modally.
+    // [self presentModalViewController:tweetViewController animated:YES];
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 

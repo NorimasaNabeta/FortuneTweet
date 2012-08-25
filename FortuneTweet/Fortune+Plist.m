@@ -41,7 +41,7 @@
         //NSString *character = [dict objectForKey:@"character"];
         //NSString *quotation = [dict objectForKey:@"quotation"];
         //NSLog(@"act=%@, scn=%@, chr=%@, qot=%@", act,scene,character,quotation);
-        NSLog(@"id=%@",fortuneid);
+        // NSLog(@"id=%@",fortuneid);
         fort = [NSEntityDescription insertNewObjectForEntityForName:COREDATA_ENTITY_NAME inManagedObjectContext:context];
         fort.fortuneid = [pList objectForKey:@"qid"];
         fort.act = [pList objectForKey:@"act"];

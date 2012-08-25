@@ -132,12 +132,10 @@
         dispatch_async(fetchQ, ^{
             TWRequest *request=[TwitterAPI getListsAll:account];
             [request performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
-                NSLog(@"Result");
                 if ([urlResponse statusCode] == 200) {
                     NSError *jsonError = nil;
                     id jsonResult = [NSJSONSerialization JSONObjectWithData:responseData options:0 error:&jsonError];
                     if (jsonResult != nil) {
-                        NSLog(@"ADD ENTITIES:");
                         // NSLog(@"[%@ %@] received %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), jsonResult);
                         [self fetchListMembers:jsonResult];
                     }
