@@ -7,6 +7,7 @@
 //
 
 #import "TWListTableViewController.h"
+#import "AppDelegate.h"
 #import "TwitterAPI.h"
 #import "TwitterList.h"
 #import "TwitterList+Twitter.h"
@@ -16,12 +17,13 @@
 // #import "UserListTableViewController.h"
 
 @interface TWListTableViewController () // <UserListTableViewControllerDelegate>
-
+@property (nonatomic,strong) NSMutableDictionary *threadList;
 @end
 
 @implementation TWListTableViewController
 @synthesize accountStore=_accountStore;
 @synthesize accounts=_accounts;
+@synthesize threadList=_threadList;
 
 - (ACAccountStore *) accountStore
 {
@@ -202,7 +204,36 @@
     TwitterList *twlist = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = [NSString stringWithFormat:@"%@ [%d]", twlist.title, [twlist.users count]];
     cell.detailTextLabel.text = [NSString stringWithFormat:@"[%@] %@ by %@", twlist.mode, twlist.descriptions, twlist.ownername];
+  
+    id appDelegate = (id)[[UIApplication sharedApplication] delegate];
+    UIImage *image = [[appDelegate imageCache] objectForKey:twlist.ownername];
     
+    // UIImage *image = [UIImage imageWithData:user.profileImageBob];
+    if (image) {
+        // NSLog(@"Hit: %@", account.username);
+        cell.imageView.image = image;
+    }
+    else {
+        NSString *valid = [self.threadList objectForKey:twlist.ownername];
+        if (valid == nil) {
+            [self.threadList setObject:@"ON" forKey:twlist.ownername];
+            ACAccount *account;
+            TWRequest *fetchUserImageRequest = [TwitterAPI getUsersProfileImage:account screenname:twlist.ownername];
+            [fetchUserImageRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+                if ([urlResponse statusCode] == 200) {
+                    UIImage *image = [UIImage imageWithData:responseData];
+                    [[appDelegate imageCache] setObject:image forKey:twlist.ownername];
+                    // NSData *imageBob = UIImagePNGRepresentation(image);
+                    dispatch_sync(dispatch_get_main_queue(), ^{
+                        // user.profileImageBob = imageBob;
+                        [self.threadList removeObjectForKey:twlist.ownername];
+                        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:NO];
+                    });
+                }
+            }];
+        }
+    }
+
     return cell;
 }
 
