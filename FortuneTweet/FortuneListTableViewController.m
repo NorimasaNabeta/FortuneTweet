@@ -15,72 +15,35 @@
 @end
 
 @implementation FortuneListTableViewController
+@synthesize fortunebook=_fortunebook;
 
-@synthesize accountStore=_accountStore;
-@synthesize accounts=_accounts;
-
-- (ACAccountStore *) accountStore
+- (void)setFortunebook:(FortuneBook *)fortunebook
 {
-    if (_accountStore == nil) {
-        _accountStore = [[ACAccountStore alloc] init];
+    if (_fortunebook != fortunebook){
+        _fortunebook = fortunebook;
     }
-    return _accountStore;
+    self.title = [NSString stringWithFormat:@"%@", fortunebook.title];
+    [self setupFetchedResultsController];
+    [self.tableView reloadData];
 }
 
 
 - (void)setupFetchedResultsController // attaches an NSFetchRequest to this UITableViewController
 {
-    UIManagedDocument *sharedDocument = [ManagedDocumentHelper sharedManagedDocumentFortuneTweet];
+    // UIManagedDocument *sharedDocument = [ManagedDocumentHelper sharedManagedDocumentFortuneTweet];
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Fortune"];
-    NSSortDescriptor *sort1 = [NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES
+    NSSortDescriptor *sort1 = [NSSortDescriptor sortDescriptorWithKey:@"character" ascending:YES
                                                              selector:@selector(localizedCaseInsensitiveCompare:)];
-    request.sortDescriptors = [NSArray arrayWithObjects:sort1, nil];
+    NSSortDescriptor *sort2 = [NSSortDescriptor sortDescriptorWithKey:@"act" ascending:YES
+                                                             selector:@selector(localizedCaseInsensitiveCompare:)];
+    request.sortDescriptors = [NSArray arrayWithObjects:sort1, sort2, nil];
     // no predicate because we want ALL the Photographers
     
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
-                                                                        managedObjectContext:sharedDocument.managedObjectContext
-                                                                          sectionNameKeyPath:nil
+                                                                        managedObjectContext:self.fortunebook.managedObjectContext
+                                                                          sectionNameKeyPath:@"character"
                                                                                    cacheName:nil];
 }
-
-- (void)useDocument:(UIManagedDocument*) sharedDocument
-{
-    if (![[NSFileManager defaultManager] fileExistsAtPath:[sharedDocument.fileURL path]]) {
-        NSLog(@"useDocument:New %@", [sharedDocument.fileURL path]);
-        // does not exist on disk, so create it
-        [sharedDocument saveToURL:sharedDocument.fileURL
-                 forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
-                     [self setupFetchedResultsController];
-                 }];
-    } else if (sharedDocument.documentState == UIDocumentStateClosed) {
-        NSLog(@"useDocument:Open %@", [sharedDocument.fileURL path]);
-        // exists on disk, but we need to open it
-        [sharedDocument openWithCompletionHandler:^(BOOL success) {
-            [self setupFetchedResultsController];
-        }];
-    } else if (sharedDocument.documentState == UIDocumentStateNormal) {
-        NSLog(@"useDocument:Ready %@", [sharedDocument.fileURL path]);
-        // already open and ready to use
-        [self setupFetchedResultsController];
-    }
-}
-
-- (void) checkAccount
-{
-    if (_accounts == nil) {
-        ACAccountType *accountTypeTwitter = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
-        [self.accountStore requestAccessToAccountsWithType:accountTypeTwitter
-                                     withCompletionHandler:^(BOOL granted, NSError *error) {
-                                         if(granted) {
-                                             self.accounts = [self.accountStore accountsWithAccountType:accountTypeTwitter];
-                                             [self useDocument:[ManagedDocumentHelper sharedManagedDocumentFortuneTweet]];
-                                         } else {
-                                             NSLog(@"ACCOUNT FAILED OR NOT GRANTED.");
-                                         }
-                                     }];
-    }
-}
-
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -127,8 +90,10 @@
     }
     
     Fortune *fortune = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@", fortune.content];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"[%@] %d", fortune.fortuneid, [fortune.tweets count]];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@", fortune.quotation];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"-- %@ %@%d",
+                                 fortune.act, fortune.scene,
+                                 [fortune.tweets count]];
 
     return cell;
 }

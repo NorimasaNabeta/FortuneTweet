@@ -35,25 +35,6 @@
             [sharedDocument saveToURL:sharedDocument.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:NULL];
         }];
     }
-    /*
-    for (NSDictionary *playDictionary in playDictionariesArray) {
-        NSString *titleBook = [playDictionary objectForKey:@"playName"];
-        NSArray *dictQuot = [playDictionary objectForKey:@"quotations"];
-        NSLog(@"BOOK=%@",titleBook);
-        for (NSDictionary *dict in dictQuot) {
-            // @synthesize character, act, scene, quotation;
-            // <dict><key>act</key><string>stardate 3468.1.</string>
-            // <key>scene</key><string>"Who Mourns for Adonais?"</string>
-            // <key>character</key><string>Lt. Carolyn Palamas</string>
-            // <key>quotation</key><string>A father doesn't destroy his children.</string></dict>
-            NSString *act = [dict objectForKey:@"act"];
-            NSString *scene = [dict objectForKey:@"scene"];
-            NSString *character = [dict objectForKey:@"character"];
-            NSString *quotation = [dict objectForKey:@"quotation"];
-            NSLog(@"act=%@, scn=%@, chr=%@, qot=%@", act,scene,character,quotation);
-        }
-    }
-     */
 }
 
 
@@ -100,7 +81,6 @@
                                          if(granted) {
                                              self.accounts = [self.accountStore accountsWithAccountType:accountTypeTwitter];
                                              UIManagedDocument *sharedDocument = [ManagedDocumentHelper sharedManagedDocumentFortuneTweet];
-                                             /// [self useDocument:sharedDocument];
                                              [ManagedDocumentHelper useDocument:sharedDocument
                                                                      usingBlock: ^(BOOL success){
                                                                          [self setupFetchedResultsController];
@@ -278,4 +258,17 @@
 		// [regionsMapView setRegion:userLocation animated:YES];
 	}
 }
+
+//
+//
+//
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
+    FortuneBook *book = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    if ([segue.destinationViewController respondsToSelector:@selector(setFortunebook:)]) {
+        [segue.destinationViewController performSelector:@selector(setFortunebook:) withObject:book];
+    }
+}
+
 @end

@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <Accounts/Accounts.h>
 #import "CoreDataTableViewController.h"
+#import "FortuneBook.h"
+#import "Fortune.h"
 
 @interface FortuneListTableViewController : CoreDataTableViewController
 @property (strong, nonatomic) ACAccountStore *accountStore;
 @property (strong, nonatomic) NSArray *accounts;
-
+@property (strong, nonatomic) FortuneBook *fortunebook;
 @end
