@@ -45,29 +45,6 @@
 
 }
 
-- (void)useDocument:(UIManagedDocument*) sharedDocument
-{
-    if (![[NSFileManager defaultManager] fileExistsAtPath:[sharedDocument.fileURL path]]) {
-        NSLog(@"useDocument:New %@", [sharedDocument.fileURL path]);
-        // does not exist on disk, so create it
-        [sharedDocument saveToURL:sharedDocument.fileURL
-                 forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
-                     [self setupFetchedResultsController];
-                     // [self fetchTwitterDataIntoDocument:sharedDocument];
-                 }];
-    } else if (sharedDocument.documentState == UIDocumentStateClosed) {
-        NSLog(@"useDocument:Open %@", [sharedDocument.fileURL path]);
-        // exists on disk, but we need to open it
-        [sharedDocument openWithCompletionHandler:^(BOOL success) {
-            [self setupFetchedResultsController];
-        }];
-    } else if (sharedDocument.documentState == UIDocumentStateNormal) {
-        NSLog(@"useDocument:Ready %@", [sharedDocument.fileURL path]);
-        // already open and ready to use
-        [self setupFetchedResultsController];
-    }
-}
-
 - (ACAccountStore *) accountStore
 {
     if (_accountStore == nil) {
@@ -86,8 +63,15 @@
                                      withCompletionHandler:^(BOOL granted, NSError *error) {
                                          if(granted) {
                                              self.accounts = [self.accountStore accountsWithAccountType:accountTypeTwitter];
-                                             [self useDocument:[ManagedDocumentHelper sharedManagedDocumentFortuneTweet]];
+                                             UIManagedDocument *sharedDocument = [ManagedDocumentHelper sharedManagedDocumentFortuneTweet];
+                                             /// [self useDocument:sharedDocument];
+                                             [ManagedDocumentHelper useDocument:sharedDocument
+                                                                     usingBlock: ^(BOOL success){
+                                                                         [self setupFetchedResultsController];
+                                                                     }
+                                                                   debugComment:@"BK"];
 
+                                             
                                          } else {
                                              NSLog(@"ACCOUNT FAILED OR NOT GRANTED.");
                                          }

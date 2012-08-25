@@ -25,4 +25,32 @@
     });
     return _fortuneDatabase;
 }
+
+//
+//
+//
++ (void) useDocument:(UIManagedDocument*) document usingBlock:(void (^)(BOOL))block debugComment:(NSString*)comment
+{
+    if (![[NSFileManager defaultManager] fileExistsAtPath:[document.fileURL path]]) {
+        NSLog(@"useDocument:New %@ %@", comment, [document.fileURL path]);
+        // does not exist on disk, so create it
+        [document saveToURL:document.fileURL
+           forSaveOperation:UIDocumentSaveForCreating completionHandler:block];
+    } else if (document.documentState == UIDocumentStateClosed) {
+        NSLog(@"useDocument:Open %@ %@", comment, [document.fileURL path]);
+        // exists on disk, but we need to open it
+        [document openWithCompletionHandler:block ];
+    } else if (document.documentState == UIDocumentStateNormal) {
+        NSLog(@"useDocument:Ready %@ %@", comment, [document.fileURL path]);
+        // already open and ready to use
+        block(YES);
+    } else {
+        BOOL success = YES;
+        block(success);
+    }
+}
+
+
+
+
 @end

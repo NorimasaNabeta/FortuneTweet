@@ -48,33 +48,6 @@
     
 }
 
-- (void)useDocument:(UIManagedDocument*) sharedDocument
-{
-    //NSLog(@"useDocument: %@", [self.fortuneDatabase.fileURL path]);
-    if (![[NSFileManager defaultManager] fileExistsAtPath:[sharedDocument.fileURL path]]) {
-        // does not exist on disk, so create it
-        [sharedDocument saveToURL:sharedDocument.fileURL
-                       forSaveOperation:UIDocumentSaveForCreating completionHandler:^(BOOL success) {
-                           NSLog(@"[H]New: useDocument %@", [sharedDocument.fileURL path]);
-                           [self setupFetchedResultsController];
-                           //[self locationDataIntoDocument:self.fortuneDatabase];
-                           
-                       }];
-    } else if (sharedDocument.documentState == UIDocumentStateClosed) {
-        // exists on disk, but we need to open it
-        [sharedDocument openWithCompletionHandler:^(BOOL success) {
-            NSLog(@"[H]Open: useDocument %@", [sharedDocument.fileURL path]);
-            [self setupFetchedResultsController];
-            //[self locationDataIntoDocument:self.fortuneDatabase];
-        }];
-    } else if (sharedDocument.documentState == UIDocumentStateNormal) {
-        // already open and ready to use
-        NSLog(@"[H]Ready: useDocument %@", [sharedDocument.fileURL path]);
-        [self setupFetchedResultsController];
-        //[self locationDataIntoDocument:self.fortuneDatabase];
-    }
-}
-
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -112,7 +85,12 @@
                                      withCompletionHandler:^(BOOL granted, NSError *error) {
                                          if(granted) {
                                              self.accounts = [self.accountStore accountsWithAccountType:accountTypeTwitter];
-                                             [self useDocument:[ManagedDocumentHelper sharedManagedDocumentFortuneTweet]];
+                                             UIManagedDocument *sharedDocument = [ManagedDocumentHelper sharedManagedDocumentFortuneTweet];
+                                             /// [self useDocument:sharedDocument];
+                                             [ManagedDocumentHelper useDocument:sharedDocument
+                                                                     usingBlock: ^(BOOL success){
+                                                                         [self setupFetchedResultsController];}
+                                                                   debugComment:@"HT"];
                                          } else {
                                              NSLog(@"ACCOUNT FAILED OR NOT GRANTED.");
                                          }
