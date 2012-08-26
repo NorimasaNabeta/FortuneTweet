@@ -96,7 +96,7 @@
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
-    NSLog(@"Cell %d", indexPath.row);
+    // NSLog(@"Cell %d", indexPath.row);
     // [self performSegueWithIdentifier:@"Setting Doc View" sender:self];
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }

@@ -73,6 +73,7 @@
 		F28AE78115E8BAEF00623997 /* FortuneBook.m in Sources */ = {isa = PBXBuildFile; fileRef = F28AE78015E8BAEE00623997 /* FortuneBook.m */; };
 		F28AE78415E8BAEF00623997 /* TwitterUser.m in Sources */ = {isa = PBXBuildFile; fileRef = F28AE78315E8BAEF00623997 /* TwitterUser.m */; };
 		F28AE79715E8F3AF00623997 /* SectionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F28AE79615E8F3AE00623997 /* SectionInfo.m */; };
+		F2D3567515EA65A400D22055 /* FortuneListTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D3567415EA65A400D22055 /* FortuneListTableCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -183,6 +184,8 @@
 		F28AE78315E8BAEF00623997 /* TwitterUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterUser.m; sourceTree = "<group>"; };
 		F28AE79515E8F3AD00623997 /* SectionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectionInfo.h; sourceTree = "<group>"; };
 		F28AE79615E8F3AE00623997 /* SectionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectionInfo.m; sourceTree = "<group>"; };
+		F2D3567315EA65A400D22055 /* FortuneListTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FortuneListTableCell.h; sourceTree = "<group>"; };
+		F2D3567415EA65A400D22055 /* FortuneListTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FortuneListTableCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -268,6 +271,8 @@
 				F2029F6815E607E200A4E0FE /* FortuneListTableViewController.h */,
 				F2029F6915E607E200A4E0FE /* FortuneListTableViewController.m */,
 				F2029F4E15E600AE00A4E0FE /* Storyboard_iphone.storyboard */,
+				F2D3567315EA65A400D22055 /* FortuneListTableCell.h */,
+				F2D3567415EA65A400D22055 /* FortuneListTableCell.m */,
 				F2029F7815E613B000A4E0FE /* TWListTableViewController.h */,
 				F2029FED15E70EB400A4E0FE /* ManagedDocumentHelper.h */,
 				F28AE79515E8F3AD00623997 /* SectionInfo.h */,
@@ -546,6 +551,7 @@
 				F28AE78115E8BAEF00623997 /* FortuneBook.m in Sources */,
 				F28AE78415E8BAEF00623997 /* TwitterUser.m in Sources */,
 				F28AE79715E8F3AF00623997 /* SectionInfo.m in Sources */,
+				F2D3567515EA65A400D22055 /* FortuneListTableCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

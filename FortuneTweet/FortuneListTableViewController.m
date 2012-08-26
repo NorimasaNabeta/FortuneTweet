@@ -8,6 +8,7 @@
 #import <Twitter/Twitter.h>
 
 #import "FortuneListTableViewController.h"
+#import "FortuneListTableCell.h"
 #import "ManagedDocumentHelper.h"
 #import "Fortune.h"
 #import "History.h"
@@ -85,8 +86,8 @@
 {
     [super viewDidLoad];
 
-    UIPinchGestureRecognizer* pinchRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
-    [self.tableView addGestureRecognizer:pinchRecognizer];
+    // UIPinchGestureRecognizer* pinchRecognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
+    // [self.tableView addGestureRecognizer:pinchRecognizer];
     self.tableView.sectionHeaderHeight = HEADER_HEIGHT;
     self.uniformRowHeight=DEFAULT_ROW_HEIGHT;
     self.openSectionIndex= NSNotFound;
@@ -101,9 +102,9 @@
 //
 //
 //
-// -(BOOL)canBecomeFirstResponder {
-//     return YES;
-// }
+-(BOOL)canBecomeFirstResponder {
+     return YES;
+}
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
@@ -117,12 +118,12 @@
 			// sectionInfo.title = [self titleCookedForHeaderInSection:sec];
 			// sectionInfo.titleRaw = [self tableView:nil titleForHeaderInSection:sec];
 			sectionInfo.open = YES;
-			// NSLog(@"%d: %@", sec, sectionInfo.title);
             NSNumber *defaultRowHeight = [NSNumber numberWithInteger:DEFAULT_ROW_HEIGHT];
             NSInteger countOfQuotations = [self.tableView numberOfRowsInSection:sec];
 			for (NSInteger i = 0; i < countOfQuotations; i++) {
 				[sectionInfo insertObject:defaultRowHeight inRowHeightsAtIndex:i];
 			}
+			NSLog(@"%d: [%d/%d]", sec, countOfQuotations, sectionInfo.countOfRowHeights);
 			[infoArray addObject:sectionInfo];
 		}
 		self.sectionInfoArray = infoArray;
@@ -151,26 +152,27 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Fortune Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    FortuneListTableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     // Configure the cell...
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[FortuneListTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         // cell.textLabel.numberOfLines = 3;
         // cell.textLabel.adjustsFontSizeToFitWidth=NO;
     }
     
     Fortune *fortune = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@", fortune.quotation];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"-- %@ %@%d",
-                                 fortune.act, fortune.scene,
-                                 [fortune.tweets count]];
-
+    // cell.textLabel.text = [NSString stringWithFormat:@"%@", fortune.quotation];
+    // cell.detailTextLabel.text = [NSString stringWithFormat:@"-- %@ %@%d",
+     //                             fortune.act, fortune.scene,
+     //                             [fortune.tweets count]];
+    NSString *html = [NSString stringWithFormat:@"<html><head><meta name=""viewport"" content=""width=300""/></head><body>%@<p><p>-- %@<p>%@</body</html>", fortune.quotation, fortune.act, fortune.scene];
+    [cell.contentWebView loadHTMLString:html baseURL:[NSURL URLWithString:@"http://www.apple.com"]];
+    
     return cell;
 }
 
 #pragma mark - Table view delegate
-
 - (void) tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath
 {
     TWTweetComposeViewController *tweetViewController = [[TWTweetComposeViewController alloc] init];
@@ -222,22 +224,20 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSInteger currentRow=-1;
-    for(SectionInfo *sectionInfo in self.sectionInfoArray){
+    // NSLog(@"sec=%d,row=%d", indexPath.section, indexPath.row);
+    for (NSInteger sidx=0; sidx<[self.sectionInfoArray count]; sidx++) {
+        SectionInfo *sectionInfo = [self.sectionInfoArray objectAtIndex:sidx];
         for (NSInteger i = 0; i < sectionInfo.rowHeights.count; i++) {
-            if([[sectionInfo objectInRowHeightsAtIndex:indexPath.row] doubleValue] != DEFAULT_ROW_HEIGHT){
-                sectionInfo.open=NO;
-                currentRow=i;
+            if((i == indexPath.row) && (sidx == indexPath.section)){
+                if([[sectionInfo objectInRowHeightsAtIndex:i] doubleValue] != DEFAULT_ROW_HEIGHT){
+                    [sectionInfo replaceObjectInRowHeightsAtIndex:i withObject:[NSNumber numberWithFloat:DEFAULT_ROW_HEIGHT]];
+                } else {
+                    [sectionInfo replaceObjectInRowHeightsAtIndex:i withObject:[NSNumber numberWithFloat:DEFAULT_ROW_HEIGHT*2]];
+                }
+            } else {
+                [sectionInfo replaceObjectInRowHeightsAtIndex:i withObject:[NSNumber numberWithFloat:DEFAULT_ROW_HEIGHT]];
             }
-            [sectionInfo replaceObjectInRowHeightsAtIndex:i withObject:[NSNumber numberWithFloat:DEFAULT_ROW_HEIGHT]];
         }
-    }
-    SectionInfo *sectionInfo = [self.sectionInfoArray objectAtIndex:indexPath.section];
-    for (NSInteger i = 0; i < sectionInfo.rowHeights.count; i++) {
-        if((i == indexPath.row) && ((i != currentRow) || (sectionInfo.open==YES))){
-            [sectionInfo replaceObjectInRowHeightsAtIndex:i withObject:[NSNumber numberWithFloat:DEFAULT_ROW_HEIGHT*2]];
-        }
-        sectionInfo.open=YES;
     }
     [self.tableView beginUpdates];
     [self.tableView endUpdates];

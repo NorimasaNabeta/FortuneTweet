@@ -16,16 +16,16 @@
 	  <key>character</key><string>Kirk</string><key>quotation</key><string>Another dream that failed.  There's nothing sadder.</string></dict>
 	<dict><key>qid</key><string>eee009520f99b241ccb1ff43d9033fc531cd155e</string><key>act</key><string>stardate unknown</string><key>scene</key><string>"That Which Survives"</string>
 	  <key>character</key><string>Spock and Kirk</string><key>quotation</key><string>"Beauty is transitory.""Beauty survives."</string></dict>
-	<dict><key>qid</key><string>36b2061f8e18ad102791d067eada2e835bf9deb3</string><key>act</key><string>Mudd"</string><key>scene</key><string>"I</string>
+	<dict><key>qid</key><string>3b1f3ca58ccb2102d20079e50fc26f67c2ea7bee</string><key>act</key><string>stardate 4513.3</string><key>scene</key><string>"I Mudd"</string>
 	  <key>character</key><string>Harry Mudd</string><key>quotation</key><string>Behind every great man, there is a woman,urging him on.</string></dict>
 	<dict><key>qid</key><string>cf34011305c125df00d20d410d0756eb60f80a24</string><key>act</key><string>stardate 5730.2</string><key>scene</key><string>"Let That Be Your Last Battlefield"</string>
 	  <key>character</key><string>Spock</string><key>quotation</key><string>Change is the essential process of all existence.</string></dict>
-	<dict><key>qid</key><string>2078d5e8f488a9b445d82c02e75d59a0996e343a</string><key>act</key><string>Mirror"</string><key>scene</key><string>"Mirror</string>
+	<dict><key>qid</key><string>c4bea681e02842751c46b04b4ff7bf079cb08320</string><key>act</key><string>stardate unknown</string><key>scene</key><string>"Mirror Mirror"</string>
 	  <key>character</key><string>Kirk</string><key>quotation</key><string>Conquest is easy. Control is not.</string></dict>
 	<dict><key>qid</key><string>932e70d6457a35d50652de7462bfc64694eb9819</string><key>act</key><string>stardate 5843.7</string><key>scene</key><string>"Requiem for Methuselah"</string>
 	  <key>character</key><string>Flint</string><key>quotation</key><string>Death, when unnecessary, is a tragic thing.</string></dict>
-	<dict><key>qid</key><string>023f601b6a1adae2ba22b658ecc57742db3c1311</string><key>act</key><string>"The Paradise Syndrome"</string><key>scene</key><string>Kirk's wife</string>
-	  <key>character</key><string>Miramanee</string><key>quotation</key><string>Each kiss is as the first.</string></dict>
+	<dict><key>qid</key><string>70a9267d204d3d7dc85ac4ea6b4b351ff6ef0924</string><key>act</key><string>stardate 4842.6</string><key>scene</key><string>"The Paradise Syndrome"</string>
+	  <key>character</key><string>Miramanee Kirk's wife</string><key>quotation</key><string>Each kiss is as the first.</string></dict>
 	<dict><key>qid</key><string>1b2c34000c94f90a11f1cd0b958167ccd5665c2d</string><key>act</key><string>stardate 368.1</string><key>scene</key><string>"Who Mourns for Adonais?"</string>
 	  <key>character</key><string>Apollo</string><key>quotation</key><string>Earth, mother of the most beautiful women in the universe.</string></dict>
 	<dict><key>qid</key><string>6febcb3c2330ea5cdf59f6fd6555b1a667e42da8</string><key>act</key><string>stardate 3196.1</string><key>scene</key><string>"The Devil in the Dark"</string>
@@ -76,7 +76,7 @@
 	  <key>character</key><string>Natira</string><key>quotation</key><string>Is truth not truth for all?</string></dict>
 	<dict><key>qid</key><string>c2d0baa71635bdc405d2873a273b57e08feb6b4c</string><key>act</key><string>stardate 2822.3</string><key>scene</key><string>"The Galileo Seven"</string>
 	  <key>character</key><string>Spock</string><key>quotation</key><string>It is more rational to sacrifice one life than six.</string></dict>
-	<dict><key>qid</key><string>78da6b10b03494dc109679de6b58c05e961a9bd6</string><key>act</key><string>Mudd"</string><key>scene</key><string>"I</string>
+	<dict><key>qid</key><string>48d59aa69cdf798f8917178f0dfa3320ad5d3ee5</string><key>act</key><string>stardate 4513.3</string><key>scene</key><string>"I Mudd"</string>
 	  <key>character</key><string>Alice #1</string><key>quotation</key><string>It is necessary to have purpose.</string></dict>
 	<dict><key>qid</key><string>a78842c1a12736ab4fa9039f985e8bce04cdbad4</string><key>act</key><string>stardate 5027.3</string><key>scene</key><string>"The Enterprise" Incident"</string>
 	  <key>character</key><string>Spock</string><key>quotation</key><string>It would be illogical to assume that all conditions remain stable</string></dict>
@@ -88,7 +88,7 @@
 	  <key>character</key><string>McCoy</string><key>quotation</key><string>Killing is stupid; useless!</string></dict>
 	<dict><key>qid</key><string>fc4478fd5e209df1b50ef75e42ebebe416fbbb71</string><key>act</key><string>stardate unknown</string><key>scene</key><string>"That Which Survives"</string>
 	  <key>character</key><string>Losira</string><key>quotation</key><string>Killing is wrong.</string></dict>
-	<dict><key>qid</key><string>b68101860df79465678dd1f4c7b9128488271776</string><key>act</key><string>Mudd"</string><key>scene</key><string>"I</string>
+	<dict><key>qid</key><string>c4d6f5327b519d931410d7c61fabeb6a07dd0585</string><key>act</key><string>stardate 4513.3</string><key>scene</key><string>"I Mudd"</string>
 	  <key>character</key><string>Harry Mudd</string><key>quotation</key><string>Knowledge, sir, should be free to all!</string></dict>
 	<dict><key>qid</key><string>287c991246aac501e67850fb5d9e03acdd802fdb</string><key>act</key><string>stardate 3157.4</string><key>scene</key><string>"The Return of the Archons"</string>
 	  <key>character</key><string>A Beta 3-oid</string><key>quotation</key><string>Landru! Guide us!</string></dict>
@@ -134,9 +134,9 @@
 	  <key>character</key><string>Sarek</string><key>quotation</key><string>One does not thank logic.</string></dict>
 	<dict><key>qid</key><string>818ce046d461f251a3c89fc9a46f6ad7513fd20f</string><key>act</key><string>stardate unknown</string><key>scene</key><string>"Day of the Dove"</string>
 	  <key>character</key><string>Kank the Klingon</string><key>quotation</key><string>Only a fool fights in a burning house.</string></dict>
-	<dict><key>qid</key><string>8ae36a44b51ccb310037b73e4d4b75b15ea80f84</string><key>act</key><string>"Bread and Circuses"</string><key>scene</key><string>the Son Worshiper</string>
-	  <key>character</key><string>Septimus</string><key>quotation</key><string>Our way is peace.</string></dict>
-	<dict><key>qid</key><string>457effa2f771f2c774fc9a1ac7ed362f5dafd30b</string><key>act</key><string>Annihilate!"</string><key>scene</key><string>"Operation</string>
+	<dict><key>qid</key><string>5237d856395eb1fda5ff36a50566a2593652503a</string><key>act</key><string>stardate 4040.7.</string><key>scene</key><string>"Bread and Circuses"</string>
+	  <key>character</key><string>Septimus the Son Worshiper</string><key>quotation</key><string>Our way is peace.</string></dict>
+	<dict><key>qid</key><string>15c47395ed55f37124ad5d638f886d2ea87d0ff6</string><key>act</key><string>stardate 3287.2</string><key>scene</key><string>"Operation Annihilate!"</string>
 	  <key>character</key><string>Spock</string><key>quotation</key><string>Pain is a thing of the mind.  The mind can be controlled.</string></dict>
 	<dict><key>qid</key><string>6b242dfc0c00e67042643b3c282b3cf0cd09e5c7</string><key>act</key><string>stardate unknown</string><key>scene</key><string>"The City on the Edge of Forever"</string>
 	  <key>character</key><string>Kirk</string><key>quotation</key><string>Peace was the way.</string></dict>
@@ -222,7 +222,7 @@
 	  <key>character</key><string>Dr. Elizabeth Dehaver</string><key>quotation</key><string>Women professionals do tend to over-compensate.</string></dict>
 	<dict><key>qid</key><string>bd7e6498e09859ccb7f35220e31ff2010d3859d8</string><key>act</key><string>stardate unknown</string><key>scene</key><string>"The Omega Glory"</string>
 	  <key>character</key><string>Sirah the Yang</string><key>quotation</key><string>Yes, it is written.  Good shall always destroy evil.</string></dict>
-	<dict><key>qid</key><string>7bde6d3380ded4a781614d876f045fc0799bbc19</string><key>act</key><string>Mudd"</string><key>scene</key><string>"I</string>
+	<dict><key>qid</key><string>34d5fa3d9ddb3f2affe6d2852a1fc1fb4e6a67bf</string><key>act</key><string>stardate 4513.3</string><key>scene</key><string>"I Mudd"</string>
 	  <key>character</key><string>McCoy</string><key>quotation</key><string>You can't evaluate a man by logic alone.</string></dict>
 	<dict><key>qid</key><string>e7b968ed3b12e31133e0726d87478db38e27b168</string><key>act</key><string>stardate 3134.0</string><key>scene</key><string>"The City on the Edge of Forever"</string>
 	  <key>character</key><string>McCoy</string><key>quotation</key><string>You!  What PLANET is this!</string></dict>

@@ -60,6 +60,7 @@
         //
          //[[self locationManager] startUpdatingLocation];
         [self importDefaultBook];
+        [self.tableView reloadData];
     });
 
 }
@@ -246,7 +247,7 @@
            fromLocation:(CLLocation *)oldLocation {
     NSTimeInterval locationAge = -[newLocation.timestamp timeIntervalSinceNow];
     if (locationAge > 60.0) return; // 10.0 second
-	NSLog(@"didUpdateToLocation %@ from %@", newLocation, oldLocation);
+	// NSLog(@"didUpdateToLocation %@ from %@", newLocation, oldLocation);
 
 //    UIManagedDocument *sharedDocument = [ManagedDocumentHelper sharedManagedDocumentFortuneTweet];
 //    [sharedDocument.managedObjectContext performBlock:^{
