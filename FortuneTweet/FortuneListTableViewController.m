@@ -123,7 +123,7 @@
 			for (NSInteger i = 0; i < countOfQuotations; i++) {
 				[sectionInfo insertObject:defaultRowHeight inRowHeightsAtIndex:i];
 			}
-			NSLog(@"%d: [%d/%d]", sec, countOfQuotations, sectionInfo.countOfRowHeights);
+			// NSLog(@"%d: [%d/%d]", sec, countOfQuotations, sectionInfo.countOfRowHeights);
 			[infoArray addObject:sectionInfo];
 		}
 		self.sectionInfoArray = infoArray;
