@@ -20,48 +20,52 @@
 
 @implementation SectionInfo
 
-@synthesize open, rowHeights, play, headerView;
+// @synthesize open, rowHeights, play, headerView;
+@synthesize open=_open;
+@synthesize rowHeights=_rowHeights;
+// @synthesize play=_play;
+// @synthesize headerView=_headerView;
 
 - init {
 	
 	self = [super init];
 	if (self) {
-		rowHeights = [[NSMutableArray alloc] init];
+		_rowHeights = [[NSMutableArray alloc] init];
 	}
 	return self;
 }
 
 
 - (NSUInteger)countOfRowHeights {
-	return [rowHeights count];
+	return [_rowHeights count];
 }
 
 - (id)objectInRowHeightsAtIndex:(NSUInteger)idx {
-	return [rowHeights objectAtIndex:idx];
+	return [_rowHeights objectAtIndex:idx];
 }
 
 - (void)insertObject:(id)anObject inRowHeightsAtIndex:(NSUInteger)idx {
-	[rowHeights insertObject:anObject atIndex:idx];
+	[_rowHeights insertObject:anObject atIndex:idx];
 }
 
 - (void)insertRowHeights:(NSArray *)rowHeightArray atIndexes:(NSIndexSet *)indexes {
-	[rowHeights insertObjects:rowHeightArray atIndexes:indexes];
+	[_rowHeights insertObjects:rowHeightArray atIndexes:indexes];
 }
 
 - (void)removeObjectFromRowHeightsAtIndex:(NSUInteger)idx {
-	[rowHeights removeObjectAtIndex:idx];
+	[_rowHeights removeObjectAtIndex:idx];
 }
 
 - (void)removeRowHeightsAtIndexes:(NSIndexSet *)indexes {
-	[rowHeights removeObjectsAtIndexes:indexes];
+	[_rowHeights removeObjectsAtIndexes:indexes];
 }
 
 - (void)replaceObjectInRowHeightsAtIndex:(NSUInteger)idx withObject:(id)anObject {
-	[rowHeights replaceObjectAtIndex:idx withObject:anObject];
+	[_rowHeights replaceObjectAtIndex:idx withObject:anObject];
 }
 
 - (void)replaceRowHeightsAtIndexes:(NSIndexSet *)indexes withRowHeights:(NSArray *)rowHeightArray {
-	[rowHeights replaceObjectsAtIndexes:indexes withObjects:rowHeightArray];
+	[_rowHeights replaceObjectsAtIndexes:indexes withObjects:rowHeightArray];
 }
 
 

@@ -10,7 +10,7 @@
 
 // c.f. Apple iOS sample: LocateMe
 // not yet
-#define SETTING_ITEM_ABOUT     NSLocalizedString(@"About", @"About")
+#define SETTING_ITEM_ABOUT     NSLocalizedString(@"Coding Together:CS193p 2011Fall", @"About")
 #define SETTING_ITEM_TERMOFUSE NSLocalizedString(@"Terms Of Use", @"TermsOfUse")
 #define SETTING_ITEM_PRIVACY   NSLocalizedString(@"Privacy", @"Privacy")
 

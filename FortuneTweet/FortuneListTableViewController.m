@@ -130,11 +130,6 @@
 	}
 }
 
--(CGFloat)      tableView:(UITableView*)tableView
-  heightForRowAtIndexPath:(NSIndexPath*)indexPath {
-	SectionInfo *sectionInfo = [self.sectionInfoArray objectAtIndex:indexPath.section];
-    return [[sectionInfo objectInRowHeightsAtIndex:indexPath.row] floatValue];
-}
 //
 //
 //
@@ -218,18 +213,31 @@
 
 }
 
+
+-(CGFloat)      tableView:(UITableView*)tableView
+  heightForRowAtIndexPath:(NSIndexPath*)indexPath {
+	SectionInfo *sectionInfo = [self.sectionInfoArray objectAtIndex:indexPath.section];
+    return [[sectionInfo objectInRowHeightsAtIndex:indexPath.row] floatValue];
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSInteger currentRow=-1;
     for(SectionInfo *sectionInfo in self.sectionInfoArray){
         for (NSInteger i = 0; i < sectionInfo.rowHeights.count; i++) {
+            if([[sectionInfo objectInRowHeightsAtIndex:indexPath.row] doubleValue] != DEFAULT_ROW_HEIGHT){
+                sectionInfo.open=NO;
+                currentRow=i;
+            }
             [sectionInfo replaceObjectInRowHeightsAtIndex:i withObject:[NSNumber numberWithFloat:DEFAULT_ROW_HEIGHT]];
         }
     }
     SectionInfo *sectionInfo = [self.sectionInfoArray objectAtIndex:indexPath.section];
     for (NSInteger i = 0; i < sectionInfo.rowHeights.count; i++) {
-        if(i == indexPath.row){
+        if((i == indexPath.row) && ((i != currentRow) || (sectionInfo.open==YES))){
             [sectionInfo replaceObjectInRowHeightsAtIndex:i withObject:[NSNumber numberWithFloat:DEFAULT_ROW_HEIGHT*2]];
         }
+        sectionInfo.open=YES;
     }
     [self.tableView beginUpdates];
     [self.tableView endUpdates];

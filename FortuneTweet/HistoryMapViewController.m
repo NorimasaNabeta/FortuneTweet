@@ -101,7 +101,7 @@ calloutAccessoryControlTapped:(UIControl *)control
         aView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:PhotoAnnotationIdentifier];
         aView.canShowCallout = YES;
         aView.leftCalloutAccessoryView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 30, 30)];
-        aView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        // aView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
     }
     aView.annotation = annotation;    
     [(UIImageView *)aView.leftCalloutAccessoryView setImage:nil];

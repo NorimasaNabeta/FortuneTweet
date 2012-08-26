@@ -45,6 +45,10 @@
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
+		<string>gps</string>
+		<string>location-services</string>
+		<string>sms</string>
+		<string>magnetometer</string>
 	</array>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
