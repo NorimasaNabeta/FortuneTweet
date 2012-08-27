@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="12A269" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="pyq-6Z-Gs8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="12B19" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="pyq-6Z-Gs8">
     <dependencies>
-        <deployment defaultVersion="1296" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1498"/>
     </dependencies>
     <scenes>
@@ -52,7 +51,7 @@
                     <navigationItem key="navigationItem" title="Books" id="JsZ-YI-4BC"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="805" y="-198"/>
+            <point key="canvasLocation" x="795" y="-158"/>
         </scene>
         <!--Fortune List Table View Controller - Fortunes-->
         <scene sceneID="5yg-qJ-06w">
@@ -92,7 +91,7 @@
                     <navigationItem key="navigationItem" title="Fortunes" id="dmK-nR-wjX"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1229" y="-198"/>
+            <point key="canvasLocation" x="1279" y="-158"/>
         </scene>
         <!--List Table View Controller - Twitter Lists-->
         <scene sceneID="3J0-dd-Vj4">
@@ -145,7 +144,7 @@
                     <navigationItem key="navigationItem" title="Twitter Lists" id="aOj-85-Pb9"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1333" y="940"/>
+            <point key="canvasLocation" x="789" y="1554"/>
         </scene>
         <!--User List Table View Controller - Users-->
         <scene sceneID="qBX-2P-zc8">
@@ -195,7 +194,7 @@
                     <navigationItem key="navigationItem" title="Users" id="TcZ-aQ-4lQ"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1755" y="940"/>
+            <point key="canvasLocation" x="1273" y="1554"/>
         </scene>
         <!--History List Table View Controller - History-->
         <scene sceneID="4Iw-xK-zuw">
@@ -244,7 +243,7 @@
                     <navigationItem key="navigationItem" title="History" id="5Kf-Z9-WsA"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="1331" y="367"/>
+            <point key="canvasLocation" x="789" y="411"/>
         </scene>
         <!--History Map View Controller-->
         <scene sceneID="gNb-aj-zB3">
@@ -280,7 +279,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1755" y="367"/>
+            <point key="canvasLocation" x="1273" y="411"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="C2a-Bj-cTz">
@@ -299,7 +298,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="379" y="-198"/>
+            <point key="canvasLocation" x="319" y="-158"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="67b-xH-ZZs">
@@ -319,7 +318,7 @@
                     </connections>
                 </tabBarController>
             </objects>
-            <point key="canvasLocation" x="-126" y="280"/>
+            <point key="canvasLocation" x="-252" y="411"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="EjY-Oa-msF">
@@ -338,7 +337,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="905" y="334"/>
+            <point key="canvasLocation" x="319" y="406"/>
         </scene>
         <!--Fortune Tweet Setting View Controller - Setting-->
         <scene sceneID="ueG-5G-npd">
@@ -420,7 +419,7 @@
                     <navigationItem key="navigationItem" title="Setting" id="fqF-ER-bf4"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="938" y="1603"/>
+            <point key="canvasLocation" x="802" y="981"/>
         </scene>
         <!--Fortune Tweet Setting Document View Controller - Documents-->
         <scene sceneID="g7g-IX-4dX">
@@ -445,7 +444,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1318" y="1611"/>
+            <point key="canvasLocation" x="1279" y="981"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8dv-dh-Ca8">
@@ -464,7 +463,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="917" y="910"/>
+            <point key="canvasLocation" x="319" y="1554"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fd7-t4-Zek">
@@ -483,7 +482,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="418" y="1611"/>
+            <point key="canvasLocation" x="319" y="981"/>
         </scene>
     </scenes>
     <resources>

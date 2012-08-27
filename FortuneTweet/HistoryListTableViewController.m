@@ -80,6 +80,7 @@
 - (void) checkAccount
 {
     if (_accounts == nil) {
+        [self spinnerAction:YES];
         ACAccountType *accountTypeTwitter = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
         [self.accountStore requestAccessToAccountsWithType:accountTypeTwitter
                                      withCompletionHandler:^(BOOL granted, NSError *error) {
@@ -90,17 +91,31 @@
                                              [ManagedDocumentHelper useDocument:sharedDocument
                                                                      usingBlock: ^(BOOL success){
                                                                          [self setupFetchedResultsController];
-                                                                         dispatch_sync(dispatch_get_main_queue(), ^{
-                                                                             [self.tableView reloadData];
-                                                                         });
-
+                                                                         [self spinnerAction:NO];
                                                                      }
                                                                    debugComment:@"HT"];
                                          } else {
+                                             [self spinnerAction:NO];
                                              NSLog(@"ACCOUNT FAILED OR NOT GRANTED.");
                                          }
                                      }];
     }
+}
+
+- (void) spinnerAction: (BOOL) start
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if(start){
+            // NSLog(@"Spinner Start");
+            UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+            [spinner startAnimating];
+            self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+        } else {
+            // NSLog(@"Spinner End");
+            self.navigationItem.leftBarButtonItem = nil;
+            [self.tableView reloadData];
+        }
+    });    
 }
 
 - (void)viewWillAppear:(BOOL)animated

@@ -63,7 +63,8 @@
          //[[self locationManager] startUpdatingLocation];
         NSArray* books = [[NSArray alloc] initWithObjects:@"startrek", @"fortune", nil ];
         [self importDefaultBook:books];
-        [self.tableView reloadData];
+        [self spinnerAction:NO];
+        // [self.tableView reloadData];
     });
 
 }
@@ -81,6 +82,7 @@
 - (void) checkAccount
 {
     if (_accounts == nil) {
+        [self spinnerAction:YES];
         ACAccountType *accountTypeTwitter = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
         [self.accountStore requestAccessToAccountsWithType:accountTypeTwitter
                                      withCompletionHandler:^(BOOL granted, NSError *error) {
@@ -95,6 +97,7 @@
 
                                              
                                          } else {
+                                             [self spinnerAction:NO];
                                              NSLog(@"ACCOUNT FAILED OR NOT GRANTED.");
                                          }
                                      }];
@@ -125,6 +128,24 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+
+- (void) spinnerAction: (BOOL) start
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if(start){
+            // NSLog(@"Spinner Start");
+            UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+            [spinner startAnimating];
+            self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+        } else {
+            // NSLog(@"Spinner End");
+            self.navigationItem.leftBarButtonItem = nil;
+            [self.tableView reloadData];
+        }
+    });
+    
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];

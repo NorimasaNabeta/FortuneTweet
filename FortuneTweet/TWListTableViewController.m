@@ -56,6 +56,7 @@
 - (void) checkAccount
 {
     if (_accounts == nil) {
+        [self spinnerAction:YES];
         ACAccountType *accountTypeTwitter = [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
         [self.accountStore requestAccessToAccountsWithType:accountTypeTwitter
                                      withCompletionHandler:^(BOOL granted, NSError *error) {
@@ -101,9 +102,11 @@
                                 [TwitterList listWithTwitterAccount:listResult members:chk inManagedObjectContext:sharedDocument.managedObjectContext];
                                 [sharedDocument saveToURL:sharedDocument.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:NULL];
                             }];
-                            [self.tableView reloadData];
+                            [self spinnerAction:NO];
+                            // [self.tableView reloadData];
                         });
                     } else {
+                        [self spinnerAction:NO];
                         NSString *message = [NSString stringWithFormat:@"Could not parse your timeline: %@", [error localizedDescription]];
                         [[[UIAlertView alloc] initWithTitle:@"Error"
                                                     message:message
@@ -142,6 +145,7 @@
                         [self fetchListMembers:jsonResult];
                     }
                     else {
+                        [self spinnerAction:NO];
                         NSString *message = [NSString stringWithFormat:@"Could not parse your timeline: %@", [jsonError localizedDescription]];
                         [[[UIAlertView alloc] initWithTitle:@"Error"
                                                     message:message
@@ -170,6 +174,23 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+}
+
+- (void) spinnerAction: (BOOL) start
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if(start){
+            // NSLog(@"Spinner Start");
+            UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+            [spinner startAnimating];
+            self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:spinner];
+        } else {
+            // NSLog(@"Spinner End");
+            self.navigationItem.leftBarButtonItem = nil;
+            [self.tableView reloadData];
+        }
+    });
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
