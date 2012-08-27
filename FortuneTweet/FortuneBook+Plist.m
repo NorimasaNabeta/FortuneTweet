@@ -27,9 +27,8 @@
     NSError *error = nil;
     NSArray *matches = [context executeFetchRequest:request error:&error];
     
-    NSLog(@"BOOK=%@",bookId);
+    // NSLog(@"BOOK=%@",bookId);
     if (!matches || ([matches count] > 1)) {
-        NSLog(@"BOOK=%@ exist",bookId);
         // handle error
     } else if ([matches count] == 0) {
         book = [NSEntityDescription insertNewObjectForEntityForName:COREDATA_ENTITY_NAME inManagedObjectContext:context];

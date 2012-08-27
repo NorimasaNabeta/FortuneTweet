@@ -13,7 +13,16 @@
 @end
 
 @implementation FortuneTweetSettingDocumentViewController
-@synthesize webView;
+@synthesize webView=_webView;
+@synthesize file=_file;
+
+- (void) setFile:(NSDictionary *)file
+{
+    if( _file != file){
+        _file=file;
+        // NSLog(@"file: %@ ext: %@", [_file objectForKey:@"filename"], [_file objectForKey:@"ext"]);
+    }
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,7 +36,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+
+    NSError *error = nil;
+    NSString *html = [[NSString alloc]
+                      initWithContentsOfFile:[[NSBundle mainBundle] pathForResource:[self.file objectForKey:@"filename"] ofType:[self.file objectForKey:@"ext"]]
+                                                    encoding:NSUTF8StringEncoding error:&error];
+
+    // NSString *html = [NSString stringWithFormat:@"<html><head><meta name=""viewport"" content=""width=300""/></head><body>%@<p><p>-- %@<p>%@</body</html>", fortune.quotation, fortune.act, fortune.scene];
+    [self.webView loadHTMLString:html baseURL:[NSURL URLWithString:@"http://www.apple.com"]];
 }
 
 - (void)viewDidUnload
@@ -41,5 +57,6 @@
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
+
 
 @end

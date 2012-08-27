@@ -10,4 +10,5 @@
 
 @interface FortuneTweetSettingDocumentViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (strong, nonatomic) NSDictionary *file;
 @end

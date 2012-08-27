@@ -62,6 +62,8 @@
 		F2029FEF15E70EB700A4E0FE /* ManagedDocumentHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F2029FEE15E70EB600A4E0FE /* ManagedDocumentHelper.m */; };
 		F2029FF515E7461800A4E0FE /* HistoryAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = F2029FF415E7461600A4E0FE /* HistoryAnnotation.m */; };
 		F2468BE315EAEEEB002A95C2 /* fortune.plist in Resources */ = {isa = PBXBuildFile; fileRef = F2468BE215EAEEEB002A95C2 /* fortune.plist */; };
+		F2468BEC15EAFF05002A95C2 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2468BEB15EAFF05002A95C2 /* QuickLook.framework */; };
+		F2468BF115EB09FC002A95C2 /* copyright.txt in Resources */ = {isa = PBXBuildFile; fileRef = F2468BF015EB09FC002A95C2 /* copyright.txt */; };
 		F28AE74615E8533B00623997 /* FortuneTweetSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = F28AE74515E8533B00623997 /* FortuneTweetSetting.m */; };
 		F28AE74F15E863F800623997 /* FortuneTweetSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28AE74E15E863F800623997 /* FortuneTweetSettingViewController.m */; };
 		F28AE75215E8643B00623997 /* FortuneTweetSettingDocumentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28AE75115E8643B00623997 /* FortuneTweetSettingDocumentViewController.m */; };
@@ -163,6 +165,8 @@
 		F2029FF315E7461600A4E0FE /* HistoryAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryAnnotation.h; sourceTree = "<group>"; };
 		F2029FF415E7461600A4E0FE /* HistoryAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryAnnotation.m; sourceTree = "<group>"; };
 		F2468BE215EAEEEB002A95C2 /* fortune.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = fortune.plist; sourceTree = "<group>"; };
+		F2468BEB15EAFF05002A95C2 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
+		F2468BF015EB09FC002A95C2 /* copyright.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = copyright.txt; sourceTree = "<group>"; };
 		F28AE74415E8533B00623997 /* FortuneTweetSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FortuneTweetSetting.h; sourceTree = "<group>"; };
 		F28AE74515E8533B00623997 /* FortuneTweetSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FortuneTweetSetting.m; sourceTree = "<group>"; };
 		F28AE74D15E863F800623997 /* FortuneTweetSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FortuneTweetSettingViewController.h; sourceTree = "<group>"; };
@@ -195,6 +199,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2468BEC15EAFF05002A95C2 /* QuickLook.framework in Frameworks */,
 				F2029FAD15E6324C00A4E0FE /* Accounts.framework in Frameworks */,
 				F2029F7715E60B5200A4E0FE /* QuartzCore.framework in Frameworks */,
 				F2029F5715E6011A00A4E0FE /* Twitter.framework in Frameworks */,
@@ -244,6 +249,7 @@
 		F2029EE515E5FDCD00A4E0FE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F2468BEB15EAFF05002A95C2 /* QuickLook.framework */,
 				F2029FAC15E6324B00A4E0FE /* Accounts.framework */,
 				F2029F7615E60B5200A4E0FE /* QuartzCore.framework */,
 				F2029F5615E6011A00A4E0FE /* Twitter.framework */,
@@ -303,6 +309,7 @@
 				F2029F1B15E5FDEF00A4E0FE /* Default.png */,
 				F2029F7415E6099700A4E0FE /* Placeholder.png */,
 				F2029F1C15E5FDEF00A4E0FE /* Default@2x.png */,
+				F2468BF015EB09FC002A95C2 /* copyright.txt */,
 				F2029F1D15E5FDEF00A4E0FE /* Icon-72.png */,
 				F2468BE215EAEEEB002A95C2 /* fortune.plist */,
 				F2029F1E15E5FDEF00A4E0FE /* Icon-Small-50.png */,
@@ -491,6 +498,7 @@
 				F2029F7515E6099700A4E0FE /* Placeholder.png in Resources */,
 				F28AE76F15E8B56100623997 /* startrek.plist in Resources */,
 				F2468BE315EAEEEB002A95C2 /* fortune.plist in Resources */,
+				F2468BF115EB09FC002A95C2 /* copyright.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

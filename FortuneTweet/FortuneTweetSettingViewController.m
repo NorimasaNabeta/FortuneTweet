@@ -7,14 +7,30 @@
 //
 // http://support.apple.com/kb/PH3871
 // 'Enter special characters and symbols'
-// 
+//
+#import "FortuneTweetSettingDocumentViewController.h"
 #import "FortuneTweetSettingViewController.h"
 
 @interface FortuneTweetSettingViewController ()
-
+@property (strong, nonatomic) NSArray *documents;
 @end
 
 @implementation FortuneTweetSettingViewController
+@synthesize documents=_documents;
+
+- (NSArray *) documents
+{
+    if( !_documents ){
+        NSDictionary *doc = [[NSDictionary alloc] initWithObjectsAndKeys:
+                             @"copyright", @"filename",
+                             @"txt", @"ext",
+                             @"Copyright", @"title",
+                             nil];
+        _documents = [[NSArray alloc] initWithObjects:doc, nil];
+    }
+    return _documents;
+}
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -48,14 +64,13 @@
     // Return the number of sections.
     return 0;
 }
-
+*/
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [self.documents count];
 }
-*/
+
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -65,22 +80,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    
-    // Configure the cell...
-    switch (indexPath.row) {
-        case 0:
-            cell.textLabel.text = SETTING_ITEM_ABOUT;
-            break;
-        case 1:
-            cell.textLabel.text = SETTING_ITEM_TERMOFUSE;
-            break;
-        case 2:
-            cell.textLabel.text = SETTING_ITEM_PRIVACY;
-            break;
-            
-        default:
-            break;
-    }
+    cell.textLabel.text = [[self.documents objectAtIndex:indexPath.row] objectForKey:@"title"];
     
     return cell;
 }
@@ -89,16 +89,23 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
-    // NSLog(@"Cell %d", indexPath.row);
-    // [self performSegueWithIdentifier:@"Setting Doc View" sender:self];
+
+    // [self performSegueWithIdentifier:@"Copyright Show" sender:self];
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
+// http://stackoverflow.com/questions/6918210/how-to-disable-qlpreviewcontroller-print-button
+// https://github.com/rob-brown/RBFilePreviewer.git
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue
+                 sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"Copyright Show"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        NSLog(@"indexPath %@", indexPath);
+        [segue.destinationViewController setFile:[self.documents objectAtIndex:indexPath.row]];
+    }
+}
+
 
 @end
