@@ -226,11 +226,25 @@
 		return _locationManager;
 	}
 	_locationManager = [[CLLocationManager alloc] init];
-	[_locationManager setDesiredAccuracy:kCLLocationAccuracyNearestTenMeters];
+
+    // Bast accuracy
+    // kCLLocationAccuracyBestForNavigation;
+    // Normal accuracy
+    // kCLLocationAccuracyBest;
+
+    // Current accuracy
+    // kCLLocationAccuracyNearestTenMeters
+	[_locationManager setDesiredAccuracy:kCLLocationAccuracyBestForNavigation];
 	[_locationManager setDelegate:self];
 	
 	return _locationManager;
 }
+
+// http://stackoverflow.com/questions/5930612/how-to-set-accuracy-and-distance-filter-when-using-mkmapview
+// - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation
+// {
+//     NSLog(@"%f", userLocation.location.horizontalAccuracy);
+// }
 
 #pragma mark - CLLocationManagerDelegate
 /**

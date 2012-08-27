@@ -113,12 +113,43 @@ calloutAccessoryControlTapped:(UIControl *)control
 didAddAnnotationViews:(NSArray *)views
 {
     if (self.annotations && self.mapView.window) {
+        MKCoordinateRegion region;
+        MKCoordinateSpan span;
         
+        span.latitudeDelta=0.1;
+        span.longitudeDelta=0.1;
+        region.span=span;
         for (HistoryAnnotation *annotation in self.annotations){
-            self.mapView.centerCoordinate = annotation.coordinate;
+            // Set min and max to the 1st object in the annotations
+            __block CLLocationCoordinate2D min = [[self.annotations objectAtIndex:0] coordinate];
+            __block CLLocationCoordinate2D max = min;
+            
+            [self.annotations enumerateObjectsUsingBlock:^(id element, NSUInteger idx, BOOL *stop){
+                // We want to throw an error if it is not a dictionary
+                assert([element isKindOfClass:[HistoryAnnotation class]]);
+                HistoryAnnotation *location = element;
+                
+                // Get the coordinates name for each location
+                CLLocationCoordinate2D currentCcoordinate = location.coordinate;
+                min.latitude = MIN(min.latitude, currentCcoordinate.latitude);
+                min.longitude = MIN(min.longitude, currentCcoordinate.longitude);
+                max.latitude = MAX(max.latitude, currentCcoordinate.latitude);
+                max.longitude = MAX(max.longitude, currentCcoordinate.longitude);
+            }];
+            CLLocationCoordinate2D center = CLLocationCoordinate2DMake((max.latitude + min.latitude)/2.0, (max.longitude + min.longitude)/2.0);
+            MKCoordinateSpan span = MKCoordinateSpanMake(max.latitude - min.latitude, max.longitude - min.longitude);
+            MKCoordinateRegion region = MKCoordinateRegionMake(center, span);
+            self.mapView.centerCoordinate=region.center;
+            [self.mapView setRegion:[self.mapView regionThatFits:region] animated:YES];
+
+            // self.mapView.centerCoordinate = annotation.coordinate;
+            // region.center=annotation.coordinate;
+            // [self.mapView setRegion:region animated:TRUE];
+            // [self.mapView regionThatFits:region];
+
             // http://stackoverflow.com/questions/2509223/apple-documentation-incorrect-about-mkmapview-regionthatfits
             // self.mapView.centerCoordinate=CLLocationCoordinate2DMake([self.history.latitude doubleValue],  [self.history.longitude doubleValue]);
-        }
+        }    
     }
 }
 

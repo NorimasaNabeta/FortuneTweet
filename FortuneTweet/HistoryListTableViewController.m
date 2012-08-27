@@ -89,7 +89,12 @@
                                              /// [self useDocument:sharedDocument];
                                              [ManagedDocumentHelper useDocument:sharedDocument
                                                                      usingBlock: ^(BOOL success){
-                                                                         [self setupFetchedResultsController];}
+                                                                         [self setupFetchedResultsController];
+                                                                         dispatch_sync(dispatch_get_main_queue(), ^{
+                                                                             [self.tableView reloadData];
+                                                                         });
+
+                                                                     }
                                                                    debugComment:@"HT"];
                                          } else {
                                              NSLog(@"ACCOUNT FAILED OR NOT GRANTED.");
@@ -219,8 +224,16 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
     History *hist = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    HistoryAnnotation *annotation = [HistoryAnnotation annotationForHistory:hist];
-    NSArray *annotations = [[NSArray alloc] initWithObjects:annotation, nil ];
+    
+    NSMutableArray *annotations = [[NSMutableArray alloc] initWithObjects:nil];
+    for (History* tweet in hist.fortune.tweets){
+        HistoryAnnotation *annotation = [HistoryAnnotation annotationForHistory:hist];
+        if (annotation){
+            [annotations addObject:annotation];
+        }
+    }
+    // HistoryAnnotation *annotation = [HistoryAnnotation annotationForHistory:hist];
+    // NSArray *annotations = [[NSArray alloc] initWithObjects:annotation, nil ];
     if ([segue.destinationViewController respondsToSelector:@selector(setAnnotations:)]) {
         [segue.destinationViewController performSelector:@selector(setAnnotations:) withObject:annotations];
     }

@@ -20,6 +20,19 @@
 }
 
 #pragma mark - MKAnnotation
+/* 
+- (NSString*)formatTimestamp:(NSTimeInterval)timeStamp
+{
+    NSDate *date = [NSDate dateWithTimeIntervalSinceNow:timeStamp];
+    NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
+    [formatter setDateFormat:@"dd-MM-yyyy HH:mm:ss:SSS zzz"];
+    // NSTimeZone *timeZone = [NSTimeZone timeZoneWithName:@"YourTimeZone"];
+    // [formatter setTimeZone:timeZone];
+    [formatter setTimeZone:[NSTimeZone systemTimeZone]];
+    NSString *dateString=[formatter stringFromDate:date];
+    return dateString;
+}
+*/
 - (NSString *)title
 {
     return [NSString stringWithFormat:@"%@", self.history.timestamp];
