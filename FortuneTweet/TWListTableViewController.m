@@ -99,6 +99,10 @@
                         // NSLog(@"[3] List: %@ %@%d", account.username, slug, [chk count]);
                         dispatch_sync(dispatch_get_main_queue(), ^{
                             [sharedDocument.managedObjectContext performBlock:^{
+                                
+                                // TODO: Resident user accounts and default list(a.k. TimeLine) will be added into the database.
+                                // list:
+                                
                                 [TwitterList listWithTwitterAccount:listResult members:chk inManagedObjectContext:sharedDocument.managedObjectContext];
                                 [sharedDocument saveToURL:sharedDocument.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:NULL];
                             }];
