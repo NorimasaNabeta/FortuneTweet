@@ -7,6 +7,8 @@
 //
 
 #import "HistoryMapViewController.h"
+#import "History.h"
+#import "Fortune.h"
 
 @interface HistoryMapViewController () <MKMapViewDelegate>
 
@@ -20,6 +22,11 @@
 {
     if (_annotations != annotations) {
         _annotations = annotations;
+        
+        HistoryAnnotation *history = [annotations objectAtIndex:0];
+        if (history) {
+            self.title = history.history.fortune.quotation;
+        }
     }
     [self updateMapView];
 }

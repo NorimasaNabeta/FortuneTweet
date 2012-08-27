@@ -20,6 +20,7 @@
 {
     if( _file != file){
         _file=file;
+        self.title = [_file objectForKey:@"title"];
         // NSLog(@"file: %@ ext: %@", [_file objectForKey:@"filename"], [_file objectForKey:@"ext"]);
     }
 }

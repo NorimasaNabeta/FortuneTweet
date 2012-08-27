@@ -7,6 +7,8 @@
 //
 
 #import "HistoryAnnotation.h"
+#import "History.h"
+#import "Fortune.h"
 
 @implementation HistoryAnnotation
 @synthesize history=_history;
@@ -15,12 +17,14 @@
 {
     HistoryAnnotation *annotation = [[HistoryAnnotation alloc] init];
     annotation.history = history;
+    // history.fortune
     
     return annotation;
 }
 
 #pragma mark - MKAnnotation
 /* 
+ // http://stackoverflow.com/questions/10609474/convert-timestamp-to-date-format
 - (NSString*)formatTimestamp:(NSTimeInterval)timeStamp
 {
     NSDate *date = [NSDate dateWithTimeIntervalSinceNow:timeStamp];
@@ -35,6 +39,12 @@
 */
 - (NSString *)title
 {
+/*
+    return [NSString stringWithFormat:@"%@ -- %@,%@[%@]",
+            self.history.fortune.quotation,
+            self.history.fortune.character, self.history.fortune.act,
+            self.history.timestamp];
+*/
     return [NSString stringWithFormat:@"%@", self.history.timestamp];
 }
 
