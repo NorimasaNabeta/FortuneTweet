@@ -61,6 +61,7 @@
 		F2029FD615E66BC200A4E0FE /* History+CLLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = F2029FD515E66BC200A4E0FE /* History+CLLocation.m */; };
 		F2029FEF15E70EB700A4E0FE /* ManagedDocumentHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = F2029FEE15E70EB600A4E0FE /* ManagedDocumentHelper.m */; };
 		F2029FF515E7461800A4E0FE /* HistoryAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = F2029FF415E7461600A4E0FE /* HistoryAnnotation.m */; };
+		F2468BE315EAEEEB002A95C2 /* fortune.plist in Resources */ = {isa = PBXBuildFile; fileRef = F2468BE215EAEEEB002A95C2 /* fortune.plist */; };
 		F28AE74615E8533B00623997 /* FortuneTweetSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = F28AE74515E8533B00623997 /* FortuneTweetSetting.m */; };
 		F28AE74F15E863F800623997 /* FortuneTweetSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28AE74E15E863F800623997 /* FortuneTweetSettingViewController.m */; };
 		F28AE75215E8643B00623997 /* FortuneTweetSettingDocumentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28AE75115E8643B00623997 /* FortuneTweetSettingDocumentViewController.m */; };
@@ -161,6 +162,7 @@
 		F2029FEE15E70EB600A4E0FE /* ManagedDocumentHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagedDocumentHelper.m; sourceTree = "<group>"; };
 		F2029FF315E7461600A4E0FE /* HistoryAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryAnnotation.h; sourceTree = "<group>"; };
 		F2029FF415E7461600A4E0FE /* HistoryAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HistoryAnnotation.m; sourceTree = "<group>"; };
+		F2468BE215EAEEEB002A95C2 /* fortune.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = fortune.plist; sourceTree = "<group>"; };
 		F28AE74415E8533B00623997 /* FortuneTweetSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FortuneTweetSetting.h; sourceTree = "<group>"; };
 		F28AE74515E8533B00623997 /* FortuneTweetSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FortuneTweetSetting.m; sourceTree = "<group>"; };
 		F28AE74D15E863F800623997 /* FortuneTweetSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FortuneTweetSettingViewController.h; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 				F2029F7415E6099700A4E0FE /* Placeholder.png */,
 				F2029F1C15E5FDEF00A4E0FE /* Default@2x.png */,
 				F2029F1D15E5FDEF00A4E0FE /* Icon-72.png */,
+				F2468BE215EAEEEB002A95C2 /* fortune.plist */,
 				F2029F1E15E5FDEF00A4E0FE /* Icon-Small-50.png */,
 				F2029F1F15E5FDEF00A4E0FE /* Icon-Small.png */,
 				F2029F2015E5FDEF00A4E0FE /* Icon-Small@2x.png */,
@@ -487,6 +490,7 @@
 				F2029F4F15E600AF00A4E0FE /* Storyboard_iphone.storyboard in Resources */,
 				F2029F7515E6099700A4E0FE /* Placeholder.png in Resources */,
 				F28AE76F15E8B56100623997 /* startrek.plist in Resources */,
+				F2468BE315EAEEEB002A95C2 /* fortune.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

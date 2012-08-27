@@ -25,18 +25,20 @@
 @synthesize accountStore=_accountStore;
 @synthesize accounts=_accounts;
 
-- (void) importDefaultBook
+- (void) importDefaultBook: (NSArray *) books
 {
-    NSURL *url = [[NSBundle mainBundle] URLForResource:@"startrek" withExtension:@"plist"];
-    NSArray *playDictionariesArray = [[NSArray alloc] initWithContentsOfURL:url];
-    
     UIManagedDocument *sharedDocument = [ManagedDocumentHelper sharedManagedDocumentFortuneTweet];
-    for (NSDictionary *playDictionary in playDictionariesArray) {
-        [sharedDocument.managedObjectContext performBlock:^{
-            [FortuneBook bookFromPlist:playDictionary inManagedObjectContext:sharedDocument.managedObjectContext];
-            [sharedDocument saveToURL:sharedDocument.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:NULL];
-        }];
-    }
+    [sharedDocument.managedObjectContext performBlock:^{
+        for (NSString*title in books) {
+            NSURL *url = [[NSBundle mainBundle] URLForResource:title withExtension:@"plist"];
+            NSArray *playDictionariesArray = [[NSArray alloc] initWithContentsOfURL:url];
+            NSLog(@"LOAD: %@", [url path]);
+            for (NSDictionary *playDictionary in playDictionariesArray) {
+                [FortuneBook bookFromPlist:playDictionary inManagedObjectContext:sharedDocument.managedObjectContext];
+                [sharedDocument saveToURL:sharedDocument.fileURL forSaveOperation:UIDocumentSaveForOverwriting completionHandler:NULL];
+            }
+        }
+    }];
 }
 
 
@@ -59,7 +61,8 @@
         // and will result in callbacks not being received.
         //
          //[[self locationManager] startUpdatingLocation];
-        [self importDefaultBook];
+        NSArray* books = [[NSArray alloc] initWithObjects:@"startrek", @"fortune", nil ];
+        [self importDefaultBook:books];
         [self.tableView reloadData];
     });
 
