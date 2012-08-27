@@ -60,6 +60,7 @@
 {
     // UIManagedDocument *sharedDocument = [ManagedDocumentHelper sharedManagedDocumentFortuneTweet];
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Fortune"];
+    request.predicate = [NSPredicate predicateWithFormat:@"book.bookid = %@", self.fortunebook.bookid];
     NSSortDescriptor *sort1 = [NSSortDescriptor sortDescriptorWithKey:@"character" ascending:YES
                                                              selector:@selector(localizedCaseInsensitiveCompare:)];
     NSSortDescriptor *sort2 = [NSSortDescriptor sortDescriptorWithKey:@"act" ascending:YES
