@@ -6,6 +6,7 @@
 //  Copyright (c) 2012年 Norimasa Nabeta. All rights reserved.
 //
 #import <Accounts/Accounts.h>
+#import <Twitter/Twitter.h>
 
 #import "FrotuneBookTableViewController.h"
 #import "History.h"
@@ -94,8 +95,6 @@
                                                                          [self setupFetchedResultsController];
                                                                      }
                                                                    debugComment:@"BK"];
-
-                                             
                                          } else {
                                              [self spinnerAction:NO];
                                              NSLog(@"ACCOUNT FAILED OR NOT GRANTED.");
@@ -149,7 +148,9 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self checkAccount];
+    if([TWTweetComposeViewController canSendTweet]){
+        [self checkAccount];
+    }
 }
 
 - (void)viewDidUnload

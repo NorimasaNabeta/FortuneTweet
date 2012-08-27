@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="12B19" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="pyq-6Z-Gs8">
     <dependencies>
+        <deployment defaultVersion="1296" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1498"/>
     </dependencies>
     <scenes>
@@ -286,7 +287,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HJi-bw-aK6" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="Z9G-Dx-zeu" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="topRated" id="rJf-ZQ-7Gy"/>
+                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="rJf-ZQ-7Gy"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fDS-PP-Av7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -465,12 +466,12 @@
             </objects>
             <point key="canvasLocation" x="319" y="1554"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navigation Controller - About-->
         <scene sceneID="fd7-t4-Zek">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TcQ-VO-Gkh" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="ujP-gx-rfJ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="downloads" id="ARG-IP-dj1"/>
+                    <tabBarItem key="tabBarItem" title="About" image="License.png" id="ARG-IP-dj1"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ecs-At-apV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -487,6 +488,7 @@
     </scenes>
     <resources>
         <image name="Icon@2x.png" width="114" height="114"/>
+        <image name="License.png" width="23" height="24"/>
         <image name="Placeholder.png" width="48" height="48"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

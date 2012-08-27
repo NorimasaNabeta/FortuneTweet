@@ -64,6 +64,7 @@
 		F2468BE315EAEEEB002A95C2 /* fortune.plist in Resources */ = {isa = PBXBuildFile; fileRef = F2468BE215EAEEEB002A95C2 /* fortune.plist */; };
 		F2468BEC15EAFF05002A95C2 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2468BEB15EAFF05002A95C2 /* QuickLook.framework */; };
 		F2468BF115EB09FC002A95C2 /* copyright.txt in Resources */ = {isa = PBXBuildFile; fileRef = F2468BF015EB09FC002A95C2 /* copyright.txt */; };
+		F24DD63E15EBB9F5002217FE /* License.png in Resources */ = {isa = PBXBuildFile; fileRef = F24DD63D15EBB9F5002217FE /* License.png */; };
 		F28AE74615E8533B00623997 /* FortuneTweetSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = F28AE74515E8533B00623997 /* FortuneTweetSetting.m */; };
 		F28AE74F15E863F800623997 /* FortuneTweetSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28AE74E15E863F800623997 /* FortuneTweetSettingViewController.m */; };
 		F28AE75215E8643B00623997 /* FortuneTweetSettingDocumentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28AE75115E8643B00623997 /* FortuneTweetSettingDocumentViewController.m */; };
@@ -167,6 +168,7 @@
 		F2468BE215EAEEEB002A95C2 /* fortune.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = fortune.plist; sourceTree = "<group>"; };
 		F2468BEB15EAFF05002A95C2 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
 		F2468BF015EB09FC002A95C2 /* copyright.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = copyright.txt; sourceTree = "<group>"; };
+		F24DD63D15EBB9F5002217FE /* License.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = License.png; sourceTree = "<group>"; };
 		F28AE74415E8533B00623997 /* FortuneTweetSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FortuneTweetSetting.h; sourceTree = "<group>"; };
 		F28AE74515E8533B00623997 /* FortuneTweetSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FortuneTweetSetting.m; sourceTree = "<group>"; };
 		F28AE74D15E863F800623997 /* FortuneTweetSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FortuneTweetSettingViewController.h; sourceTree = "<group>"; };
@@ -302,6 +304,7 @@
 			isa = PBXGroup;
 			children = (
 				F2029F3115E5FE7000A4E0FE /* AskerViewController.m */,
+				F24DD63D15EBB9F5002217FE /* License.png */,
 				F28AE76E15E8B56100623997 /* startrek.plist */,
 				F2029F3015E5FE7000A4E0FE /* AskerViewController.h */,
 				F2029EF615E5FDCD00A4E0FE /* AppDelegate.m */,
@@ -499,6 +502,7 @@
 				F28AE76F15E8B56100623997 /* startrek.plist in Resources */,
 				F2468BE315EAEEEB002A95C2 /* fortune.plist in Resources */,
 				F2468BF115EB09FC002A95C2 /* copyright.txt in Resources */,
+				F24DD63E15EBB9F5002217FE /* License.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
