@@ -18,6 +18,7 @@
 
 #import "FortuneListTableViewController.h"
 
+//@interface FrotuneBookTableViewController () <FortuneListTableViewControllerDelegate,UIActionSheetDelegate>
 @interface FrotuneBookTableViewController () <FortuneListTableViewControllerDelegate>
 @end
 
@@ -150,8 +151,21 @@
     [super viewWillAppear:animated];
     if([TWTweetComposeViewController canSendTweet]){
         [self checkAccount];
+    } else {
+//         UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Twitter Setting required" delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"OK" otherButtonTitles:nil];
+//         [actionSheet showFromRect:CGRectMake(0, 0, 100, 100) inView:self.tableView animated:YES ];
     }
 }
+/*
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *choice = [actionSheet buttonTitleAtIndex:buttonIndex];
+    if (buttonIndex == [actionSheet destructiveButtonIndex]) {
+    } else if ([choice isEqualToString:@"OK"]) {
+        [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(drip) object:nil];
+    }
+}
+*/
 
 - (void)viewDidUnload
 {
