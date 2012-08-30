@@ -10,7 +10,41 @@
 #import "TwitterUser+Twitter.h"
 #import "TwitterAPI.h"
 
+#import "FortuneBook.h"
+#import "FortuneBook+Twitter.h"
+
 @implementation TwitterList (Twitter)
+
+/*
+{
+    "name": "development",
+    "full_name": "@norimasa_nabeta/development",
+    "following": false,
+    "description": "???????",
+    "mode": "public",
+    "user": {
+        "profile_sidebar_border_color": "DFDFDF",
+        "id": 73650741,
+        "name": "NorimasaNabeta",
+        "is_translator": false,
+        "protected": false,
+        "contributors_enabled": false,
+        "followers_count": 11,
+        "id_str": "73650741",
+        "statuses_count": 332,
+        "following": false,
+        "default_profile": false,
+        "screen_name": "norimasa_nabeta"
+    },
+    "id_str": "70372290",
+    "member_count": 8,
+    "subscriber_count": 0,
+    "slug": "development",
+    "created_at": "Fri May 11 01:27:24 +0000 2012",
+    "uri": "/norimasa_nabeta/development",
+    "id": 70372290
+},
+*/
 
 + (TwitterList *)listWithTwitterAccount:(NSDictionary *) jsonList
                                 members:(NSDictionary *) jsonMember
@@ -47,6 +81,9 @@
             }
         }
         list.users = users;
+        FortuneBook *book = [FortuneBook bookFromTwitter:jsonList inManagedObjectContext:context];
+        list.book = book;
+        
         NSLog(@"List: %@ owned by %@", list.title, list.ownername);
     } else {
         list = [matches lastObject];

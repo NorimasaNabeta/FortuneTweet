@@ -2,7 +2,7 @@
 //  TwitterUser.h
 //  FortuneTweet
 //
-//  Created by Norimasa Nabeta on 2012/08/25.
+//  Created by Norimasa Nabeta on 2012/08/30.
 //  Copyright (c) 2012年 Norimasa Nabeta. All rights reserved.
 //
 

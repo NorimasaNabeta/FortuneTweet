@@ -2,7 +2,7 @@
 //  Fortune.h
 //  FortuneTweet
 //
-//  Created by Norimasa Nabeta on 2012/08/25.
+//  Created by Norimasa Nabeta on 2012/08/30.
 //  Copyright (c) 2012年 Norimasa Nabeta. All rights reserved.
 //
 
@@ -13,12 +13,12 @@
 
 @interface Fortune : NSManagedObject
 
+@property (nonatomic, retain) NSString * act;
+@property (nonatomic, retain) NSString * character;
 @property (nonatomic, retain) NSString * content;
 @property (nonatomic, retain) NSString * fortuneid;
-@property (nonatomic, retain) NSString * character;
-@property (nonatomic, retain) NSString * scene;
 @property (nonatomic, retain) NSString * quotation;
-@property (nonatomic, retain) NSString * act;
+@property (nonatomic, retain) NSString * scene;
 @property (nonatomic, retain) FortuneBook *book;
 @property (nonatomic, retain) NSOrderedSet *tweets;
 @end

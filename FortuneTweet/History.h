@@ -2,7 +2,7 @@
 //  History.h
 //  FortuneTweet
 //
-//  Created by Norimasa Nabeta on 2012/08/25.
+//  Created by Norimasa Nabeta on 2012/08/30.
 //  Copyright (c) 2012年 Norimasa Nabeta. All rights reserved.
 //
 
@@ -13,10 +13,10 @@
 
 @interface History : NSManagedObject
 
+@property (nonatomic, retain) NSString * address;
 @property (nonatomic, retain) NSNumber * latitude;
 @property (nonatomic, retain) NSNumber * longitude;
 @property (nonatomic, retain) NSDate * timestamp;
-@property (nonatomic, retain) NSString * address;
 @property (nonatomic, retain) Fortune *fortune;
 
 @end

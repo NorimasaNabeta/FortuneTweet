@@ -15,6 +15,7 @@
         <attribute name="rwmode" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="contents" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Fortune" inverseName="book" inverseEntity="Fortune" syncable="YES"/>
+        <relationship name="twitterlist" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TwitterList" inverseName="book" inverseEntity="TwitterList" syncable="YES"/>
     </entity>
     <entity name="History" representedClassName="History" syncable="YES">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
@@ -28,6 +29,7 @@
         <attribute name="mode" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ownername" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="book" optional="YES" minCount="1" maxCount="1" deletionRule="Cascade" destinationEntity="FortuneBook" inverseName="twitterlist" inverseEntity="FortuneBook" syncable="YES"/>
         <relationship name="users" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TwitterUser" inverseName="lists" inverseEntity="TwitterUser" syncable="YES"/>
     </entity>
     <entity name="TwitterUser" representedClassName="TwitterUser" syncable="YES">

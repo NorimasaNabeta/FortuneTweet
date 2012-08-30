@@ -7,9 +7,12 @@
 //
 
 #import "FortuneBook.h"
+#import "TwitterList.h"
 
 @interface FortuneBook (Twitter)
-+ (FortuneBook *)bookFromTwitter:(NSDictionary *) userResult
++(NSString*) sha1:(NSString*)input;
+
++ (FortuneBook *)bookFromTwitter:(NSDictionary *) jsonList
         inManagedObjectContext:(NSManagedObjectContext *)context;
 
 @end

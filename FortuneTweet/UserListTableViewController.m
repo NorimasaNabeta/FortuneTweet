@@ -145,6 +145,26 @@
  }
  }
  */
+// Override to support editing the table view.
+- (void) tableView:(UITableView *)tableView
+commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+ forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        // Delete the row from the data source
+        
+        // following code should be executed after Twitter reqest return successfully.
+        // -->>
+        TwitterUser *user = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        [[ManagedDocumentHelper sharedManagedDocumentFortuneTweet].managedObjectContext performBlock:^{
+            [self.fetchedResultsController.managedObjectContext deleteObject:user];
+        }];
+        // --<<
+
+        // [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+
 
 /*
  // Override to support rearranging the table view.

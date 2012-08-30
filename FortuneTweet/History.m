@@ -2,7 +2,7 @@
 //  History.m
 //  FortuneTweet
 //
-//  Created by Norimasa Nabeta on 2012/08/25.
+//  Created by Norimasa Nabeta on 2012/08/30.
 //  Copyright (c) 2012年 Norimasa Nabeta. All rights reserved.
 //
 
@@ -12,10 +12,10 @@
 
 @implementation History
 
+@dynamic address;
 @dynamic latitude;
 @dynamic longitude;
 @dynamic timestamp;
-@dynamic address;
 @dynamic fortune;
 
 @end

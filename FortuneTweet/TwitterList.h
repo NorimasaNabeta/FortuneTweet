@@ -2,14 +2,14 @@
 //  TwitterList.h
 //  FortuneTweet
 //
-//  Created by Norimasa Nabeta on 2012/08/25.
+//  Created by Norimasa Nabeta on 2012/08/30.
 //  Copyright (c) 2012年 Norimasa Nabeta. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class TwitterUser;
+@class FortuneBook, TwitterUser;
 
 @interface TwitterList : NSManagedObject
 
@@ -18,6 +18,7 @@
 @property (nonatomic, retain) NSString * ownername;
 @property (nonatomic, retain) NSString * title;
 @property (nonatomic, retain) NSSet *users;
+@property (nonatomic, retain) FortuneBook *book;
 @end
 
 @interface TwitterList (CoreDataGeneratedAccessors)
