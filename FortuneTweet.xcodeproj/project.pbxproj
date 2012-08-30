@@ -66,6 +66,11 @@
 		F2468BF115EB09FC002A95C2 /* copyright.txt in Resources */ = {isa = PBXBuildFile; fileRef = F2468BF015EB09FC002A95C2 /* copyright.txt */; };
 		F24DD63E15EBB9F5002217FE /* License.png in Resources */ = {isa = PBXBuildFile; fileRef = F24DD63D15EBB9F5002217FE /* License.png */; };
 		F24DD66515EE3D47002217FE /* FortuneBook+Twitter.m in Sources */ = {isa = PBXBuildFile; fileRef = F24DD66415EE3D47002217FE /* FortuneBook+Twitter.m */; };
+		F24DD6B115EF8067002217FE /* orange.png in Resources */ = {isa = PBXBuildFile; fileRef = F24DD6B015EF8067002217FE /* orange.png */; };
+		F24DD6B415EF807A002217FE /* plum.png in Resources */ = {isa = PBXBuildFile; fileRef = F24DD6B315EF807A002217FE /* plum.png */; };
+		F24DD6B615EF8094002217FE /* red.png in Resources */ = {isa = PBXBuildFile; fileRef = F24DD6B515EF8094002217FE /* red.png */; };
+		F24DD6B815EF80A3002217FE /* slateblue.png in Resources */ = {isa = PBXBuildFile; fileRef = F24DD6B715EF80A3002217FE /* slateblue.png */; };
+		F24DD6BA15EF80DE002217FE /* mediumslateblue.png in Resources */ = {isa = PBXBuildFile; fileRef = F24DD6B915EF80DE002217FE /* mediumslateblue.png */; };
 		F28AE74615E8533B00623997 /* FortuneTweetSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = F28AE74515E8533B00623997 /* FortuneTweetSetting.m */; };
 		F28AE74F15E863F800623997 /* FortuneTweetSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28AE74E15E863F800623997 /* FortuneTweetSettingViewController.m */; };
 		F28AE75215E8643B00623997 /* FortuneTweetSettingDocumentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F28AE75115E8643B00623997 /* FortuneTweetSettingDocumentViewController.m */; };
@@ -172,6 +177,11 @@
 		F24DD63D15EBB9F5002217FE /* License.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = License.png; sourceTree = "<group>"; };
 		F24DD66315EE3D47002217FE /* FortuneBook+Twitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FortuneBook+Twitter.h"; sourceTree = "<group>"; };
 		F24DD66415EE3D47002217FE /* FortuneBook+Twitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "FortuneBook+Twitter.m"; sourceTree = "<group>"; };
+		F24DD6B015EF8067002217FE /* orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orange.png; sourceTree = "<group>"; };
+		F24DD6B315EF807A002217FE /* plum.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plum.png; sourceTree = "<group>"; };
+		F24DD6B515EF8094002217FE /* red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red.png; sourceTree = "<group>"; };
+		F24DD6B715EF80A3002217FE /* slateblue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slateblue.png; sourceTree = "<group>"; };
+		F24DD6B915EF80DE002217FE /* mediumslateblue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mediumslateblue.png; sourceTree = "<group>"; };
 		F28AE74415E8533B00623997 /* FortuneTweetSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FortuneTweetSetting.h; sourceTree = "<group>"; };
 		F28AE74515E8533B00623997 /* FortuneTweetSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FortuneTweetSetting.m; sourceTree = "<group>"; };
 		F28AE74D15E863F800623997 /* FortuneTweetSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FortuneTweetSettingViewController.h; sourceTree = "<group>"; };
@@ -315,8 +325,13 @@
 				F2029F1B15E5FDEF00A4E0FE /* Default.png */,
 				F2029F7415E6099700A4E0FE /* Placeholder.png */,
 				F2029F1C15E5FDEF00A4E0FE /* Default@2x.png */,
+				F24DD6B915EF80DE002217FE /* mediumslateblue.png */,
 				F2468BF015EB09FC002A95C2 /* copyright.txt */,
+				F24DD6B515EF8094002217FE /* red.png */,
+				F24DD6B715EF80A3002217FE /* slateblue.png */,
+				F24DD6B015EF8067002217FE /* orange.png */,
 				F2029F1D15E5FDEF00A4E0FE /* Icon-72.png */,
+				F24DD6B315EF807A002217FE /* plum.png */,
 				F2468BE215EAEEEB002A95C2 /* fortune.plist */,
 				F2029F1E15E5FDEF00A4E0FE /* Icon-Small-50.png */,
 				F2029F1F15E5FDEF00A4E0FE /* Icon-Small.png */,
@@ -508,6 +523,11 @@
 				F2468BE315EAEEEB002A95C2 /* fortune.plist in Resources */,
 				F2468BF115EB09FC002A95C2 /* copyright.txt in Resources */,
 				F24DD63E15EBB9F5002217FE /* License.png in Resources */,
+				F24DD6B115EF8067002217FE /* orange.png in Resources */,
+				F24DD6B415EF807A002217FE /* plum.png in Resources */,
+				F24DD6B615EF8094002217FE /* red.png in Resources */,
+				F24DD6B815EF80A3002217FE /* slateblue.png in Resources */,
+				F24DD6BA15EF80DE002217FE /* mediumslateblue.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
