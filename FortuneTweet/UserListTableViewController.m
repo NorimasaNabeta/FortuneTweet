@@ -27,7 +27,7 @@
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"TwitterUser"];
     NSSortDescriptor *sort1 = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)];
     request.sortDescriptors = [NSArray arrayWithObject:sort1];
-    request.predicate = [NSPredicate predicateWithFormat:@"%@ in lists", self.twitterList];
+    request.predicate = [NSPredicate predicateWithFormat:@"%@ in belonglists", self.twitterList];
     self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
                                                                         managedObjectContext:self.twitterList.managedObjectContext
                                                                           sectionNameKeyPath:nil
@@ -65,6 +65,10 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+- (void) viewWillAppear:(BOOL)animated
+{
+    [self.tableView reloadData];   
+}
 
 - (void)viewDidUnload
 {
@@ -95,30 +99,47 @@
     cell.textLabel.text = user.name;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"@%@", user.screenname];
     
-    id appDelegate = (id)[[UIApplication sharedApplication] delegate];
-    UIImage *image = [[appDelegate imageCache] objectForKey:user.screenname];
-    
-    // UIImage *image = [UIImage imageWithData:user.profileImageBob];
+    UIImage *image = [UIImage imageWithData:user.profileimageBlob];
     if (image) {
-        // NSLog(@"Hit: %@", account.username);
+        NSLog(@"Hit: %@", user.screenname);
         cell.imageView.image = image;
     }
     else {
+        NSLog(@"Fetch: %@", user.screenname);
         ACAccount *account;
         TWRequest *fetchUserImageRequest = [TwitterAPI getUsersProfileImage:account screenname:user.screenname];
         [fetchUserImageRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
             if ([urlResponse statusCode] == 200) {
                 UIImage *image = [UIImage imageWithData:responseData];
-                [[appDelegate imageCache] setObject:image forKey:user.screenname];
-                // NSData *imageBob = UIImagePNGRepresentation(image);
+                NSData *imageBlob = UIImagePNGRepresentation(image);
                 dispatch_sync(dispatch_get_main_queue(), ^{
-                    // user.profileImageBob = imageBob;
+                    [[ManagedDocumentHelper sharedManagedDocumentFortuneTweet].managedObjectContext performBlock:^{
+                        user.profileimageBlob = imageBlob;
+                    }];
                     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:NO];
                 });
             }
         }];
     }
-        
+
+    /* OBSOLETE IMAGE CACHE
+     id appDelegate = (id)[[UIApplication sharedApplication] delegate];
+     UIImage *image = [[appDelegate imageCache] objectForKey:user.screenname];
+     if (image) { cell.imageView.image = image;}
+     else {
+     ACAccount *account;
+     TWRequest *fetchUserImageRequest = [TwitterAPI getUsersProfileImage:account screenname:user.screenname];
+     [fetchUserImageRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+     if ([urlResponse statusCode] == 200) {
+     UIImage *image = [UIImage imageWithData:responseData];
+     [[appDelegate imageCache] setObject:image forKey:user.screenname];
+     dispatch_sync(dispatch_get_main_queue(), ^{
+     [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:NO];});
+     }
+     }];
+     }
+     */
+    
     return cell;
 }
 

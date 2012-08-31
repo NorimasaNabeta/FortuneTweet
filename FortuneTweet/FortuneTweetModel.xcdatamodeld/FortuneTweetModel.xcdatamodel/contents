@@ -30,17 +30,20 @@
         <attribute name="ownername" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="book" optional="YES" minCount="1" maxCount="1" deletionRule="Cascade" destinationEntity="FortuneBook" inverseName="twitterlist" inverseEntity="FortuneBook" syncable="YES"/>
-        <relationship name="users" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TwitterUser" inverseName="lists" inverseEntity="TwitterUser" syncable="YES"/>
+        <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TwitterUser" inverseName="ownlists" inverseEntity="TwitterUser" syncable="YES"/>
+        <relationship name="users" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TwitterUser" inverseName="belonglists" inverseEntity="TwitterUser" syncable="YES"/>
     </entity>
     <entity name="TwitterUser" representedClassName="TwitterUser" syncable="YES">
         <attribute name="blocked" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="followed" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="friend" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="profileimageBlob" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="profileimageURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="screenname" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userid" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="lists" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TwitterList" inverseName="users" inverseEntity="TwitterList" syncable="YES"/>
+        <relationship name="belonglists" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TwitterList" inverseName="users" inverseEntity="TwitterList" syncable="YES"/>
+        <relationship name="ownlists" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TwitterList" inverseName="owner" inverseEntity="TwitterList" syncable="YES"/>
     </entity>
     <elements>
         <element name="Fortune" positionX="0" positionY="0" width="0" height="0"/>

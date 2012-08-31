@@ -2,7 +2,7 @@
 //  TwitterUser.m
 //  FortuneTweet
 //
-//  Created by Norimasa Nabeta on 2012/08/30.
+//  Created by Norimasa Nabeta on 2012/08/31.
 //  Copyright (c) 2012年 Norimasa Nabeta. All rights reserved.
 //
 
@@ -19,6 +19,8 @@
 @dynamic profileimageURL;
 @dynamic screenname;
 @dynamic userid;
-@dynamic lists;
+@dynamic profileimageBlob;
+@dynamic belonglists;
+@dynamic ownlists;
 
 @end

@@ -12,11 +12,15 @@
 #import "History.h"
 #import "History+CLLocation.h"
 #import "ManagedDocumentHelper.h"
+#import "TwitterAPI.h"
 
 #import "FortuneBook.h"
 #import "FortuneBook+Plist.h"
+#import "TwitterList.h"
+#import "TwitterUser.h"
 
 #import "FortuneListTableViewController.h"
+
 
 //@interface FrotuneBookTableViewController () <FortuneListTableViewControllerDelegate,UIActionSheetDelegate>
 @interface FrotuneBookTableViewController () <FortuneListTableViewControllerDelegate>
@@ -195,6 +199,36 @@
     FortuneBook *book = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = book.title;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"@%d", [book.contents count]];
+    
+    if (book.twitterlist) {
+        NSString *screenname = book.twitterlist.owner.screenname;
+        UIImage *image = [UIImage imageWithData:book.twitterlist.owner.profileimageBlob];
+        if (image) {
+            // NSLog(@"Hit: %@", screenname);
+            cell.imageView.image = image;
+        }
+        else {
+            NSLog(@"Fetch: %@", screenname);
+            ACAccount *account;
+            TWRequest *fetchUserImageRequest = [TwitterAPI getUsersProfileImage:account screenname:screenname];
+            [fetchUserImageRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+                if ([urlResponse statusCode] == 200) {
+                    UIImage *image = [UIImage imageWithData:responseData];
+                    NSData *imageBlob = UIImagePNGRepresentation(image);
+                    dispatch_sync(dispatch_get_main_queue(), ^{
+                        [[ManagedDocumentHelper sharedManagedDocumentFortuneTweet].managedObjectContext performBlock:^{
+                            book.twitterlist.owner.profileimageBlob = imageBlob;
+                        }];
+                        [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:NO];
+                    });
+                }
+            }];
+        }
+        
+    }
+    
+    
+    
     
     return cell;
 }

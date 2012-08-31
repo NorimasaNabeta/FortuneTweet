@@ -2,7 +2,7 @@
 //  TwitterList.m
 //  FortuneTweet
 //
-//  Created by Norimasa Nabeta on 2012/08/30.
+//  Created by Norimasa Nabeta on 2012/08/31.
 //  Copyright (c) 2012年 Norimasa Nabeta. All rights reserved.
 //
 
@@ -19,5 +19,6 @@
 @dynamic title;
 @dynamic users;
 @dynamic book;
+@dynamic owner;
 
 @end

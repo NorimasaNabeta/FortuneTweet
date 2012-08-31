@@ -5,9 +5,11 @@
 //  Created by Norimasa Nabeta on 2012/08/23.
 //  Copyright (c) 2012年 Norimasa Nabeta. All rights reserved.
 //
-
+#import "TwitterList.h"
 #import "TwitterList+Twitter.h"
+#import "TwitterUser.h"
 #import "TwitterUser+Twitter.h"
+#import "TwitterUser+Account.h"
 #import "TwitterAPI.h"
 
 #import "FortuneBook.h"
@@ -81,8 +83,8 @@
             }
         }
         list.users = users;
-        FortuneBook *book = [FortuneBook bookFromTwitter:jsonList inManagedObjectContext:context];
-        list.book = book;
+        list.owner = [TwitterUser accountWithTwitterUser:jsonList inManagedObjectContext:context];
+        list.book = [FortuneBook bookFromTwitter:jsonList inManagedObjectContext:context];
         
         NSLog(@"List: %@ owned by %@", list.title, list.ownername);
     } else {

@@ -18,8 +18,9 @@
 
 #import "ManagedDocumentHelper.h"
 // #import "UserListTableViewController.h"
+#import "AskerViewController.h"
 
-@interface TWListTableViewController () // <UserListTableViewControllerDelegate>
+@interface TWListTableViewController () <AskerViewControllerDelegate>// <UserListTableViewControllerDelegate>
 @property (nonatomic,strong) NSMutableDictionary *threadList;
 @end
 
@@ -34,6 +35,9 @@
         _accountStore = [[ACAccountStore alloc] init];
     }
     return _accountStore;
+}
+- (IBAction)addButtonPressed:(id)sender {
+//    [self.tableView setEditing:YES];
 }
 
 
@@ -233,6 +237,30 @@
     cell.textLabel.text = [NSString stringWithFormat:@"%@ [%d]", twlist.title, [twlist.users count]];
     cell.detailTextLabel.text = [NSString stringWithFormat:@"[%@] %@ by %@", twlist.mode, twlist.descriptions, twlist.ownername];
   
+    UIImage *image = [UIImage imageWithData:twlist.owner.profileimageBlob];
+    if (image) {
+        // NSLog(@"Hit: %@", twlist.owner.screenname);
+        cell.imageView.image = image;
+    }
+    else {
+        NSLog(@"Fetch: %@", twlist.owner.screenname);
+        ACAccount *account;
+        TWRequest *fetchUserImageRequest = [TwitterAPI getUsersProfileImage:account screenname:twlist.owner.screenname];
+        [fetchUserImageRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+            if ([urlResponse statusCode] == 200) {
+                UIImage *image = [UIImage imageWithData:responseData];
+                NSData *imageBlob = UIImagePNGRepresentation(image);
+                dispatch_sync(dispatch_get_main_queue(), ^{
+                    [[ManagedDocumentHelper sharedManagedDocumentFortuneTweet].managedObjectContext performBlock:^{
+                        twlist.owner.profileimageBlob = imageBlob;
+                    }];
+                    [self.tableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:NO];
+                });
+            }
+        }];
+    }
+    
+/*
     id appDelegate = (id)[[UIApplication sharedApplication] delegate];
     UIImage *image = [[appDelegate imageCache] objectForKey:twlist.ownername];
     
@@ -261,7 +289,7 @@
             }];
         }
     }
-
+*/
     return cell;
 }
 
@@ -318,6 +346,12 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
     if ([segue.destinationViewController respondsToSelector:@selector(setTwitterList:)]) {
         [segue.destinationViewController performSelector:@selector(setTwitterList:) withObject:twlist];
     }
+    if ([segue.identifier hasPrefix:@"Create List"]) {
+        AskerViewController *asker = (AskerViewController *)segue.destinationViewController;
+        asker.question = @"What do you want your label to say?";
+        asker.answer = @"Label Text";
+        asker.delegate = self;
+    }
 }
 
 /*
@@ -331,5 +365,15 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
     return data ? [UIImage imageWithData:data] : nil;
 }
 */
+
+#pragma mark - AskerViewControllerDelegate
+
+- (void)askerViewController:(AskerViewController *)sender
+             didAskQuestion:(NSString *)question
+               andGotAnswer:(NSString *)answer
+{
+    // [self addLabel:answer];
+    [self dismissModalViewControllerAnimated:YES];
+}
 
 @end
