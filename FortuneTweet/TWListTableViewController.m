@@ -19,8 +19,10 @@
 #import "ManagedDocumentHelper.h"
 // #import "UserListTableViewController.h"
 #import "AskerViewController.h"
+#import "TwitterLineTableViewController.h"
 
-@interface TWListTableViewController () <AskerViewControllerDelegate>// <UserListTableViewControllerDelegate>
+@interface TWListTableViewController () <AskerViewControllerDelegate,TwitterLineTableViewControllerDelegate>
+// <UserListTableViewControllerDelegate>
 @property (nonatomic,strong) NSMutableDictionary *threadList;
 @end
 
@@ -345,12 +347,16 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
     TwitterList *twlist = [self.fetchedResultsController objectAtIndexPath:indexPath];
     if ([segue.destinationViewController respondsToSelector:@selector(setTwitterList:)]) {
         [segue.destinationViewController performSelector:@selector(setTwitterList:) withObject:twlist];
-    }
-    if ([segue.identifier hasPrefix:@"Create List"]) {
+    } else if ([segue.identifier hasPrefix:@"Create List"]) {
         AskerViewController *asker = (AskerViewController *)segue.destinationViewController;
         asker.question = @"What do you want your label to say?";
         asker.answer = @"Label Text";
         asker.delegate = self;
+    } else if ([segue.identifier hasPrefix:@"Line Show"]) {
+        TwitterLineTableViewController *lineshow = (TwitterLineTableViewController *)segue.destinationViewController;
+        lineshow.account=[self.accounts objectAtIndex:0];
+        lineshow.slug = twlist.title;
+        lineshow.delegate = self;
     }
 }
 
@@ -374,6 +380,41 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 {
     // [self addLabel:answer];
     [self dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark - TwitterLineTableViewControllerDelegate
+
+// this delegate request comes from threads, to block successible requests.ß
+- (UIImage *)lineViewController:(TwitterLineTableViewController *)sender imageForTweet:(id)tweet;
+{
+    __block UIImage *image;
+    // NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+    // TwitterList *twlist = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    // id tweetuser = [tweet valueForKeyPath:@"user"];
+    // NSLog(@"%@", tweet);
+    [[ManagedDocumentHelper sharedManagedDocumentFortuneTweet].managedObjectContext performBlock:^{
+        TwitterUser *user = [TwitterUser tweetWithTwitterUser:tweet inManagedObjectContext:self.fetchedResultsController.managedObjectContext];
+        image = [UIImage imageWithData:user.profileimageBlob];
+        if (! image) {
+            NSLog(@"Fetch: %@>>", user.screenname);
+            ACAccount *account = [self.accounts objectAtIndex:0];
+            TWRequest *fetchUserImageRequest = [TwitterAPI getUsersProfileImage:account screenname:user.screenname];
+            [fetchUserImageRequest performRequestWithHandler:^(NSData *responseData, NSHTTPURLResponse *urlResponse, NSError *error) {
+                if ([urlResponse statusCode] == 200) {
+                    UIImage *image = [UIImage imageWithData:responseData];
+                    NSData *imageBlob = UIImagePNGRepresentation(image);
+                    dispatch_sync(dispatch_get_main_queue(), ^{
+                        [[ManagedDocumentHelper sharedManagedDocumentFortuneTweet].managedObjectContext performBlock:^{
+                            user.profileimageBlob = imageBlob;
+                        }];
+                    });
+                }
+            }];
+            NSLog(@"Fetch: %@<<", user.screenname);
+        }
+    }];
+
+    return image;
 }
 
 @end

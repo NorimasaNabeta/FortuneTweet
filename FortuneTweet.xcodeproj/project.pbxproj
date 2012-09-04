@@ -84,6 +84,7 @@
 		F28AE77215E8BA3900623997 /* FortuneBook+Plist.m in Sources */ = {isa = PBXBuildFile; fileRef = F28AE77115E8BA3900623997 /* FortuneBook+Plist.m */; };
 		F28AE77515E8BA4F00623997 /* Fortune+Plist.m in Sources */ = {isa = PBXBuildFile; fileRef = F28AE77415E8BA4F00623997 /* Fortune+Plist.m */; };
 		F28AE79715E8F3AF00623997 /* SectionInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = F28AE79615E8F3AE00623997 /* SectionInfo.m */; };
+		F2B6B96015F08E0300E45A0A /* TwitterLineTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F2B6B95F15F08E0300E45A0A /* TwitterLineTableViewController.m */; };
 		F2D3567515EA65A400D22055 /* FortuneListTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F2D3567415EA65A400D22055 /* FortuneListTableCell.m */; };
 /* End PBXBuildFile section */
 
@@ -208,6 +209,8 @@
 		F28AE77415E8BA4F00623997 /* Fortune+Plist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Fortune+Plist.m"; sourceTree = "<group>"; };
 		F28AE79515E8F3AD00623997 /* SectionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectionInfo.h; sourceTree = "<group>"; };
 		F28AE79615E8F3AE00623997 /* SectionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectionInfo.m; sourceTree = "<group>"; };
+		F2B6B95E15F08E0300E45A0A /* TwitterLineTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterLineTableViewController.h; sourceTree = "<group>"; };
+		F2B6B95F15F08E0300E45A0A /* TwitterLineTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterLineTableViewController.m; sourceTree = "<group>"; };
 		F2D3567315EA65A400D22055 /* FortuneListTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FortuneListTableCell.h; sourceTree = "<group>"; };
 		F2D3567415EA65A400D22055 /* FortuneListTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FortuneListTableCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -297,6 +300,8 @@
 				F2029F6815E607E200A4E0FE /* FortuneListTableViewController.h */,
 				F2029F6915E607E200A4E0FE /* FortuneListTableViewController.m */,
 				F2029F4E15E600AE00A4E0FE /* Storyboard_iphone.storyboard */,
+				F2B6B95E15F08E0300E45A0A /* TwitterLineTableViewController.h */,
+				F2B6B95F15F08E0300E45A0A /* TwitterLineTableViewController.m */,
 				F2D3567315EA65A400D22055 /* FortuneListTableCell.h */,
 				F2D3567415EA65A400D22055 /* FortuneListTableCell.m */,
 				F2029F7815E613B000A4E0FE /* TWListTableViewController.h */,
@@ -600,6 +605,7 @@
 				F22FEF4F15F02E1B00099431 /* Fortune.m in Sources */,
 				F22FEF5215F02E1B00099431 /* TwitterList.m in Sources */,
 				F22FEF5515F02E1C00099431 /* FortuneBook.m in Sources */,
+				F2B6B96015F08E0300E45A0A /* TwitterLineTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -39,7 +39,7 @@
  "profile_background_image_url": "http://a0.twimg.com/profile_background_images/179260978/karen01___2.jpeg",
  "profile_link_color": "bd6a3d",
  "profile_image_url": "http://a0.twimg.com/profile_images/994249198/twicon_normal.jpg",
-?? "id_str": "17584067",
+>> "id_str": "17584067",
  "geo_enabled": false,
  "follow_request_sent": false,
  "profile_use_background_image": true,
@@ -101,6 +101,41 @@
         user.name = [json objectForKey:@"name"];
         user.profileimageURL = [json objectForKey:@"profile_image_url"];
         user.userid = [json objectForKey:@"id_str"];
+        user.screenname = screen_name;
+        NSLog(@"User: %@ ", user.screenname);
+    } else {
+        user = [matches lastObject];
+    }
+    
+    return user;
+    
+}
+
+// Timeline tweet
++ (TwitterUser *)tweetWithTwitterUser:(NSDictionary *) json
+              inManagedObjectContext:(NSManagedObjectContext *)context
+{
+    TwitterUser *user = nil;
+    NSString *screen_name = [json valueForKeyPath:@"user.screen_name"];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"TwitterUser"];
+    request.predicate = [NSPredicate predicateWithFormat:@"screenname = %@", screen_name];
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"screenname" ascending:YES];
+    request.sortDescriptors = [NSArray arrayWithObject:sort];
+    
+    NSError *error = nil;
+    NSArray *matches = [context executeFetchRequest:request error:&error];
+    
+    if (!matches || ([matches count] > 1)) {
+        // handle error
+    } else if ([matches count] == 0) {
+        user = [NSEntityDescription insertNewObjectForEntityForName:@"TwitterUser" inManagedObjectContext:context];
+        
+        // user.blocked = [json objectForKey:@""];
+        // user.followed = [json objectForKey:@""];
+        // user.friend = [json objectForKey:@""];
+        user.name = [json valueForKeyPath:@"user.name"];
+        user.profileimageURL = [json valueForKeyPath:@"user.profile_image_url"];
+        user.userid = [json valueForKeyPath:@"user.id_str"];
         user.screenname = screen_name;
         NSLog(@"User: %@ ", user.screenname);
     } else {

@@ -11,4 +11,8 @@
 @interface TwitterUser (Twitter)
 + (TwitterUser *) listWithTwitterUser:(NSDictionary *) json
                  inManagedObjectContext:(NSManagedObjectContext *)context;
+
++ (TwitterUser *) tweetWithTwitterUser:(NSDictionary *) json
+               inManagedObjectContext:(NSManagedObjectContext *)context;
+
 @end
