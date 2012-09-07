@@ -35,6 +35,8 @@
         book.title = [pList objectForKey:@"playName"];
         book.bookid = bookId;
         book.rwmode = 0; // the book that loaded from plist is always readonly(0)
+        // UIImage *thumbnail = [UIImage imageWithData:[pList objectForKey:@"playIcon"]];
+        book.thumbnailBlob = [pList objectForKey:@"playIcon"];
 
         NSMutableSet *forts = [[NSMutableSet alloc] initWithObjects: nil];
         for (NSDictionary *dict in [pList objectForKey:@"quotations"]) {

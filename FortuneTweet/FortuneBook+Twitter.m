@@ -69,7 +69,11 @@
         book.title = twitterListTitle;
         book.bookid = bookId;
         book.rwmode = [NSNumber numberWithBool:1]; // the book that created based on twitter list readwrite(1)
-
+        // UIImage *image = [UIImage imageWithData:book.twitterlist.owner.profileimageBlob];
+        // if (image) {
+        //     book.thumbnailBlob = book.twitterlist.owner.profileimageBlob;
+        // }
+        
         // *FortuneBook creted from Twitter has no fortune record at initil state.
         
         // NSMutableSet *forts = [[NSMutableSet alloc] initWithObjects: nil];

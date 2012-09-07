@@ -2,7 +2,7 @@
 //  FortuneBook.h
 //  FortuneTweet
 //
-//  Created by Norimasa Nabeta on 2012/08/31.
+//  Created by Norimasa Nabeta on 2012/09/07.
 //  Copyright (c) 2012年 Norimasa Nabeta. All rights reserved.
 //
 
@@ -16,6 +16,7 @@
 @property (nonatomic, retain) NSString * bookid;
 @property (nonatomic, retain) NSNumber * rwmode;
 @property (nonatomic, retain) NSString * title;
+@property (nonatomic, retain) NSData * thumbnailBlob;
 @property (nonatomic, retain) NSSet *contents;
 @property (nonatomic, retain) TwitterList *twitterlist;
 @end

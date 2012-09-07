@@ -138,12 +138,18 @@ def readFortuneData( filename ):
 #
 #
 if __name__ == '__main__':
-    if len(sys.argv) > 1 :
+    if len(sys.argv) > 2 :
         inputTextDatafile = sys.argv[1]
         outputPlistfile   = sys.argv[2]
+        iconFile          = sys.argv[3]
     else:
         inputTextDatafile = 'startrek.txt'
         outputPlistfile   = 'startrek.plist'
+        iconFile          = 'Icon-Small.png'
+
+    iconf = open(iconFile)
+    iconData = iconf.read()
+    iconf.close()
 
     titleFortune       = os.path.splitext(os.path.basename(inputTextDatafile))[0]
     descriptionFortune = 'fortune database'
@@ -156,6 +162,7 @@ if __name__ == '__main__':
             playName        = titleFortune,
             playDescription = descriptionFortune,
             playEditor      = editorFortune,
+            playIcon        = plistlib.Data(iconData),
             playId          = m.hexdigest(),
             date            = datetime.datetime.fromtimestamp(time.mktime(time.gmtime())),
             formatVersion   = 2,

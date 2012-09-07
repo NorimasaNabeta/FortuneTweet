@@ -234,11 +234,12 @@
                 }
             }];
         }
-        
+    } else {
+        UIImage *image = [UIImage imageWithData:book.thumbnailBlob];
+        if (image) {
+            cell.imageView.image = image;
+        }        
     }
-    
-    
-    
     
     return cell;
 }

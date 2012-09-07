@@ -13,6 +13,7 @@
     <entity name="FortuneBook" representedClassName="FortuneBook" syncable="YES">
         <attribute name="bookid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="rwmode" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="thumbnailBlob" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="contents" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Fortune" inverseName="book" inverseEntity="Fortune" syncable="YES"/>
         <relationship name="twitterlist" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TwitterList" inverseName="book" inverseEntity="TwitterList" syncable="YES"/>

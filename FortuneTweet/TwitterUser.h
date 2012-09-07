@@ -2,7 +2,7 @@
 //  TwitterUser.h
 //  FortuneTweet
 //
-//  Created by Norimasa Nabeta on 2012/08/31.
+//  Created by Norimasa Nabeta on 2012/09/07.
 //  Copyright (c) 2012年 Norimasa Nabeta. All rights reserved.
 //
 
@@ -17,10 +17,10 @@
 @property (nonatomic, retain) NSNumber * followed;
 @property (nonatomic, retain) NSNumber * friend;
 @property (nonatomic, retain) NSString * name;
+@property (nonatomic, retain) NSData * profileimageBlob;
 @property (nonatomic, retain) NSString * profileimageURL;
 @property (nonatomic, retain) NSString * screenname;
 @property (nonatomic, retain) NSString * userid;
-@property (nonatomic, retain) NSData * profileimageBlob;
 @property (nonatomic, retain) NSSet *belonglists;
 @property (nonatomic, retain) NSSet *ownlists;
 @end
