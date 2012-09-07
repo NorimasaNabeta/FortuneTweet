@@ -209,6 +209,9 @@
 		F28AE77415E8BA4F00623997 /* Fortune+Plist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Fortune+Plist.m"; sourceTree = "<group>"; };
 		F28AE79515E8F3AD00623997 /* SectionInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SectionInfo.h; sourceTree = "<group>"; };
 		F28AE79615E8F3AE00623997 /* SectionInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SectionInfo.m; sourceTree = "<group>"; };
+		F292BCA215F96C6500F644A6 /* ftplist_create.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = ftplist_create.py; sourceTree = "<group>"; };
+		F292BCA915F96E5100F644A6 /* fortune.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = fortune.txt; sourceTree = "<group>"; };
+		F292BCAA15F96E5100F644A6 /* startrek.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = startrek.txt; sourceTree = "<group>"; };
 		F2B6B95E15F08E0300E45A0A /* TwitterLineTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterLineTableViewController.h; sourceTree = "<group>"; };
 		F2B6B95F15F08E0300E45A0A /* TwitterLineTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterLineTableViewController.m; sourceTree = "<group>"; };
 		F2D3567315EA65A400D22055 /* FortuneListTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FortuneListTableCell.h; sourceTree = "<group>"; };
@@ -332,7 +335,10 @@
 				F2029EF515E5FDCD00A4E0FE /* AppDelegate.h */,
 				F2029F1B15E5FDEF00A4E0FE /* Default.png */,
 				F2029F7415E6099700A4E0FE /* Placeholder.png */,
+				F292BCA915F96E5100F644A6 /* fortune.txt */,
+				F292BCAA15F96E5100F644A6 /* startrek.txt */,
 				F2029F1C15E5FDEF00A4E0FE /* Default@2x.png */,
+				F292BCA215F96C6500F644A6 /* ftplist_create.py */,
 				F24DD6B915EF80DE002217FE /* mediumslateblue.png */,
 				F2468BF015EB09FC002A95C2 /* copyright.txt */,
 				F24DD6B515EF8094002217FE /* red.png */,
@@ -448,6 +454,7 @@
 				F2029EDE15E5FDCD00A4E0FE /* Sources */,
 				F2029EDF15E5FDCD00A4E0FE /* Frameworks */,
 				F2029EE015E5FDCD00A4E0FE /* Resources */,
+				F292BCA415F96CAF00F644A6 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -565,6 +572,24 @@
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
+		F292BCA415F96CAF00F644A6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/FortuneTweet/fortune.txt",
+				"$(SRCROOT)/FortuneTweet/startrek.txt",
+			);
+			outputPaths = (
+				"$(SRCROOT)/FortuneTweet/fortune.plist",
+				"$(SRCROOT)/FortuneTweet/startrek.plist",
+				"$(SRCROOT)/FortuneTweet/script_log.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/bin/python $PROJECT_DIR/FortuneTweet/ftplist_create.py $SCRIPT_INPUT_FILE_0 $SCRIPT_OUTPUT_FILE_0 >> $SCRIPT_OUTPUT_FILE_2\n/usr/bin/python $PROJECT_DIR/FortuneTweet/ftplist_create.py $SCRIPT_INPUT_FILE_1 $SCRIPT_OUTPUT_FILE_1 >> $SCRIPT_OUTPUT_FILE_2\n\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -671,7 +696,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "90040829-B7CB-43C7-AB92-537BD3324FED";
 				SDKROOT = iphoneos;
 			};
@@ -693,7 +718,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "58E7974F-D561-40DA-8CC8-F214737FA20C";
 				SDKROOT = iphoneos;
@@ -709,7 +734,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FortuneTweet/FortuneTweet-Prefix.pch";
 				INFOPLIST_FILE = "FortuneTweet/FortuneTweet-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "90040829-B7CB-43C7-AB92-537BD3324FED";
 				WRAPPER_EXTENSION = app;
@@ -724,7 +749,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FortuneTweet/FortuneTweet-Prefix.pch";
 				INFOPLIST_FILE = "FortuneTweet/FortuneTweet-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;

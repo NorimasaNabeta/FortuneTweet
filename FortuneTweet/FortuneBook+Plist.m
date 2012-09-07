@@ -48,11 +48,11 @@
             // <key>scene</key><string>"Who Mourns for Adonais?"</string>
             // <key>character</key><string>Lt. Carolyn Palamas</string>
             // <key>quotation</key><string>A father doesn't destroy his children.</string></dict>
-            //NSString *act = [dict objectForKey:@"act"];
-            //NSString *scene = [dict objectForKey:@"scene"];
-            //NSString *character = [dict objectForKey:@"character"];
-            //NSString *quotation = [dict objectForKey:@"quotation"];
-            //NSLog(@"act=%@, scn=%@, chr=%@, qot=%@", act,scene,character,quotation);
+            // NSString *act = [dict objectForKey:@"act"];
+            // NSString *scene = [dict objectForKey:@"scene"];
+            // NSString *character = [dict objectForKey:@"character"];
+            // NSString *quotation = [dict objectForKey:@"quotation"];
+            // NSLog(@"act=%@, scn=%@, chr=%@, qot=%@", act,scene,character,quotation);
             Fortune *fort = [Fortune fortuneFromPlist:dict inManagedObjectContext:context];
             if( fort ){
                 [forts addObject:fort];

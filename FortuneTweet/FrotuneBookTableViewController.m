@@ -158,9 +158,13 @@
     } else {
         
         // [CAUTION] This URL scheme is not valid on iOS5.1.
+        // you can check this function on the iPhone 5.0 Simulator. 
         // http://stackoverflow.com/questions/9092142/ios-uialertview-button-to-go-to-setting-app
-        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs:root=General&path=Network"]];
-        //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"prefs:root=TWITTER"]];
+        // NSURL *generalSetting = [NSURL URLWithString:@"prefs:root=General&path=Network"];
+        NSURL *twitterSetting = [NSURL URLWithString:@"prefs:root=TWITTER"];
+        if ([[UIApplication sharedApplication] canOpenURL:twitterSetting ]) {
+            [[UIApplication sharedApplication] openURL:twitterSetting];
+        }
 //         UIActionSheet *actionSheet = [[UIActionSheet alloc]
 //                                       initWithTitle:@"Twitter Setting　required" delegate:self cancelButtonTitle:nil destructiveButtonTitle:@"OK" otherButtonTitles:nil];
 //         [actionSheet showFromRect:CGRectMake(0, 0, 100, 100) inView:self.tableView animated:YES ];
